@@ -1,0 +1,388 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Indian Tricolor Theme */
+  --saffron: #FF9933;      /* Top band of Indian flag - courage & sacrifice */
+  --white: #FFFFFF;         /* Middle band - peace & truth */
+  --green: #138808;         /* Bottom band - faith & chivalry */
+  --navy-blue: #000080;     /* Ashoka Chakra color */
+  
+  /* Base Colors */
+  --background: #FFF9F0;     /* Warm cream background (saffron tint) */
+  --foreground: #1F2937;
+  --card: #FFFFFF;
+  --card-foreground: #1F2937;
+  --popover: #FFFFFF;
+  --popover-foreground: #1F2937;
+  
+  /* Primary - Saffron (from Indian flag) */
+  --primary: #FF9933;
+  --primary-foreground: #FFFFFF;
+  --primary-light: #FFB366;
+  --primary-dark: #E68A2E;
+  
+  /* Secondary - Green (from Indian flag) */
+  --secondary: #138808;
+  --secondary-foreground: #FFFFFF;
+  --secondary-light: #1AA60F;
+  --secondary-dark: #0F6D07;
+  
+  /* Accent - Navy Blue (Ashoka Chakra) */
+  --accent: #000080;
+  --accent-foreground: #FFFFFF;
+  --accent-light: #333399;
+  --accent-gradient: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+  
+  /* Muted & Neutral */
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: #FF9933;
+  
+  /* Chart Colors - Inspired by Indian festivals */
+  --chart-1: #FF9933;      /* Saffron */
+  --chart-2: #138808;       /* Green */
+  --chart-3: #000080;       /* Navy Blue */
+  --chart-4: #FFB366;       /* Light Saffron */
+  --chart-5: #1AA60F;       /* Light Green */
+  
+  --radius: 0.75rem;        /* Slightly larger radius for modern look */
+  
+  /* Sidebar */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1F2937;
+  --sidebar-primary: #FF9933;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFF3E6;  /* Light saffron tint */
+  --sidebar-accent-foreground: #1F2937;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #FF9933;
+}
+
+.dark {
+  /* Dark mode with Indian inspiration - Deep, rich colors */
+  --background: #1A1F2E;     /* Deep indigo night */
+  --foreground: #F9FAFB;
+  --card: #242B3D;
+  --card-foreground: #F9FAFB;
+  --popover: #242B3D;
+  --popover-foreground: #F9FAFB;
+  
+  /* Primary - Saffron glow in dark */
+  --primary: #FFB366;        /* Lighter saffron for better visibility */
+  --primary-foreground: #1F2937;
+  
+  /* Secondary - Green glow in dark */
+  --secondary: #1AA60F;
+  --secondary-foreground: #FFFFFF;
+  
+  /* Accent - Royal Navy Blue */
+  --accent: #4D4DFF;         /* Brighter blue for dark mode */
+  --accent-foreground: #FFFFFF;
+  
+  /* Muted & Neutral */
+  --muted: #2D3447;
+  --muted-foreground: #9CA3AF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FEF3C7;
+  --border: #374151;
+  --input: #2D3447;
+  --ring: #FFB366;
+  
+  /* Chart Colors - Vibrant for dark mode */
+  --chart-1: #FFB366;
+  --chart-2: #1AA60F;
+  --chart-3: #4D4DFF;
+  --chart-4: #FF9933;
+  --chart-5: #138808;
+  
+  /* Sidebar */
+  --sidebar: #242B3D;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #FFB366;
+  --sidebar-primary-foreground: #1F2937;
+  --sidebar-accent: #2D3447;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: #374151;
+  --sidebar-ring: #FFB366;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  
+  /* Base Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  /* Indian Tricolor Theme Colors */
+  --color-saffron: var(--saffron);
+  --color-green: var(--green);
+  --color-navy-blue: var(--navy-blue);
+  
+  /* Primary - Saffron */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  
+  /* Secondary - Green */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  
+  /* Accent - Navy Blue */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-light: var(--accent-light);
+  
+  /* Muted & Utility */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Chart Colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar with Indian theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--muted);
+    border-radius: var(--radius);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: var(--radius);
+    border: 2px solid var(--muted);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+  }
+  
+  /* Selection color - saffron tint */
+  ::selection {
+    background: var(--primary-light);
+    color: var(--foreground);
+  }
+  
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Indian flag gradient background for special elements */
+  .indian-flag-gradient {
+    background: linear-gradient(
+      to bottom,
+      var(--saffron) 0%,
+      var(--saffron) 33.33%,
+      var(--white) 33.33%,
+      var(--white) 66.66%,
+      var(--green) 66.66%,
+      var(--green) 100%
+    );
+  }
+  
+  /* Horizontal tricolor for headers/banners */
+  .indian-tricolor {
+    background: linear-gradient(
+      to right,
+      var(--saffron) 0%,
+      var(--saffron) 33.33%,
+      var(--white) 33.33%,
+      var(--white) 66.66%,
+      var(--green) 66.66%,
+      var(--green) 100%
+    );
+  }
+  
+  /* Ashoka Chakra inspired button/icon background */
+  .ashoka-chakra-bg {
+    background: radial-gradient(circle at center, var(--navy-blue) 2px, transparent 2px),
+                linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
+    background-size: 20px 20px, 100%;
+  }
+  
+  /* NRI badge styling */
+  .nri-badge {
+    background: linear-gradient(135deg, var(--saffron), var(--green));
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  /* Card hover effect with Indian theme */
+  .indian-card-hover {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+  
+  .indian-card-hover:hover {
+    border-color: var(--saffron);
+    box-shadow: 0 10px 25px -5px rgba(255, 153, 51, 0.2),
+                0 8px 10px -6px rgba(19, 136, 8, 0.1);
+  }
+  
+  /* EMI calculator highlight */
+  .emi-highlight {
+    background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
+    border-left: 4px solid var(--saffron);
+    padding: 1rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  
+  /* Rupee symbol styling */
+  .rupee-symbol {
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--saffron);
+  }
+  
+  /* Trust badge with Indian colors */
+  .trust-badge-india {
+    background: linear-gradient(135deg, var(--saffron), var(--green));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Festival special offer banner */
+  .festival-offer {
+    background: linear-gradient(135deg, #FF9933, #FFB366, #138808);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .festival-offer::before {
+    content: "✨";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 3rem;
+    opacity: 0.2;
+    transform: rotate(15deg);
+  }
+}
+
+/* Animation for Indian flag colors */
+@keyframes tricolor-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.tricolor-wave {
+  background: linear-gradient(
+    90deg,
+    var(--saffron) 0%,
+    var(--white) 50%,
+    var(--green) 100%
+  );
+  background-size: 200% 200%;
+  animation: tricolor-wave 3s ease infinite;
+}
+
+/* Responsive typography for Indian languages support */
+@layer utilities {
+  .lang-support {
+    font-family: 'Geist', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  /* Indian number formatting helper */
+  .indian-number {
+    font-feature-settings: "numr" 1;
+  }
+  
+  /* Accessibility - high contrast for Indian users */
+  .high-contrast {
+    --primary: #000080;
+    --secondary: #138808;
+    --background: #FFFFFF;
+    --foreground: #000000;
+  }
+}
+
+/* Print styles for loan documents */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-tricolor {
+    border-top: 3px solid #FF9933;
+    border-bottom: 3px solid #138808;
+  }
+}

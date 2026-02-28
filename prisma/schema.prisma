@@ -1,0 +1,148 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+        
+model User {
+  id             Int      @id @default(autoincrement())
+  phone_number   String   @unique
+  password_hash  String
+  full_name      String
+  aadhaar_number String?  @unique
+  pan_number     String?  @unique
+  cibil_score    Int      @default(750)
+  wallet_balance Float    @default(0)
+  nri_status     Boolean  @default(false)
+  nre_account    String?
+  nro_account    String?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  
+  loan_applications LoanApplication[]
+  personal_info     PersonalInfo?
+  verification      VerificationStatus?
+  loans             Loan[]
+  transactions      Transaction[]
+  withdrawals       Withdrawal[]
+}
+
+model LoanApplication {
+  id                Int      @id @default(autoincrement())
+  user_id           Int
+  document_number   String   @unique
+  amount_requested  Float
+  loan_term_months  Int
+  interest_rate     Float
+  annual_rate       Float?
+  currency          String   @default("INR")
+  status            String   @default("pending")
+  kyc_front_url     String?
+  kyc_back_url      String?
+  selfie_url        String?
+  signature_url     String?
+  is_signed         Boolean  @default(false)
+  submitted_at      DateTime @default(now())
+  updated_at        DateTime @updatedAt
+  
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model PersonalInfo {
+  id                       Int      @id @default(autoincrement())
+  user_id                  Int      @unique
+  full_name                String
+  id_type                  String
+  id_card_number           String
+  gender                   String
+  date_of_birth            DateTime
+  current_job              String
+  monthly_income           Float
+  loan_purpose             String
+  living_address           String
+  city                     String   @default("")
+  state                    String   @default("")
+  pincode                  String   @default("")
+  emergency_contact_name   String
+  emergency_contact_phone  String
+  created_at               DateTime @default(now())
+  updated_at               DateTime @updatedAt
+  
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model VerificationStatus {
+  id                       Int      @id @default(autoincrement())
+  user_id                  Int      @unique
+  kyc_completed            Boolean  @default(false)
+  personal_info_completed  Boolean  @default(false)
+  signature_completed      Boolean  @default(false)
+  updated_at               DateTime @updatedAt
+  
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model Loan {
+  id                  Int      @id @default(autoincrement())
+  user_id             Int
+  loan_application_id Int?
+  document_number     String   @unique
+  order_number        String?
+  borrower_name       String
+  borrower_phone      String
+  borrower_aadhaar    String?
+  borrower_pan        String?
+  loan_amount         Float
+  interest_rate       Float
+  annual_rate         Float?
+  loan_period_months  Int
+  status              String   @default("active")
+  status_color        String?
+  status_description  String?
+  is_active           Boolean  @default(true)
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+  signed_at           DateTime?
+  currency            String   @default("INR")
+  
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  user_id     Int
+  type        String
+  amount      Float
+  description String
+  otp_code    String?
+  metadata    Json?
+  currency    String   @default("INR")
+  created_at  DateTime @default(now())
+  
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model Withdrawal {
+  id               Int      @id @default(autoincrement())
+  user_id          Int
+  withdraw_number  String   @unique
+  withdrawal_code  String?
+  amount           Float
+  status           String   @default("pending")
+  document_number  String?
+  bank_name        String?
+  account_number   String?
+  account_name     String?
+  ifsc_code        String?
+  account_type     String?
+  withdrawal_date  DateTime @default(now())
+  notes            String?
+  currency         String   @default("INR")
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  
+  user User @relation(fields: [user_id], references: [id])
+}
