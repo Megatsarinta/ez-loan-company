@@ -574,12 +574,12 @@ export default function LoanApprovalLetterPage() {
 
               {idCardImage && (
                 <div className="mb-3">
-                  <p className="text-xs text-[#6C757D] mb-2">ID Card Preview:</p>
-                  <div className="relative w-full h-32 border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+                  <p className="text-xs text-[#6C757D] mb-2">ID Card Preview (full front ID):</p>
+                  <div className="relative w-full min-h-[220px] max-h-[400px] border border-gray-200 rounded-lg overflow-hidden bg-gray-50 flex items-center justify-center">
                     <img 
                       src={idCardImage} 
                       alt="ID Card Preview" 
-                      className="w-full h-full object-contain"
+                      className="max-w-full max-h-[400px] w-auto h-auto object-contain"
                     />
                   </div>
                 </div>

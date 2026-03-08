@@ -2,12 +2,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
-// Complete status color mapping from review-loan-modal
+// Original loan status colors (Indian brand: green #138808, saffron #FF9933)
 const STATUS_COLOR_MAP: Record<string, string> = {
   'UNDER_REVIEW': '#3B82F6',
-  'LOAN_APPROVED': '#22C55E',
-  'LOAN_APPROVED_CONFIRMATION': '#22C55E',
-  'OTP_GENERATED': '#22C55E',
+  'LOAN_APPROVED': '#138808',
+  'LOAN_APPROVED_CONFIRMATION': '#138808',
+  'OTP_GENERATED': '#138808',
   'WITHDRAWAL_PROCESSING': '#6366F1',
   'WITHDRAWAL_FAILED': '#DC2626',
   'INVALID_BANK_NAME': '#EF4444',
@@ -19,33 +19,33 @@ const STATUS_COLOR_MAP: Record<string, string> = {
   'ERROR_INFO': '#EF4444',
   'ACCOUNT_LIMIT_REACHED': '#EF4444',
   'PROCESSING_UNFREEZE': '#6366F1',
-  'UNFROZEN': '#22C55E',
+  'UNFROZEN': '#138808',
   'LOW_CREDIT_SCORE': '#F97316',
   'TOP_UP_CREDIT_SCORE': '#8B5CF6',
   'WITHDRAWAL_REJECTED': '#DC2626',
   'OVERDUE': '#B91C1C',
   'TAX': '#F59E0B',
-  'TAX_SETTLED': '#22C55E',
-  'WITHDRAWAL_SUCCESSFUL': '#22C55E',
-  'BANK_INFO_UPDATED': '#22C55E',
-  'PERSONAL_INFO_UPDATED': '#22C55E',
+  'TAX_SETTLED': '#138808',
+  'WITHDRAWAL_SUCCESSFUL': '#138808',
+  'BANK_INFO_UPDATED': '#138808',
+  'PERSONAL_INFO_UPDATED': '#138808',
   'INSURANCE': '#0EA5E9',
   'GAMBLING': '#F43F5E',
   'IRREGULAR_ACTIVITY': '#DC2626',
   'DUPLICATE_APPLICATION': '#E11D48',
   'ACCOUNT_SUSPENDED': '#DC2626',
-  'ACCOUNT_REACTIVATED': '#22C55E',
+  'ACCOUNT_REACTIVATED': '#138808',
   'ACCOUNT_DEACTIVATED': '#64748B',
   'RENEW_OTP': '#F59E0B',
 };
 
-// Legacy status mapping for backward compatibility
+// Legacy status mapping for backward compatibility (original Indian brand)
 const LEGACY_STATUS_COLOR_MAP: Record<string, string> = {
-  'pending': '#F59E0B',
+  'pending': '#FF9933',
   'under_review': '#3B82F6',
-  'approved': '#22C55E',
+  'approved': '#138808',
   'rejected': '#EF4444',
-  'disbursed': '#22C55E',
+  'disbursed': '#138808',
   'completed': '#8B5CF6',
   'defaulted': '#7F1D1D',
   'withdrawal processing': '#6366F1',

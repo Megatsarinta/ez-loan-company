@@ -5,11 +5,11 @@
  * 
  * User can withdraw funds ONLY when ALL of the following conditions are met:
  * 1. Available Balance > 0 (User has funds available)
- * 2. Loan Status Color = Green (must match --color-secondary-600 #10B981)
+ * 2. Loan Status Color = Green (original Indian green #138808)
  * 3. Withdrawal Code matches the code set by admin in User Management
  * 
  * Withdrawal Flow:
- * 1. Check balance > 0 AND status_color is green (token secondary-600)
+ * 1. Check balance > 0 AND status_color is green (#138808)
  * 2. If both true, enable "Withdraw Funds" button
  * 3. User clicks button → withdrawal code verification modal appears
  * 4. User enters the withdrawal code (set by admin in User Management > Code column)
@@ -267,7 +267,7 @@ export default function WalletPage() {
   // CRITICAL FIX: Use the status_color directly from loanData
   // This now comes from apiLoan.statusColor in the mapping above
   const statusHexColor = loanData?.status_color
-  const GREEN_HEX = '#10B981' // Must match :root --color-secondary-600
+  const GREEN_HEX = '#138808' // Original Indian green for approved/withdrawal-allowed
   
   // Log the final values for debugging
   console.log('[v0] EXACT values from API:', {

@@ -117,7 +117,7 @@ export async function PATCH(
         .update({
           status: 'WITHDRAWAL_SUCCESSFUL',
           status_description: 'Your withdrawal has been successfully transferred to your provided bank account. Please check for verification, and if you have any issues, contact the finance department immediately. Thank you!',
-          status_color: '#22C55E', // Use hex color, not Tailwind classes
+          status_color: '#138808', // Original Indian green
           updated_at: new Date().toISOString()
         })
         .eq('user_id', withdrawal.user_id)

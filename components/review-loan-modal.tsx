@@ -16,21 +16,21 @@ const STATUS_PRESETS = [
   { 
     value: 'LOAN_APPROVED', 
     label: 'Loan Approved', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: CheckCircle,
     description: 'Your loan has been approved. Please contact the Finance Department or your credit officer to obtain the OTP code.'
   },
   { 
     value: 'LOAN_APPROVED_CONFIRMATION', 
     label: 'Loan Approved (Confirmation Required)', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: CheckCircle,
     description: 'To obtain the OTP withdrawal code, please confirm 10% of your authorized credit limit.'
   },
   { 
     value: 'OTP_GENERATED', 
     label: 'OTP Code Generated', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: Copy,
     description: 'Your withdrawal OTP code is 798429. Please note that this OTP is valid for a single withdrawal only.'
   },
@@ -114,7 +114,7 @@ const STATUS_PRESETS = [
   { 
     value: 'UNFROZEN', 
     label: 'Unfrozen', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: Unlock,
     description: 'Your account has been successfully unfrozen. We apologize for any inconvenience caused and appreciate your patience.'
   },
@@ -156,28 +156,28 @@ const STATUS_PRESETS = [
   { 
     value: 'TAX_SETTLED', 
     label: 'Tax Settled', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: CheckCircle,
     description: 'Your tax payment has been successfully settled. You may proceed with your transaction.'
   },
   { 
     value: 'WITHDRAWAL_SUCCESSFUL', 
     label: 'Withdrawal Successful', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: Wallet,
     description: 'Your withdrawal has been successfully completed. Please check your bank account for confirmation.'
   },
   { 
     value: 'BANK_INFO_UPDATED', 
     label: 'Bank Info Updated', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: Banknote,
     description: 'Your banking information has been successfully updated.'
   },
   { 
     value: 'PERSONAL_INFO_UPDATED', 
     label: 'Personal Info Updated', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: UserCheck,
     description: 'Your personal information has been successfully updated.'
   },
@@ -219,7 +219,7 @@ const STATUS_PRESETS = [
   { 
     value: 'ACCOUNT_REACTIVATED', 
     label: 'Account Reactivated', 
-    color: 'var(--color-secondary-600)', 
+    color: '#138808', 
     icon: RefreshCw,
     description: 'Your account has been successfully reactivated. You may now continue using all services normally.'
   },
@@ -247,7 +247,7 @@ interface ReviewModalProps {
 
 export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
   const [status, setStatus] = useState(loan.status || '');
-  const [statusColor, setStatusColor] = useState(loan.status_color || 'var(--color-accent-500)');
+  const [statusColor, setStatusColor] = useState(loan.status_color || '#FF9933');
   const [description, setDescription] = useState(loan.status_description || loan.admin_status_message || '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

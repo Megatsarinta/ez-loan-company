@@ -235,16 +235,16 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
             </div>
           </div>
           
-          {/* RIGHT COLUMN: ID Card */}
+          {/* RIGHT COLUMN: ID Card - full front ID visible when printed */}
           <div>
             <h3 className="text-sm font-bold mb-1" style={{ color: navy }}>ID CARD & PASSPORT</h3>
-            <div className="relative w-full h-[160px] flex items-center justify-center bg-[var(--color-accent-100)]/30 rounded-lg overflow-hidden">
+            <div className="relative w-full min-h-[280px] flex items-center justify-center bg-[var(--color-accent-100)]/30 rounded-lg overflow-hidden print:min-h-[280px]">
               {loanData.idCardImage ? (
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full min-h-[280px] flex items-center justify-center">
                   <img 
                     src={loanData.idCardImage} 
                     alt="ID Card/Passport" 
-                    className="w-full h-full object-contain"
+                    className="max-w-full max-h-[320px] w-auto h-auto object-contain"
                   />
                   {/* Loan Approved Stamp */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
