@@ -15,11 +15,12 @@ export interface LoanApplication {
   status_updated_at: string
 }
 
-export type ApplicationStep = 'loan_selection' | 'kyc-upload' | 'personal-information' | 'signature' | 'application-complete'
+export type ApplicationStep = 'loan_selection' | 'kyc-upload' | 'personal-information' | 'bank-information' | 'signature' | 'application-complete'
 
 export interface UserVerification {
   personal_info_completed: boolean
   kyc_completed: boolean
+  bank_info_completed?: boolean
   signature_completed: boolean
 }
 
@@ -27,6 +28,7 @@ export function getApplicationProgress(application: LoanApplication, userVerific
   currentStep: ApplicationStep
   isKYCComplete: boolean
   isPersonalInfoComplete: boolean
+  isBankInfoComplete: boolean
   isSignatureComplete: boolean
   nextStep: ApplicationStep
 } {
@@ -41,6 +43,8 @@ export function getApplicationProgress(application: LoanApplication, userVerific
     (!!application.personal_info &&
     Object.keys(application.personal_info).length > 0)
 
+  const isBankInfoComplete = userVerification?.bank_info_completed === true
+
   const isSignatureComplete =
     userVerification?.signature_completed ||
     !!(application as any)?.signature_url
@@ -54,6 +58,9 @@ export function getApplicationProgress(application: LoanApplication, userVerific
   } else if (!isPersonalInfoComplete) {
     currentStep = 'personal-information'
     nextStep = 'personal-information'
+  } else if (!isBankInfoComplete) {
+    currentStep = 'bank-information'
+    nextStep = 'bank-information'
   } else if (!isSignatureComplete) {
     currentStep = 'signature'
     nextStep = 'signature'
@@ -66,6 +73,7 @@ export function getApplicationProgress(application: LoanApplication, userVerific
     currentStep,
     isKYCComplete,
     isPersonalInfoComplete,
+    isBankInfoComplete,
     isSignatureComplete,
     nextStep,
   }
@@ -92,13 +100,14 @@ export function getSmartRedirectPath(
   if (
     userVerification?.personal_info_completed &&
     userVerification?.kyc_completed &&
+    userVerification?.bank_info_completed &&
     userVerification?.signature_completed &&
     isNewApplication
   ) {
     return '/wallet'
   }
 
-  const progress = getApplicationProgress(application)
+  const progress = getApplicationProgress(application, userVerification)
 
   // For returning users with completed personal info, skip that step
   if (userVerification?.personal_info_completed && !progress.isKYCComplete) {
@@ -112,6 +121,10 @@ export function getSmartRedirectPath(
 
   if (!progress.isPersonalInfoComplete) {
     return '/personal-information'
+  }
+
+  if (!progress.isBankInfoComplete) {
+    return '/bank-information'
   }
 
   if (!progress.isSignatureComplete) {
@@ -142,6 +155,9 @@ export function getRedirectPath(
   }
   if (!progress.isPersonalInfoComplete) {
     return '/personal-information'
+  }
+  if (!progress.isBankInfoComplete) {
+    return '/bank-information'
   }
   if (!progress.isSignatureComplete) {
     return '/signature'

@@ -4,150 +4,112 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Indian Tricolor Theme */
-  --saffron: #FF9933;      /* Top band of Indian flag - courage & sacrifice */
-  --white: #FFFFFF;         /* Middle band - peace & truth */
-  --green: #138808;         /* Bottom band - faith & chivalry */
-  --navy-blue: #000080;     /* Ashoka Chakra color */
-  
-  /* Base Colors */
-  --background: #FFF9F0;     /* Warm cream background (saffron tint) */
-  --foreground: #1F2937;
-  --card: #FFFFFF;
-  --card-foreground: #1F2937;
-  --popover: #FFFFFF;
-  --popover-foreground: #1F2937;
-  
-  /* Primary - Saffron (from Indian flag) */
-  --primary: #FF9933;
+  /* FinTech semantic color system */
+
+  /* Primary (Trust Blue) */
+  --color-primary-900: #1E3A8A;
+  --color-primary-700: #1E40AF;
+  --color-primary-100: #DBEAFE;
+
+  /* Secondary (Growth Emerald) */
+  --color-secondary-600: #10B981;
+  --color-secondary-500: #34D399;
+  --color-secondary-100: #D1FAE5;
+
+  /* Accent (CTA Orange) */
+  --color-accent-500: #F97316;
+  --color-accent-600: #EA580C;
+  --color-accent-100: #FFEDD5;
+
+  /* Neutrals */
+  --color-bg-main: #F9FAFB;
+  --color-bg-surface: #FFFFFF;
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-border: #E5E7EB;
+
+  /* Legacy aliases (map to semantic tokens for existing theme usage) */
+  --background: var(--color-bg-main);
+  --foreground: var(--color-text-primary);
+  --card: var(--color-bg-surface);
+  --card-foreground: var(--color-text-primary);
+  --popover: var(--color-bg-surface);
+  --popover-foreground: var(--color-text-primary);
+  --primary: var(--color-accent-500);
   --primary-foreground: #FFFFFF;
-  --primary-light: #FFB366;
-  --primary-dark: #E68A2E;
-  
-  /* Secondary - Green (from Indian flag) */
-  --secondary: #138808;
+  --primary-light: var(--color-accent-100);
+  --primary-dark: var(--color-accent-600);
+  --secondary: var(--color-secondary-600);
   --secondary-foreground: #FFFFFF;
-  --secondary-light: #1AA60F;
-  --secondary-dark: #0F6D07;
-  
-  /* Accent - Navy Blue (Ashoka Chakra) */
-  --accent: #000080;
+  --secondary-light: var(--color-secondary-100);
+  --secondary-dark: var(--color-secondary-500);
+  --accent: var(--color-primary-900);
   --accent-foreground: #FFFFFF;
-  --accent-light: #333399;
-  --accent-gradient: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
-  
-  /* Muted & Neutral */
-  --muted: #F3F4F6;
-  --muted-foreground: #6B7280;
-  --destructive: #DC2626;
+  --accent-light: var(--color-primary-100);
+  --accent-gradient: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-secondary-600) 100%);
+  --muted: var(--color-bg-main);
+  --muted-foreground: var(--color-text-secondary);
+  --destructive: var(--color-primary-900);
   --destructive-foreground: #FFFFFF;
-  --border: #E5E7EB;
-  --input: #F9FAFB;
-  --ring: #FF9933;
-  
-  /* Chart Colors - Inspired by Indian festivals */
-  --chart-1: #FF9933;      /* Saffron */
-  --chart-2: #138808;       /* Green */
-  --chart-3: #000080;       /* Navy Blue */
-  --chart-4: #FFB366;       /* Light Saffron */
-  --chart-5: #1AA60F;       /* Light Green */
-  
-  --radius: 0.75rem;        /* Slightly larger radius for modern look */
-  
-  /* Sidebar */
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #1F2937;
-  --sidebar-primary: #FF9933;
+  --border: var(--color-border);
+  --input: var(--color-bg-main);
+  --ring: var(--color-primary-700);
+  --radius: 0.75rem;
+  --sidebar: var(--color-bg-surface);
+  --sidebar-foreground: var(--color-text-primary);
+  --sidebar-primary: var(--color-accent-500);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #FFF3E6;  /* Light saffron tint */
-  --sidebar-accent-foreground: #1F2937;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #FF9933;
+  --sidebar-accent: var(--color-accent-100);
+  --sidebar-accent-foreground: var(--color-text-primary);
+  --sidebar-border: var(--color-border);
+  --sidebar-ring: var(--color-primary-700);
 }
 
 .dark {
-  /* Dark mode with Indian inspiration - Deep, rich colors */
-  --background: #1A1F2E;     /* Deep indigo night */
-  --foreground: #F9FAFB;
-  --card: #242B3D;
-  --card-foreground: #F9FAFB;
-  --popover: #242B3D;
-  --popover-foreground: #F9FAFB;
-  
-  /* Primary - Saffron glow in dark */
-  --primary: #FFB366;        /* Lighter saffron for better visibility */
-  --primary-foreground: #1F2937;
-  
-  /* Secondary - Green glow in dark */
-  --secondary: #1AA60F;
-  --secondary-foreground: #FFFFFF;
-  
-  /* Accent - Royal Navy Blue */
-  --accent: #4D4DFF;         /* Brighter blue for dark mode */
-  --accent-foreground: #FFFFFF;
-  
-  /* Muted & Neutral */
-  --muted: #2D3447;
-  --muted-foreground: #9CA3AF;
-  --destructive: #EF4444;
-  --destructive-foreground: #FEF3C7;
-  --border: #374151;
-  --input: #2D3447;
-  --ring: #FFB366;
-  
-  /* Chart Colors - Vibrant for dark mode */
-  --chart-1: #FFB366;
-  --chart-2: #1AA60F;
-  --chart-3: #4D4DFF;
-  --chart-4: #FF9933;
-  --chart-5: #138808;
-  
-  /* Sidebar */
-  --sidebar: #242B3D;
-  --sidebar-foreground: #F9FAFB;
-  --sidebar-primary: #FFB366;
-  --sidebar-primary-foreground: #1F2937;
-  --sidebar-accent: #2D3447;
-  --sidebar-accent-foreground: #F9FAFB;
-  --sidebar-border: #374151;
-  --sidebar-ring: #FFB366;
+  --background: var(--color-primary-900);
+  --foreground: var(--color-bg-surface);
+  --card: var(--color-primary-700);
+  --card-foreground: var(--color-bg-surface);
+  --popover: var(--color-primary-700);
+  --popover-foreground: var(--color-bg-surface);
+  --primary: var(--color-accent-500);
+  --primary-foreground: var(--color-text-primary);
+  --secondary: var(--color-secondary-500);
+  --secondary-foreground: var(--color-bg-surface);
+  --accent: var(--color-primary-100);
+  --accent-foreground: var(--color-text-primary);
+  --muted: var(--color-primary-700);
+  --muted-foreground: var(--color-primary-100);
+  --destructive: var(--color-primary-900);
+  --destructive-foreground: var(--color-accent-100);
+  --border: var(--color-primary-700);
+  --input: var(--color-primary-700);
+  --ring: var(--color-accent-500);
+  --sidebar: var(--color-primary-700);
+  --sidebar-foreground: var(--color-bg-surface);
+  --sidebar-primary: var(--color-accent-500);
+  --sidebar-primary-foreground: var(--color-text-primary);
+  --sidebar-accent: var(--color-primary-700);
+  --sidebar-accent-foreground: var(--color-bg-surface);
+  --sidebar-border: var(--color-primary-700);
+  --sidebar-ring: var(--color-accent-500);
 }
 
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback', system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
-  
-  /* Base Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  
-  /* Indian Tricolor Theme Colors */
-  --color-saffron: var(--saffron);
-  --color-green: var(--green);
-  --color-navy-blue: var(--navy-blue);
-  
-  /* Primary - Saffron */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary-light: var(--primary-light);
-  --color-primary-dark: var(--primary-dark);
-  
-  /* Secondary - Green */
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary-light: var(--secondary-light);
-  --color-secondary-dark: var(--secondary-dark);
-  
-  /* Accent - Navy Blue */
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent-light: var(--accent-light);
-  
-  /* Muted & Utility */
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-destructive: var(--destructive);
@@ -155,21 +117,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
-  /* Chart Colors */
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  
-  /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
-  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -186,7 +137,8 @@
   }
   
   body {
-    @apply bg-background text-foreground;
+    background: var(--color-bg-main);
+    color: var(--color-text-primary);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
@@ -208,60 +160,54 @@
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: var(--color-accent-600);
   }
   
-  /* Selection color - saffron tint */
   ::selection {
-    background: var(--primary-light);
-    color: var(--foreground);
+    background: var(--color-accent-100);
+    color: var(--color-text-primary);
   }
   
-  /* Focus styles */
   :focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--color-primary-700);
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  /* Indian flag gradient background for special elements */
   .indian-flag-gradient {
     background: linear-gradient(
       to bottom,
-      var(--saffron) 0%,
-      var(--saffron) 33.33%,
-      var(--white) 33.33%,
-      var(--white) 66.66%,
-      var(--green) 66.66%,
-      var(--green) 100%
+      var(--color-accent-500) 0%,
+      var(--color-accent-500) 33.33%,
+      var(--color-bg-surface) 33.33%,
+      var(--color-bg-surface) 66.66%,
+      var(--color-secondary-600) 66.66%,
+      var(--color-secondary-600) 100%
     );
   }
   
-  /* Horizontal tricolor for headers/banners */
   .indian-tricolor {
     background: linear-gradient(
       to right,
-      var(--saffron) 0%,
-      var(--saffron) 33.33%,
-      var(--white) 33.33%,
-      var(--white) 66.66%,
-      var(--green) 66.66%,
-      var(--green) 100%
+      var(--color-accent-500) 0%,
+      var(--color-accent-500) 33.33%,
+      var(--color-bg-surface) 33.33%,
+      var(--color-bg-surface) 66.66%,
+      var(--color-secondary-600) 66.66%,
+      var(--color-secondary-600) 100%
     );
   }
   
-  /* Ashoka Chakra inspired button/icon background */
   .ashoka-chakra-bg {
-    background: radial-gradient(circle at center, var(--navy-blue) 2px, transparent 2px),
-                linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
+    background: radial-gradient(circle at center, var(--color-primary-900) 2px, transparent 2px),
+                linear-gradient(135deg, var(--color-accent-500) 0%, var(--color-secondary-600) 100%);
     background-size: 20px 20px, 100%;
   }
   
-  /* NRI badge styling */
   .nri-badge {
-    background: linear-gradient(135deg, var(--saffron), var(--green));
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-secondary-600) 100%);
+    color: var(--color-bg-surface);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-weight: 600;
@@ -271,37 +217,32 @@
     gap: 0.25rem;
   }
   
-  /* Card hover effect with Indian theme */
   .indian-card-hover {
     transition: all 0.3s ease;
     border: 1px solid transparent;
   }
   
   .indian-card-hover:hover {
-    border-color: var(--saffron);
-    box-shadow: 0 10px 25px -5px rgba(255, 153, 51, 0.2),
-                0 8px 10px -6px rgba(19, 136, 8, 0.1);
+    border-color: var(--color-accent-500);
+    box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(16, 185, 129, 0.1);
   }
   
-  /* EMI calculator highlight */
   .emi-highlight {
-    background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
-    border-left: 4px solid var(--saffron);
+    background: linear-gradient(135deg, var(--color-accent-100), var(--color-secondary-100));
+    border-left: 4px solid var(--color-accent-500);
     padding: 1rem;
     border-radius: 0 var(--radius) var(--radius) 0;
   }
   
-  /* Rupee symbol styling */
   .rupee-symbol {
     font-family: inherit;
     font-weight: 700;
-    color: var(--saffron);
+    color: var(--color-accent-500);
   }
   
-  /* Trust badge with Indian colors */
   .trust-badge-india {
-    background: linear-gradient(135deg, var(--saffron), var(--green));
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-secondary-600) 100%);
+    color: var(--color-bg-surface);
     padding: 0.5rem 1rem;
     border-radius: var(--radius);
     font-weight: 600;
@@ -310,10 +251,9 @@
     gap: 0.5rem;
   }
   
-  /* Festival special offer banner */
   .festival-offer {
-    background: linear-gradient(135deg, #FF9933, #FFB366, #138808);
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-secondary-600) 100%);
+    color: var(--color-bg-surface);
     padding: 0.75rem 1.5rem;
     border-radius: var(--radius);
     position: relative;
@@ -347,9 +287,9 @@
 .tricolor-wave {
   background: linear-gradient(
     90deg,
-    var(--saffron) 0%,
-    var(--white) 50%,
-    var(--green) 100%
+    var(--color-accent-500) 0%,
+    var(--color-bg-surface) 50%,
+    var(--color-secondary-600) 100%
   );
   background-size: 200% 200%;
   animation: tricolor-wave 3s ease infinite;
@@ -366,12 +306,11 @@
     font-feature-settings: "numr" 1;
   }
   
-  /* Accessibility - high contrast for Indian users */
   .high-contrast {
-    --primary: #000080;
-    --secondary: #138808;
-    --background: #FFFFFF;
-    --foreground: #000000;
+    --primary: var(--color-primary-900);
+    --secondary: var(--color-secondary-600);
+    --background: var(--color-bg-surface);
+    --foreground: var(--color-text-primary);
   }
 }
 
@@ -382,7 +321,7 @@
   }
   
   .print-tricolor {
-    border-top: 3px solid #FF9933;
-    border-bottom: 3px solid #138808;
+    border-top: 3px solid var(--color-accent-500);
+    border-bottom: 3px solid var(--color-secondary-600);
   }
 }

@@ -5,7 +5,7 @@ import {
   getActiveApplicationForUser,
   getPersonalInfo,
   updateSignature,
-  getAllLoanApplications,
+  getLoanApplicationById,
   getUserByIdForLoan,
   insertLoanRecord,
   getActiveLoansForUser,
@@ -69,18 +69,17 @@ export async function GET(req: NextRequest) {
     const applicationId = url.searchParams.get('id');
 
     if (applicationId) {
-      // Get specific application - verify ownership
-      const { data: allApps } = await getAllLoanApplications();
-      const app = allApps?.find(
-        (a: any) => a.id === parseInt(applicationId) && a.user_id === parseInt(userId)
-      );
-
-      // Format amount in ₹
-      if (app) {
-        app.amount_formatted = `₹${app.amount_requested?.toLocaleString('en-IN')}`;
-        app.currency = 'INR';
+      const id = parseInt(applicationId, 10);
+      if (Number.isNaN(id)) {
+        return NextResponse.json({ application: null });
       }
-
+      const result = await getLoanApplicationById(id);
+      const app = result.success ? result.data : null;
+      if (!app || (app as any).user_id !== parseInt(userId, 10)) {
+        return NextResponse.json({ application: null });
+      }
+      (app as any).amount_formatted = `₹${Number((app as any).amount_requested || 0).toLocaleString('en-IN')}`;
+      (app as any).currency = 'INR';
       return NextResponse.json({ application: app });
     }
 

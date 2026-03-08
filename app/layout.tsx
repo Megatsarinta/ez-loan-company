@@ -81,11 +81,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <meta name="next-head-count" content="3" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#FF9933" />
+        <meta name="theme-color" content="#F97316" />
         <meta name="application-name" content="EasyLoan" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -99,7 +99,7 @@ export default function RootLayout({
 
         <meta name="format-detection" content="telephone=no, date=no, address=no" />
       </head>
-      <body className={`${geist.className} font-sans antialiased bg-[#f5f7fa] text-[#212529] min-h-screen`}>
+      <body className={`${geist.className} font-sans antialiased min-h-screen bg-[var(--color-bg-main)] text-[var(--color-text-primary)]`} suppressHydrationWarning>
         <main className="min-h-screen">
           {children}
         </main>

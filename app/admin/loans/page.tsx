@@ -335,7 +335,7 @@ export default function AdminLoansPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-[#6C757D]">Loading...</p>
+        <p className="text-[var(--color-text-secondary)]">Loading...</p>
       </div>
     );
   }
@@ -343,12 +343,12 @@ export default function AdminLoansPage() {
   return (
     <>
       {/* Header - same structure as Deposit Management */}
-      <header className="bg-white border-b border-[#e9ecef] shadow-sm sticky top-0 z-30">
+      <header className="bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] shadow-sm sticky top-0 z-30">
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/admin/dashboard"
-              className="flex items-center gap-2 text-[#6C757D] hover:text-[#FF9933] transition-colors"
+              className="flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
               Back
@@ -358,8 +358,8 @@ export default function AdminLoansPage() {
                 <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={40} height={40} className="object-contain" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#1e3a5f]">Loan Management</h1>
-                <p className="text-sm text-[#6C757D]">
+                <h1 className="text-xl font-bold text-[var(--color-primary-900)]">Loan Management</h1>
+                <p className="text-sm text-[var(--color-text-secondary)]">
                   {totalLoans > 0
                     ? `Showing ${(page - 1) * pageSize + 1} to ${Math.min(page * pageSize, totalLoans)} of ${totalLoans} loans`
                     : 'No loans found'}
@@ -367,9 +367,9 @@ export default function AdminLoansPage() {
               </div>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[#FF9933]/20">
-            <Shield className="w-4 h-4 text-[#FF9933]" />
-            <span className="text-xs font-medium text-[#212529]">RBI • MCA • CIBIL</span>
+          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[var(--color-accent-500)]/20">
+            <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+            <span className="text-xs font-medium text-[var(--color-text-primary)]">RBI • MCA • CIBIL</span>
           </div>
         </div>
       </header>
@@ -377,37 +377,37 @@ export default function AdminLoansPage() {
       {/* Main Content */}
       <main className="px-6 py-8">
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-lg p-4 mb-6 flex gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-700 font-medium">{error}</p>
           </div>
         )}
 
         {success && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex gap-3">
-            <CheckCircle className="w-5 h-5 text-[#00A86B] flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-[#00A86B] font-medium">{success}</p>
+          <div className="bg-[var(--color-secondary-100)] border border-green-200 rounded-lg p-4 mb-6 flex gap-3">
+            <CheckCircle className="w-5 h-5 text-[var(--color-secondary-600)] flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-[var(--color-secondary-600)] font-medium">{success}</p>
           </div>
         )}
 
         {/* Filter Card */}
-        <Card className="p-6 mb-8 border border-gray-100 shadow-md bg-white">
+        <Card className="p-6 mb-8 border border-[var(--color-border)] shadow-md bg-[var(--color-bg-surface)]">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Filter className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Filter className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
-            <h3 className="text-lg font-semibold text-[#212529]">Filter Loans</h3>
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">Filter Loans</h3>
           </div>
 
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <Users className="w-4 h-4 text-[#FF9933]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <Users className="w-4 h-4 text-[var(--color-accent-500)]" />
                   Search
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#6C757D]" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[var(--color-text-secondary)]" />
                   <input
                     type="text"
                     placeholder="Document number, name, or phone..."
@@ -416,13 +416,13 @@ export default function AdminLoansPage() {
                       setSearchTerm(e.target.value);
                       setPage(1);
                     }}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] placeholder-[#6C757D] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full pl-10 pr-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-[#FF9933]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <Calendar className="w-4 h-4 text-[var(--color-accent-500)]" />
                   Start Date
                 </label>
                 <input
@@ -432,12 +432,12 @@ export default function AdminLoansPage() {
                     setStartDate(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-[#138808]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <Calendar className="w-4 h-4 text-[var(--color-secondary-600)]" />
                   End Date
                 </label>
                 <input
@@ -447,24 +447,24 @@ export default function AdminLoansPage() {
                     setEndDate(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('today')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('today')}>
                 Today
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('yesterday')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('yesterday')}>
                 Yesterday
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('week')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('week')}>
                 This Week
               </Button>
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20] gap-1"
+                className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)] gap-1"
                 onClick={() => window.location.reload()}
               >
                 <RefreshCw className="w-3 h-3" />
@@ -472,7 +472,7 @@ export default function AdminLoansPage() {
               </Button>
               <Button
                 size="sm"
-                className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50"
+                className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50"
                 onClick={() => {
                   setSearchTerm('');
                   setStartDate('');
@@ -487,19 +487,19 @@ export default function AdminLoansPage() {
         </Card>
 
         {/* Loans Table */}
-        <div className="border border-gray-100 shadow-md bg-white rounded-lg overflow-hidden">
+        <div className="border border-[var(--color-border)] shadow-md bg-[var(--color-bg-surface)] rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-gradient-to-r from-[#FF9933]/10 to-[#138808]/10 border-b border-gray-200">
+              <thead className="bg-gradient-to-r from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 border-b border-[var(--color-border)]">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">No.</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Document Number</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Name</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Loan Amount</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Interest Rate</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Creation Date</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Status</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Operations</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">No.</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Document Number</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Name</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Loan Amount</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Interest Rate</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Creation Date</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Status</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Operations</th>
                 </tr>
               </thead>
               <tbody>
@@ -507,8 +507,8 @@ export default function AdminLoansPage() {
                   <tr>
                     <td colSpan={8} className="px-6 py-8 text-center">
                       <div className="flex flex-col items-center justify-center gap-3">
-                        <div className="w-10 h-10 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin" />
-                        <span className="text-[#6C757D]">Loading loans...</span>
+                        <div className="w-10 h-10 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin" />
+                        <span className="text-[var(--color-text-secondary)]">Loading loans...</span>
                       </div>
                     </td>
                   </tr>
@@ -516,33 +516,33 @@ export default function AdminLoansPage() {
                   loans.map((loan, index) => {
                     const { date, time } = formatDate(loan.created_at);
                     return (
-                      <tr key={loan.id} className="border-b border-gray-100 hover:bg-orange-50/30 transition-colors">
-                        <td className="px-4 py-4 text-[#212529]">{(page - 1) * pageSize + index + 1}</td>
-                        <td className="px-4 py-4 text-[#212529] font-medium">{loan.order_number}</td>
+                      <tr key={loan.id} className="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-100)]/30 transition-colors">
+                        <td className="px-4 py-4 text-[var(--color-text-primary)]">{(page - 1) * pageSize + index + 1}</td>
+                        <td className="px-4 py-4 text-[var(--color-text-primary)] font-medium">{loan.order_number}</td>
                         <td className="px-4 py-4">
-                          <div className="text-[#212529] font-medium">{loan.borrower_name}</div>
-                          <div className="text-xs text-[#6C757D]">{loan.borrower_phone}</div>
+                          <div className="text-[var(--color-text-primary)] font-medium">{loan.borrower_name}</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">{loan.borrower_phone}</div>
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-1">
-                            <DollarSign className="w-3 h-3 text-[#FF9933]" />
-                            <span className="text-[#212529] font-medium">{formatINR(loan.loan_amount)}</span>
+                            <DollarSign className="w-3 h-3 text-[var(--color-accent-500)]" />
+                            <span className="text-[var(--color-text-primary)] font-medium">{formatINR(loan.loan_amount)}</span>
                           </div>
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-1">
-                            <Percent className="w-3 h-3 text-[#138808]" />
-                            <span className="text-[#212529]">{(Number(loan.interest_rate) * 100).toFixed(2)}%</span>
+                            <Percent className="w-3 h-3 text-[var(--color-secondary-600)]" />
+                            <span className="text-[var(--color-text-primary)]">{(Number(loan.interest_rate) * 100).toFixed(2)}%</span>
                           </div>
-                          <div className="text-xs text-[#6C757D]">{loan.loan_period_months} months</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">{loan.loan_period_months} months</div>
                         </td>
                         <td className="px-4 py-4">
-                          <div className="text-[#212529]">{date}</div>
-                          <div className="text-xs text-[#6C757D]">{time}</div>
+                          <div className="text-[var(--color-text-primary)]">{date}</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">{time}</div>
                         </td>
                         <td className="px-4 py-4">
                           <span
-                            className="px-3 py-1 rounded-full text-xs font-medium text-white inline-block"
+                            className="px-3 py-1 rounded-full text-xs font-medium text-[var(--color-bg-surface)] inline-block"
                             style={{ backgroundColor: loan.status_color }}
                           >
                             {loan.status}
@@ -552,7 +552,7 @@ export default function AdminLoansPage() {
                           <div className="flex flex-wrap gap-1.5 min-w-[320px]">
                             <button
                               onClick={() => handleAction(loan, 'review')}
-                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[#FF9933]/10 text-[#FF9933] border border-[#FF9933]/30 rounded-md hover:bg-[#FF9933]/20 transition-colors whitespace-nowrap"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[var(--color-accent-500)]/10 text-[var(--color-accent-500)] border border-[var(--color-accent-500)]/30 rounded-md hover:bg-[var(--color-accent-500)]/20 transition-colors whitespace-nowrap"
                               title="Review loan application"
                             >
                               <CheckCircle className="w-3.5 h-3.5" />
@@ -560,7 +560,7 @@ export default function AdminLoansPage() {
                             </button>
                             <button
                               onClick={() => handleAction(loan, 'modify')}
-                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[#138808]/10 text-[#138808] border border-[#138808]/30 rounded-md hover:bg-[#138808]/20 transition-colors whitespace-nowrap"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[var(--color-secondary-600)]/10 text-[var(--color-secondary-600)] border border-[var(--color-secondary-600)]/30 rounded-md hover:bg-[var(--color-secondary-600)]/20 transition-colors whitespace-nowrap"
                               title="Modify loan details"
                             >
                               <Edit className="w-3.5 h-3.5" />
@@ -568,7 +568,7 @@ export default function AdminLoansPage() {
                             </button>
                             <button
                               onClick={() => handleAction(loan, 'checking')}
-                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[#FF9933]/10 text-[#138808] border border-[#138808]/30 rounded-md hover:bg-[#138808]/20 transition-colors whitespace-nowrap"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[var(--color-accent-500)]/10 text-[var(--color-secondary-600)] border border-[var(--color-secondary-600)]/30 rounded-md hover:bg-[var(--color-secondary-600)]/20 transition-colors whitespace-nowrap"
                               title="Check member data"
                             >
                               <UserCheck className="w-3.5 h-3.5" />
@@ -576,7 +576,7 @@ export default function AdminLoansPage() {
                             </button>
                             <button
                               onClick={() => handleAction(loan, 'contract')}
-                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-gradient-to-r from-[#FF9933]/20 to-[#138808]/20 text-[#138808] border border-[#FF9933]/40 rounded-md hover:from-[#FF9933]/30 hover:to-[#138808]/30 transition-colors whitespace-nowrap"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-gradient-to-r from-[var(--color-accent-500)]/20 to-[var(--color-secondary-600)]/20 text-[var(--color-secondary-600)] border border-[var(--color-accent-500)]/40 rounded-md hover:from-[var(--color-accent-500)]/30 hover:to-[var(--color-secondary-600)]/30 transition-colors whitespace-nowrap"
                               title="View contract"
                             >
                               <FileText className="w-3.5 h-3.5" />
@@ -584,7 +584,7 @@ export default function AdminLoansPage() {
                             </button>
                             <button
                               onClick={() => handleAction(loan, 'delete')}
-                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-red-50 text-red-700 rounded-md hover:bg-red-100 transition-colors whitespace-nowrap"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium bg-[var(--color-primary-100)] text-red-700 rounded-md hover:bg-red-100 transition-colors whitespace-nowrap"
                               title="Delete loan"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -600,8 +600,8 @@ export default function AdminLoansPage() {
                     <td colSpan={8} className="px-6 py-12 text-center">
                       <div className="flex flex-col items-center gap-2">
                         <FileText className="w-12 h-12 text-gray-300" />
-                        <p className="text-[#6C757D] text-lg">No loans found</p>
-                        <p className="text-gray-400 text-sm">Try adjusting your filters</p>
+                        <p className="text-[var(--color-text-secondary)] text-lg">No loans found</p>
+                        <p className="text-[var(--color-text-secondary)] text-sm">Try adjusting your filters</p>
                       </div>
                     </td>
                   </tr>
@@ -611,21 +611,21 @@ export default function AdminLoansPage() {
           </div>
 
           {/* Pagination */}
-          <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-white">
+          <div className="px-6 py-4 border-t border-[var(--color-border)] flex items-center justify-between bg-[var(--color-bg-surface)]">
             <Button
               onClick={() => setPage(page - 1)}
               disabled={page === 1}
-              className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50 disabled:opacity-50"
+              className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50 disabled:opacity-50"
             >
               <ChevronLeft className="w-4 h-4 mr-2" /> Previous
             </Button>
-            <span className="text-sm text-[#6C757D]">
+            <span className="text-sm text-[var(--color-text-secondary)]">
               Page {page} of {totalPages}
             </span>
             <Button
               onClick={() => setPage(page + 1)}
               disabled={page === totalPages}
-              className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50 disabled:opacity-50"
+              className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50 disabled:opacity-50"
             >
               Next <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
@@ -633,25 +633,25 @@ export default function AdminLoansPage() {
         </div>
 
         {/* Government Logos */}
-        <div className="mt-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-4 border border-[#FF9933]/20">
+        <div className="mt-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-4 border border-[var(--color-accent-500)]/20">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="MCA" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#00A86B]">MCA Supervised</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Supervised</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.meity} alt="MeitY" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">MeitY Accredited</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MeitY Accredited</span>
             </div>
           </div>
         </div>
@@ -706,9 +706,9 @@ export default function AdminLoansPage() {
       {/* Delete Confirmation Modal */}
       {showDeleteConfirm && selectedLoan && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-          <Card className="max-w-sm w-full p-6 border border-gray-100 shadow-xl">
-            <h3 className="text-lg font-semibold text-[#212529] mb-4">Confirm Delete</h3>
-            <p className="text-[#6C757D] mb-6">
+          <Card className="max-w-sm w-full p-6 border border-[var(--color-border)] shadow-xl">
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">Confirm Delete</h3>
+            <p className="text-[var(--color-text-secondary)] mb-6">
               Are you sure you want to delete this loan? This action cannot be undone.
             </p>
             <div className="flex gap-2">
@@ -717,14 +717,14 @@ export default function AdminLoansPage() {
                   setShowDeleteConfirm(false);
                   setSelectedLoan(null);
                 }}
-                className="flex-1 border-2 border-gray-200 text-[#212529] bg-white hover:bg-gray-50"
+                className="flex-1 border-2 border-[var(--color-border)] text-[var(--color-text-primary)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-main)]"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleDelete}
                 disabled={deleting}
-                className="flex-1 bg-gradient-to-r from-[#138808] to-[#b80f20] hover:from-[#b80f20] hover:to-[#9e0d1b] text-white gap-2"
+                className="flex-1 bg-gradient-to-r from-[var(--color-secondary-600)] to-[var(--color-primary-900)] hover:from-[var(--color-primary-900)] hover:to-[var(--color-primary-700)] text-[var(--color-bg-surface)] gap-2"
               >
                 {deleting && <Loader className="w-4 h-4 animate-spin" />}
                 {deleting ? 'Deleting...' : 'Delete'}

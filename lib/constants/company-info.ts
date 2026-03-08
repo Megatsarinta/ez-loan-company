@@ -185,9 +185,9 @@ export const GOVERNMENT_LOGOS = {
 
 // Brand colors: Saffron & Green (primary) + Navy (secondary trust)
 export const BRAND_COLORS = {
-  saffron: '#FF9933',  // EASY - primary CTA
-  green: '#138808',    // LOAN - success, approval
-  navy: '#1e3a5f',    // Secondary - headings, trust (classic finance)
+  saffron: 'var(--color-accent-500)',
+  green: 'var(--color-secondary-600)',
+  navy: 'var(--color-primary-900)',
 }
 
 // Company Logos for Admin Documents

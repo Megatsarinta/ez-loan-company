@@ -209,25 +209,25 @@ export default function LoanContractPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#f5f7fa] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--color-bg-main)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-gray-600">Loading contract...</p>
+          <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-[var(--color-text-secondary)]">Loading contract...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f7fa] text-[#212529] pb-8">
+    <div className="min-h-screen bg-[var(--color-bg-main)] text-[var(--color-text-primary)] pb-8">
       {/* Header */}
-      <header className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4 md:py-6">
+      <header className="bg-[var(--color-bg-surface)] shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4 md:py-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => router.back()}
-                className="flex items-center gap-2 text-[#FF9933] hover:text-[#FF9933] transition-colors"
+                className="flex items-center gap-2 text-[var(--color-accent-500)] hover:text-[var(--color-accent-500)] transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
@@ -238,19 +238,19 @@ export default function LoanContractPage() {
                 <div>
                   <div className="flex items-baseline">
                     <span className="text-lg font-black tracking-tight">
-                      <span className="text-[#FF9933]">EASY</span>
-                      <span className="text-[#138808]">LOAN</span>
+                      <span className="text-[var(--color-accent-500)]">EASY</span>
+                      <span className="text-[var(--color-secondary-600)]">LOAN</span>
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500">Loan Contract</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">Loan Contract</p>
                 </div>
               </div>
             </div>
 
             {/* Trust Badge */}
             <div className="hidden sm:flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
-              <Shield className="w-4 h-4 text-[#FF9933]" />
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
           </div>
         </div>
@@ -260,20 +260,20 @@ export default function LoanContractPage() {
         {/* Page Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">
-            <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
               Standard Loan Agreement
             </span>
           </h1>
-          <p className="text-[#6C757D]">Review our standard loan terms and conditions</p>
+          <p className="text-[var(--color-text-secondary)]">Review our standard loan terms and conditions</p>
         </div>
 
         {/* Document Number Badge */}
         {displayDocumentNumber !== 'N/A' && (
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FF9933]/10 to-[#138808]/10 px-4 py-2 rounded-full border border-[#FF9933]/20">
-              <FileText className="w-4 h-4 text-[#FF9933]" />
-              <span className="text-sm font-medium text-[#212529]">Document: </span>
-              <span className="text-sm font-mono font-bold text-[#FF9933]">{displayDocumentNumber}</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 px-4 py-2 rounded-full border border-[var(--color-accent-500)]/20">
+              <FileText className="w-4 h-4 text-[var(--color-accent-500)]" />
+              <span className="text-sm font-medium text-[var(--color-text-primary)]">Document: </span>
+              <span className="text-sm font-mono font-bold text-[var(--color-accent-500)]">{displayDocumentNumber}</span>
             </div>
           </div>
         )}
@@ -291,86 +291,86 @@ export default function LoanContractPage() {
         )}
 
         {/* Contract Details Card */}
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-8">
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)] mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-              <FileText className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+              <FileText className="w-6 h-6 text-[var(--color-bg-surface)]" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-[#212529]">Contract Details</h2>
-              <p className="text-sm text-[#6C757D]">Your loan information</p>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]">Contract Details</h2>
+              <p className="text-sm text-[var(--color-text-secondary)]">Your loan information</p>
             </div>
           </div>
 
           {/* 2x3 Grid of Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {/* Card 1 - Borrower Name */}
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[#FF9933]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[var(--color-accent-500)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <User className="w-4 h-4 text-[#FF9933]" />
-                <span className="text-sm font-semibold text-[#FF9933]">Borrower Name</span>
+                <User className="w-4 h-4 text-[var(--color-accent-500)]" />
+                <span className="text-sm font-semibold text-[var(--color-accent-500)]">Borrower Name</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-medium text-lg">{displayBorrowerName}</p>
+                <p className="text-[var(--color-text-primary)] font-medium text-lg">{displayBorrowerName}</p>
               </div>
             </div>
 
             {/* Card 2 - ID Number */}
-            <div className="bg-gradient-to-br from-red-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <CreditCard className="w-4 h-4 text-[#138808]" />
-                <span className="text-sm font-semibold text-[#138808]">ID Number</span>
+                <CreditCard className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <span className="text-sm font-semibold text-[var(--color-secondary-600)]">ID Number</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-mono text-base">{displayIdNumber}</p>
+                <p className="text-[var(--color-text-primary)] font-mono text-base">{displayIdNumber}</p>
               </div>
             </div>
 
             {/* Card 3 - Bank Name */}
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl border border-[#00A86B]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-[var(--color-secondary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <Building className="w-4 h-4 text-[#00A86B]" />
-                <span className="text-sm font-semibold text-[#00A86B]">Bank Name</span>
+                <Building className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Bank Name</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-medium text-base">{displayBankName}</p>
+                <p className="text-[var(--color-text-primary)] font-medium text-base">{displayBankName}</p>
               </div>
             </div>
 
             {/* Card 4 - Loan Amount */}
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[#FF9933]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[var(--color-accent-500)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <CreditCard className="w-4 h-4 text-[#FF9933]" />
-                <span className="text-sm font-semibold text-[#FF9933]">Loan Amount</span>
+                <CreditCard className="w-4 h-4 text-[var(--color-accent-500)]" />
+                <span className="text-sm font-semibold text-[var(--color-accent-500)]">Loan Amount</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-bold text-xl">
+                <p className="text-[var(--color-text-primary)] font-bold text-xl">
                   {hasLoanData ? formatCurrency(displayLoanAmount) : 'N/A'}
                 </p>
               </div>
             </div>
 
             {/* Card 5 - Interest Rate */}
-            <div className="bg-gradient-to-br from-red-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <Percent className="w-4 h-4 text-[#138808]" />
-                <span className="text-sm font-semibold text-[#138808]">Interest Rate</span>
+                <Percent className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Interest Rate</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-semibold text-xl">
+                <p className="text-[var(--color-text-primary)] font-semibold text-xl">
                   {hasLoanData ? `${displayInterestRate}% per month` : 'N/A'}
                 </p>
               </div>
             </div>
 
             {/* Card 6 - Loan Period */}
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl border border-[#00A86B]/20 p-4 h-[120px] flex flex-col">
+            <div className="bg-gradient-to-br from-[var(--color-secondary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
               <div className="flex items-center gap-2 mb-2">
-                <Calendar className="w-4 h-4 text-[#00A86B]" />
-                <span className="text-sm font-semibold text-[#00A86B]">Loan Period</span>
+                <Calendar className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Loan Period</span>
               </div>
               <div className="flex-1 flex items-center">
-                <p className="text-[#212529] font-medium text-xl">
+                <p className="text-[var(--color-text-primary)] font-medium text-xl">
                   {hasLoanData ? `${displayLoanPeriod} months` : 'N/A'}
                 </p>
               </div>
@@ -381,10 +381,10 @@ export default function LoanContractPage() {
           {isSigned && (
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-[#00A86B]" />
+                <CheckCircle className="w-5 h-5 text-[var(--color-secondary-600)]" />
                 <div>
                   <p className="text-gray-900 font-medium">✓ Active Contract</p>
-                  <p className="text-gray-600 text-sm mt-1 flex items-center gap-1">
+                  <p className="text-[var(--color-text-secondary)] text-sm mt-1 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     Signed on: {loanApplication?.created_at ? new Date(loanApplication.created_at).toLocaleDateString('en-IN', {
                       year: 'numeric',
@@ -399,30 +399,30 @@ export default function LoanContractPage() {
         </div>
 
         {/* Loan Agreement Section */}
-        <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 mb-8">
-          <div className="text-center mb-8 pb-4 border-b border-gray-200">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#FF9933] mb-2">LOAN AGREEMENT</h2>
-            <p className="text-sm text-gray-500">Between EasyLoan and {displayBorrowerName}</p>
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 md:p-8 shadow-lg border border-[var(--color-border)] mb-8">
+          <div className="text-center mb-8 pb-4 border-b border-[var(--color-border)]">
+            <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-accent-500)] mb-2">LOAN AGREEMENT</h2>
+            <p className="text-sm text-[var(--color-text-secondary)]">Between EasyLoan and {displayBorrowerName}</p>
           </div>
 
           {/* Articles 1-10 */}
           <div className="space-y-8">
             {/* Article 1 */}
-            <div className="pl-4 border-l-4 border-[#FF9933]">
-              <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 1: Loan Form</h3>
-              <p className="text-[#6C757D]">Loan Form: Use an unsecured ID card to request a loan.</p>
+            <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+              <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 1: Loan Form</h3>
+              <p className="text-[var(--color-text-secondary)]">Loan Form: Use an unsecured ID card to request a loan.</p>
             </div>
 
             {/* Article 2 */}
-            <div className="pl-4 border-l-4 border-[#138808]">
-              <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 2: Premium Interest Rate</h3>
-              <p className="text-[#6C757D]">Interest rates, fines, service charges or any fees. Total not more than 25% per year.</p>
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 2: Premium Interest Rate</h3>
+              <p className="text-[var(--color-text-secondary)]">Interest rates, fines, service charges or any fees. Total not more than 25% per year.</p>
             </div>
 
             {/* Article 3 */}
-            <div className="pl-4 border-l-4 border-[#00A86B]">
-              <h3 className="font-bold text-[#00A86B] mb-3 text-lg">Article 3: Borrower's Obligations</h3>
-              <div className="text-[#6C757D]">
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 3: Borrower's Obligations</h3>
+              <div className="text-[var(--color-text-secondary)]">
                 <p>During the loan tenure, the borrower has to:</p>
                 <ul className="list-disc ml-6 mt-2 space-y-1">
                   <li>Pay interest at the same time.</li>
@@ -434,9 +434,9 @@ export default function LoanContractPage() {
             </div>
 
             {/* Article 4 */}
-            <div className="pl-4 border-l-4 border-[#FF9933]">
-              <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 4: Loan Terms and Conditions</h3>
-              <div className="text-[#6C757D] space-y-3">
+            <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+              <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 4: Loan Terms and Conditions</h3>
+              <div className="text-[var(--color-text-secondary)] space-y-3">
                 <p>(1) In case the borrower borrows online without using collateral, the lender is at risk of lending. The borrower must have a loan guarantee to check the liquidity of the borrower's personal loan minimum repayment. Must be verified for financial liquidity.</p>
                 <p>(2) In the case of online borrowers without collateral, The lenders run the risk of lending. Borrowers must show their financial status to the company to confirm their ability to repay their debts. The borrower will withdraw the full amount of the loan account.</p>
                 <p>(3) After signing this contract, both the borrower and the lender must comply with all requirements of the contract. If either party breaches the contract, the other party has the right to sue in court. The party not complying with this will have to pay a fine of 50 percent of the installment amount if it does not object.</p>
@@ -449,9 +449,9 @@ export default function LoanContractPage() {
             </div>
 
             {/* Article 5 */}
-            <div className="pl-4 border-l-4 border-[#138808]">
-              <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 5: Lending Considerations</h3>
-              <div className="text-[#6C757D]">
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 5: Lending Considerations</h3>
+              <div className="text-[var(--color-text-secondary)]">
                 <p>Before granting a loan, the lender has the right to consider the following matters:</p>
                 <ul className="list-disc ml-6 mt-2 space-y-1">
                   <li>The Borrower has entered into this Agreement Completion of legal formalities (if any) relating to the loan under the Act.</li>
@@ -464,48 +464,48 @@ export default function LoanContractPage() {
             </div>
 
             {/* Article 6 */}
-            <div className="pl-4 border-l-4 border-[#00A86B]">
-              <h3 className="font-bold text-[#00A86B] mb-3 text-lg">Article 6: Use of Loan and Repayment</h3>
-              <div className="text-[#6C757D] space-y-3">
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 6: Use of Loan and Repayment</h3>
+              <div className="text-[var(--color-text-secondary)] space-y-3">
                 <p>(1) The borrower cannot use the loan for illegal activities. Otherwise, the Lender reserves the right to require the Borrower to repay the principal and interest promptly and the legal consequences shall be borne by the Borrower.</p>
                 <p>(2) The borrower shall repay the principal and interest within the period specified in the contract. For the overdue portion, the lender is entitled to recover the loan and collect 5% of the total amount due.</p>
               </div>
             </div>
 
             {/* Article 7 */}
-            <div className="pl-4 border-l-4 border-[#FF9933]">
-              <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 7: Modification or Termination of Contract</h3>
-              <p className="text-[#6C757D]">In all of the above provisions, neither party is permitted to modify or terminate the contract without permission. When either party wishes to bring to the fore such facts in accordance with the provisions of the law, he must notify the other party in writing in time for the settlement. After this Agreement is modified or terminated, the Borrower shall repay 30% to the principal and interest in accordance with the terms of this Agreement.</p>
+            <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+              <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 7: Modification or Termination of Contract</h3>
+              <p className="text-[var(--color-text-secondary)]">In all of the above provisions, neither party is permitted to modify or terminate the contract without permission. When either party wishes to bring to the fore such facts in accordance with the provisions of the law, he must notify the other party in writing in time for the settlement. After this Agreement is modified or terminated, the Borrower shall repay 30% to the principal and interest in accordance with the terms of this Agreement.</p>
             </div>
 
             {/* Article 8 */}
-            <div className="pl-4 border-l-4 border-[#138808]">
-              <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 8: Dispute Resolution</h3>
-              <p className="text-[#6C757D]">Both parties agree to amend the terms of this Agreement through negotiation. If the negotiations do not agree, you can ask the local arbitration committee to mediate or bring the matter to a local court.</p>
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 8: Dispute Resolution</h3>
+              <p className="text-[var(--color-text-secondary)]">Both parties agree to amend the terms of this Agreement through negotiation. If the negotiations do not agree, you can ask the local arbitration committee to mediate or bring the matter to a local court.</p>
             </div>
 
             {/* Article 9 */}
-            <div className="pl-4 border-l-4 border-[#00A86B]">
-              <h3 className="font-bold text-[#00A86B] mb-3 text-lg">Article 9: Insurance and Force Majeure</h3>
-              <div className="text-[#6C757D] space-y-3">
+            <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+              <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 9: Insurance and Force Majeure</h3>
+              <div className="text-[var(--color-text-secondary)] space-y-3">
                 <p>The lender assumes the credit risk of the borrower. Due to the "new corona pandemic", the central office requires borrowers to purchase personal accident insurance. If the borrower is unable to repay the loan on time due to force majeure, the lender may ask the insurance company to assist in the payment of the borrower's loan and the loan should be transferred to the borrower's account.</p>
                 <p>Half an hour after the purchase, if the borrower signs the contract but does not comply with the terms, the company considers it a serious fraud and will take the credit dispute to the people's court. After purchase, if the lender does not lend on time, the borrower has the right to sue directly in the local court.</p>
               </div>
             </div>
 
             {/* Article 10 */}
-            <div className="pl-4 border-l-4 border-[#FF9933]">
-              <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 10: Effectiveness of the Agreement</h3>
-              <p className="text-[#6C757D]">This short loan agreement takes effect from the date of its signing by both parties (including the electronic agreement). The text of the contract has the same legal effect. The lender and borrower keep a copy of the contract.</p>
+            <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+              <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 10: Effectiveness of the Agreement</h3>
+              <p className="text-[var(--color-text-secondary)]">This short loan agreement takes effect from the date of its signing by both parties (including the electronic agreement). The text of the contract has the same legal effect. The lender and borrower keep a copy of the contract.</p>
             </div>
           </div>
 
           {/* Signatures Section */}
-          <div className="mt-12 pt-8 border-t-2 border-gray-200">
+          <div className="mt-12 pt-8 border-t-2 border-[var(--color-border)]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Borrower Signature */}
               <div className="text-center">
-                <p className="text-[#6C757D] text-sm mb-4 font-semibold">BORROWER'S SIGNATURE</p>
+                <p className="text-[var(--color-text-secondary)] text-sm mb-4 font-semibold">BORROWER'S SIGNATURE</p>
                 
                 {/* Signature display container */}
                 <div className="mb-4 min-h-[100px] flex items-center justify-center">
@@ -522,24 +522,24 @@ export default function LoanContractPage() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-center h-[100px]">
-                      <p className="text-gray-400 text-sm italic">Not signed</p>
+                      <p className="text-[var(--color-text-secondary)] text-sm italic">Not signed</p>
                     </div>
                   )}
                 </div>
                 <p className="font-semibold text-gray-900">{displayBorrowerName}</p>
-                <p className="text-sm text-gray-600">Borrower</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">Borrower</p>
               </div>
 
               {/* Lender Signature - With Stamp */}
               <div className="text-center relative">
-                <p className="text-[#6C757D] text-sm mb-4 font-semibold">LENDER'S SIGNATURE</p>
+                <p className="text-[var(--color-text-secondary)] text-sm mb-4 font-semibold">LENDER'S SIGNATURE</p>
                 
                 {/* Container for stamp overlay */}
                 <div className="relative mb-4 min-h-[100px] flex items-center justify-center">
                   {/* Text that will be stamped over */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center z-0">
                     <p className="font-semibold text-gray-900">{COMPANY_INFO.name}</p>
-                    <p className="text-sm text-gray-600">Authorized Signatory</p>
+                    <p className="text-sm text-[var(--color-text-secondary)]">Authorized Signatory</p>
                   </div>
                   
                   {/* Stamp overlay */}
@@ -559,25 +559,25 @@ export default function LoanContractPage() {
         </div>
 
         {/* Government Trust Badges */}
-        <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 mb-8 border border-[#FF9933]/20">
+        <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 mb-8 border border-[var(--color-accent-500)]/20">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="SEC" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="BSP" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#00A86B]">MCA Registered</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.cibil} alt="DMW" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">CIBIL Partner</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">CIBIL Partner</span>
             </div>
           </div>
         </div>
@@ -586,7 +586,7 @@ export default function LoanContractPage() {
         <div className="flex justify-center">
           <button
             onClick={() => router.back()}
-            className="w-full max-w-md bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="w-full max-w-md bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
             Back to Account
           </button>
@@ -594,7 +594,7 @@ export default function LoanContractPage() {
 
         {/* Footer Note */}
         <div className="text-center mt-6">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             EasyLoan is RBI Registered, MCA Registered, and CIBIL Partner. 
             All rights reserved. For NRI, for Family.
           </p>
@@ -602,11 +602,11 @@ export default function LoanContractPage() {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-gray-100">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-[var(--color-border)]">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <Home className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">HOME</span>
@@ -614,7 +614,7 @@ export default function LoanContractPage() {
           
           <Link
             href="/wallet"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <Wallet className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">WALLET</span>
@@ -622,7 +622,7 @@ export default function LoanContractPage() {
           
           <Link
             href="/my-account"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#FF9933] bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-accent-500)] bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <UserCircle className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">ACCOUNT</span>

@@ -76,10 +76,10 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   // Brand colors (Saffron & Green)
-  const darkNavy = '#0B1F3A'
-  const gold = '#D4AF37'
-  const saffron = '#FF9933'
-  const green = '#138808'
+  const darkNavy = 'var(--color-primary-900)'
+  const gold = 'var(--color-accent-500)'
+  const saffron = 'var(--color-accent-500)'
+  const green = 'var(--color-secondary-600)'
 
   useEffect(() => {
     const fetchMemberDetail = async () => {
@@ -231,23 +231,23 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
   if (selectedImage) {
     return (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <Card className="max-w-2xl w-full p-6 relative border border-gray-100 shadow-xl">
+        <Card className="max-w-2xl w-full p-6 relative border border-[var(--color-border)] shadow-xl">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <FileText className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <FileText className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             <h3 className="text-lg font-bold" style={{ color: darkNavy }}>Document Preview</h3>
           </div>
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-md transition-colors"
+            className="absolute top-4 right-4 p-1 hover:bg-[var(--color-bg-main)] rounded-md transition-colors"
           >
-            <X className="w-5 h-5 text-[#6C757D]" />
+            <X className="w-5 h-5 text-[var(--color-text-secondary)]" />
           </button>
           <img
             src={selectedImage || "/placeholder.svg"}
             alt="Member document"
-            className="w-full h-auto max-h-[80vh] object-contain rounded-lg border border-gray-200"
+            className="w-full h-auto max-h-[80vh] object-contain rounded-lg border border-[var(--color-border)]"
           />
         </Card>
       </div>
@@ -256,48 +256,48 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-      <Card className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 border border-gray-100 shadow-xl">
-        <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-200">
+      <Card className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 border border-[var(--color-border)] shadow-xl">
+        <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--color-border)]">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <User className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             <h3 className="text-2xl font-bold">
-              <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
                 Member Details
               </span>
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+            className="p-1 hover:bg-[var(--color-bg-main)] rounded-md transition-colors"
           >
-            <X className="w-5 h-5 text-[#6C757D]" />
+            <X className="w-5 h-5 text-[var(--color-text-secondary)]" />
           </button>
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-[#CE1126] flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-[#CE1126] font-medium">{error}</p>
+          <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-lg p-4 mb-4 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-[var(--color-primary-900)] font-medium">{error}</p>
           </div>
         )}
 
         {isLoading ? (
           <div className="flex items-center justify-center py-12">
             <div className="text-center space-y-4">
-              <div className="w-12 h-12 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin mx-auto" />
-              <p className="text-[#6C757D]">Loading member details...</p>
+              <div className="w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin mx-auto" />
+              <p className="text-[var(--color-text-secondary)]">Loading member details...</p>
             </div>
           </div>
         ) : member ? (
           <div className="space-y-6">
             {/* Header with member name and status */}
-            <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-lg p-4 border border-[#FF9933]/20">
+            <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-lg p-4 border border-[var(--color-accent-500)]/20">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <h2 className="text-2xl font-bold" style={{ color: darkNavy }}>{member.name}</h2>
-                  <p className="text-[#6C757D] flex items-center gap-1 mt-1">
+                  <p className="text-[var(--color-text-secondary)] flex items-center gap-1 mt-1">
                     <Phone className="w-3 h-3" />
                     {member.username}
                   </p>
@@ -305,8 +305,8 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
                 <span
                   className={`px-4 py-2 rounded-full text-sm font-semibold ${
                     member.status === 'active'
-                      ? 'bg-green-50 text-[#00A86B] border border-green-200'
-                      : 'bg-red-50 text-[#CE1126] border border-red-200'
+                      ? 'bg-[var(--color-secondary-100)] text-[var(--color-secondary-600)] border border-[var(--color-border)]'
+                      : 'bg-[var(--color-primary-100)] text-[var(--color-primary-900)] border border-[var(--color-border)]'
                   }`}
                 >
                   {member.status === 'active' ? 'Enabled' : 'Disabled'}
@@ -315,7 +315,7 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex gap-2 border-b border-gray-200 overflow-x-auto pb-1">
+            <div className="flex gap-2 border-b border-[var(--color-border)] overflow-x-auto pb-1">
               {[
                 { id: 'personal', label: 'Personal Info', icon: User },
                 { id: 'documents', label: 'Documents', icon: FileText },
@@ -330,8 +330,8 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-4 py-2 font-medium whitespace-nowrap transition-all rounded-t-lg ${
                       isActive
-                        ? 'bg-gradient-to-r from-[#FF9933] to-[#138808] text-white'
-                        : 'text-[#6C757D] hover:text-[#FF9933] hover:bg-orange-50/50'
+                        ? 'bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)]'
+                        : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[var(--color-accent-100)]/50'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -346,103 +346,103 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Full Name */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <User className="w-3 h-3" style={{ color: saffron }} />
                       Full Name
                     </p>
-                    <p className="text-[#212529] font-medium">{displayValue(member.full_name || member.name)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium">{displayValue(member.full_name || member.name)}</p>
                   </div>
 
                   {/* ID Card Number */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <CreditCard className="w-3 h-3" style={{ color: green }} />
                       ID Card No.
                     </p>
-                    <p className="text-[#212529] font-medium font-mono">{displayValue(member.id_card_number)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium font-mono">{displayValue(member.id_card_number)}</p>
                   </div>
 
                   {/* Gender */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <User className="w-3 h-3" style={{ color: green }} />
                       Gender
                     </p>
-                    <p className="text-[#212529] font-medium capitalize">
+                    <p className="text-[var(--color-text-primary)] font-medium capitalize">
                       {displayValue(member.gender)}
                     </p>
                   </div>
 
                   {/* Date of Birth */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <Calendar className="w-3 h-3" style={{ color: saffron }} />
                       Date of Birth
                     </p>
-                    <p className="text-[#212529] font-medium">
+                    <p className="text-[var(--color-text-primary)] font-medium">
                       {member.date_of_birth ? formatDate(member.date_of_birth) : 'Not Provided'}
                     </p>
                   </div>
 
                   {/* Living Address */}
-                  <div className="md:col-span-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="md:col-span-2 bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <MapPin className="w-3 h-3" style={{ color: green }} />
                       Living Address
                     </p>
-                    <p className="text-[#212529] font-medium">{displayValue(member.living_address)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium">{displayValue(member.living_address)}</p>
                   </div>
 
                   {/* Current Job */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <Briefcase className="w-3 h-3" style={{ color: saffron }} />
                       Current Job
                     </p>
-                    <p className="text-[#212529] font-medium">
+                    <p className="text-[var(--color-text-primary)] font-medium">
                       {displayValue(member.position || member.current_job)}
                     </p>
                   </div>
 
                   {/* Stable Income */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <DollarSign className="w-3 h-3" style={{ color: green }} />
                       Stable Income
                     </p>
-                    <p className="text-[#212529] font-medium">
+                    <p className="text-[var(--color-text-primary)] font-medium">
                       {formatCurrency(member.monthly_income || member.stable_income)}
                     </p>
                   </div>
 
                   {/* Loan Purpose */}
-                  <div className="md:col-span-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="md:col-span-2 bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <Heart className="w-3 h-3" style={{ color: green }} />
                       Loan Purpose
                     </p>
-                    <p className="text-[#212529] font-medium">{displayValue(member.loan_purpose)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium">{displayValue(member.loan_purpose)}</p>
                   </div>
 
                   {/* Relative's Name - from contact_person1 JSON */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <User className="w-3 h-3" style={{ color: saffron }} />
                       Relative's Name
                     </p>
-                    <p className="text-[#212529] font-medium">
+                    <p className="text-[var(--color-text-primary)] font-medium">
                       {getRelativeName(member)}
                     </p>
                   </div>
 
                   {/* Relative's Phone Number - from contact_person1 JSON */}
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <Phone className="w-3 h-3" style={{ color: green }} />
                       Relative's Phone
                     </p>
-                    <p className="text-[#212529] font-medium">
+                    <p className="text-[var(--color-text-primary)] font-medium">
                       {getRelativePhone(member)}
                     </p>
                   </div>
@@ -455,7 +455,7 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
               <div className="space-y-4">
                 {/* KYC Documents */}
                 {member.id_photos && member.id_photos.length > 0 && (
-                  <div className="border-b border-gray-200 pb-6">
+                  <div className="border-b border-[var(--color-border)] pb-6">
                     <p className="text-sm font-semibold mb-3 flex items-center gap-1" style={{ color: darkNavy }}>
                       <FileText className="w-4 h-4" />
                       KYC Documents
@@ -465,14 +465,14 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
                         <div
                           key={photo.id}
                           onClick={() => setSelectedImage(photo.url)}
-                          className="cursor-pointer border border-gray-200 rounded-lg overflow-hidden hover:border-[#FF9933] transition-colors"
+                          className="cursor-pointer border border-[var(--color-border)] rounded-lg overflow-hidden hover:border-[var(--color-accent-500)] transition-colors"
                         >
                           <img
                             src={photo.url || "/placeholder.svg"}
                             alt={`ID ${photo.type}`}
                             className="w-full h-32 object-cover hover:opacity-80 transition-opacity"
                           />
-                          <p className="text-xs text-[#6C757D] p-2 text-center bg-blue-50 capitalize">
+                          <p className="text-xs text-[var(--color-text-secondary)] p-2 text-center bg-blue-50 capitalize">
                             {photo.type}
                           </p>
                         </div>
@@ -483,7 +483,7 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
 
                 {/* Signature */}
                 {member.signature_image ? (
-                  <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="border border-[var(--color-border)] rounded-lg p-4">
                     <p className="text-sm font-semibold mb-3 flex items-center gap-1" style={{ color: darkNavy }}>
                       <Fingerprint className="w-4 h-4" />
                       Signature
@@ -492,16 +492,16 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
                       src={member.signature_image || "/placeholder.svg"}
                       alt="Signature"
                       onClick={() => setSelectedImage(member.signature_image!)}
-                      className="w-full h-auto max-h-48 object-contain border border-gray-200 rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                      className="w-full h-auto max-h-48 object-contain border border-[var(--color-border)] rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
                     />
                   </div>
                 ) : (
-                  <p className="text-[#6C757D] text-center py-8">No signature uploaded</p>
+                  <p className="text-[var(--color-text-secondary)] text-center py-8">No signature uploaded</p>
                 )}
 
                 {/* No documents message */}
                 {(!member.id_photos || member.id_photos.length === 0) && !member.signature_image && (
-                  <p className="text-[#6C757D] text-center py-8">No documents uploaded</p>
+                  <p className="text-[var(--color-text-secondary)] text-center py-8">No documents uploaded</p>
                 )}
               </div>
             )}
@@ -510,24 +510,24 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
             {activeTab === 'banking' && (
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <CreditCard className="w-3 h-3" style={{ color: saffron }} />
                       Bank Name
                     </p>
-                    <p className="text-[#212529] font-medium">{getBankName(member)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium">{getBankName(member)}</p>
                     {member.bank_details?.setBy === 'admin' && (
-                      <span className="text-[10px] bg-orange-100 text-[#FF9933] px-2 py-0.5 rounded-full inline-block mt-1">
+                      <span className="text-[10px] bg-orange-100 text-[var(--color-accent-500)] px-2 py-0.5 rounded-full inline-block mt-1">
                         Admin Set
                       </span>
                     )}
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+                  <div className="bg-[var(--color-bg-main)] p-4 rounded-lg border border-[var(--color-border)]">
+                    <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                       <CreditCard className="w-3 h-3" style={{ color: green }} />
                       Account Number
                     </p>
-                    <p className="text-[#212529] font-medium font-mono">{getAccountNumber(member)}</p>
+                    <p className="text-[var(--color-text-primary)] font-medium font-mono">{getAccountNumber(member)}</p>
                   </div>
                 </div>
                 
@@ -542,70 +542,70 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
             {/* Account Tab - Updated with last_login_ip and last_login_location */}
             {activeTab === 'account' && (
               <div className="space-y-4">
-                <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-lg p-4 border border-[#FF9933]/20">
+                <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-lg p-4 border border-[var(--color-accent-500)]/20">
                   <h4 className="font-semibold mb-4 flex items-center gap-1" style={{ color: darkNavy }}>
                     <Shield className="w-4 h-4" />
                     Account Information
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm text-[#6C757D] flex items-center gap-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] flex items-center gap-1">
                         <Award className="w-3 h-3" style={{ color: saffron }} />
                         Credit Score
                       </p>
                       <p className="text-2xl font-bold" style={{ color: saffron }}>{member.score}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-[#6C757D] flex items-center gap-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] flex items-center gap-1">
                         <Wallet className="w-3 h-3" style={{ color: green }} />
                         Wallet Balance
                       </p>
-                      <p className="text-2xl font-bold text-[#212529]">{formatCurrency(member.wallet)}</p>
+                      <p className="text-2xl font-bold text-[var(--color-text-primary)]">{formatCurrency(member.wallet)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-[#6C757D] flex items-center gap-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] flex items-center gap-1">
                         <Fingerprint className="w-3 h-3" style={{ color: green }} />
                         Withdrawal Code
                       </p>
-                      <p className="text-[#212529] font-medium font-mono">
+                      <p className="text-[var(--color-text-primary)] font-medium font-mono">
                         {displayValue(member.withdrawal_code)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-[#6C757D] flex items-center gap-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] flex items-center gap-1">
                         <Calendar className="w-3 h-3" style={{ color: saffron }} />
                         Registration Date
                       </p>
-                      <p className="text-[#212529] font-medium">{formatDate(member.registration_date)}</p>
+                      <p className="text-[var(--color-text-primary)] font-medium">{formatDate(member.registration_date)}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 border border-gray-200">
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 border border-[var(--color-border)]">
                   <h4 className="font-semibold mb-4 flex items-center gap-1" style={{ color: darkNavy }}>
                     <Globe className="w-4 h-4" />
                     System Information
                   </h4>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-xs text-[#6C757D]">Last Login Location</p>
-                      <p className="text-[#212529] font-medium">{getLocation(member)}</p>
+                      <p className="text-xs text-[var(--color-text-secondary)]">Last Login Location</p>
+                      <p className="text-[var(--color-text-primary)] font-medium">{getLocation(member)}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#6C757D]">Last Login IP</p>
-                      <p className="text-[#212529] font-medium font-mono">{getIPAddress(member)}</p>
+                      <p className="text-xs text-[var(--color-text-secondary)]">Last Login IP</p>
+                      <p className="text-[var(--color-text-primary)] font-medium font-mono">{getIPAddress(member)}</p>
                     </div>
                     {member.note && (
                       <div>
-                        <p className="text-xs text-[#6C757D]">Notes</p>
-                        <p className="text-[#212529] bg-yellow-50 p-2 rounded border border-yellow-200">{member.note}</p>
+                        <p className="text-xs text-[var(--color-text-secondary)]">Notes</p>
+                        <p className="text-[var(--color-text-primary)] bg-yellow-50 p-2 rounded border border-yellow-200">{member.note}</p>
                       </div>
                     )}
                     
                     {/* Wallet Modification History Section - shows admin names correctly */}
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <p className="text-xs text-[#6C757D] mb-2 font-semibold">Recent Activity</p>
-                      <p className="text-xs text-[#6C757D]">
+                    <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
+                      <p className="text-xs text-[var(--color-text-secondary)] mb-2 font-semibold">Recent Activity</p>
+                      <p className="text-xs text-[var(--color-text-secondary)]">
                         (Wallet modifications performed by: Admin, Admin 1, Admin 2, Admin 3, Admin 4, Admin 5)
                       </p>
                     </div>
@@ -615,17 +615,17 @@ export function CheckingDataModal({ memberId, onClose }: CheckingDataModalProps)
             )}
 
             {/* Close Button */}
-            <div className="flex gap-2 pt-6 border-t border-gray-200">
+            <div className="flex gap-2 pt-6 border-t border-[var(--color-border)]">
               <Button 
                 onClick={onClose} 
-                className="w-full bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07]"
+                className="w-full bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)]"
               >
                 Close
               </Button>
             </div>
           </div>
         ) : (
-          <div className="text-center py-8 text-[#6C757D]">
+          <div className="text-center py-8 text-[var(--color-text-secondary)]">
             No member data found
           </div>
         )}

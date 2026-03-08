@@ -382,7 +382,7 @@ export default function AdminUsersPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-[#6C757D]">Loading...</p>
+        <p className="text-[var(--color-text-secondary)]">Loading...</p>
       </div>
     );
   }
@@ -390,12 +390,12 @@ export default function AdminUsersPage() {
   return (
     <>
       {/* Header - same structure as Deposit Management */}
-      <header className="bg-white border-b border-[#e9ecef] shadow-sm sticky top-0 z-30">
+      <header className="bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] shadow-sm sticky top-0 z-30">
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/admin/dashboard"
-              className="flex items-center gap-2 text-[#6C757D] hover:text-[#FF9933] transition-colors"
+              className="flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
               Back
@@ -405,14 +405,14 @@ export default function AdminUsersPage() {
                 <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={40} height={40} className="object-contain" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#1e3a5f]">User Management</h1>
-                <p className="text-sm text-[#6C757D]">Showing {totalMembers} members total</p>
+                <h1 className="text-xl font-bold text-[var(--color-primary-900)]">User Management</h1>
+                <p className="text-sm text-[var(--color-text-secondary)]">Showing {totalMembers} members total</p>
               </div>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[#FF9933]/20">
-            <Shield className="w-4 h-4 text-[#FF9933]" />
-            <span className="text-xs font-medium text-[#212529]">RBI • MCA • CIBIL</span>
+          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[var(--color-accent-500)]/20">
+            <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+            <span className="text-xs font-medium text-[var(--color-text-primary)]">RBI • MCA • CIBIL</span>
           </div>
         </div>
       </header>
@@ -420,62 +420,62 @@ export default function AdminUsersPage() {
       {/* Main Content */}
       <main className="px-6 py-8">
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-lg p-4 mb-6 flex gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-700 font-medium">{error}</p>
           </div>
         )}
 
         {success && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex gap-3">
-            <div className="w-5 h-5 text-[#00A86B] flex-shrink-0 mt-0.5">✓</div>
-            <p className="text-sm text-[#00A86B] font-medium">{success}</p>
+          <div className="bg-[var(--color-secondary-100)] border border-[var(--color-border)] rounded-lg p-4 mb-6 flex gap-3">
+            <div className="w-5 h-5 text-[var(--color-secondary-600)] flex-shrink-0 mt-0.5">✓</div>
+            <p className="text-sm text-[var(--color-secondary-600)] font-medium">{success}</p>
           </div>
         )}
 
         {/* Filter Card */}
-        <Card className="p-6 mb-8 border border-gray-100 shadow-md bg-white">
+        <Card className="p-6 mb-8 border border-[var(--color-border)] shadow-md bg-[var(--color-bg-surface)]">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Filter className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Filter className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
-            <h3 className="text-lg font-semibold text-[#212529]">Filter Users</h3>
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">Filter Users</h3>
           </div>
 
           <div className="space-y-4">
             {/* Search and Date Inputs */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <User className="w-4 h-4 text-[#FF9933]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <User className="w-4 h-4 text-[var(--color-accent-500)]" />
                   Search by Name or Phone
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#6C757D]" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[var(--color-text-secondary)]" />
                   <input
                     type="text"
                     placeholder="Search by name or username..."
                     value={searchTerm}
                     onChange={(e) => handleSearchChange(e.target.value)}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] placeholder-[#6C757D] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full pl-10 pr-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-[#FF9933]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <Calendar className="w-4 h-4 text-[var(--color-accent-500)]" />
                   Start Date
                 </label>
                 <input
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-[#138808]" />
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                  <Calendar className="w-4 h-4 text-[var(--color-secondary-600)]" />
                   End Date
                 </label>
                 <input
@@ -485,40 +485,40 @@ export default function AdminUsersPage() {
                     setEndDate(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             </div>
 
             {/* Quick Date Buttons and Actions */}
             <div className="flex flex-wrap gap-2">
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('today')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('today')}>
                 Today
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('yesterday')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('yesterday')}>
                 Yesterday
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('week')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('week')}>
                 This Week
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('lastWeek')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('lastWeek')}>
                 Last Week
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('month')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('month')}>
                 This Month
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20]" onClick={() => applyQuickDateRange('lastMonth')}>
+              <Button size="sm" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)]" onClick={() => applyQuickDateRange('lastMonth')}>
                 Last Month
               </Button>
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#002c86] hover:to-[#b80f20] gap-1"
+                className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)] gap-1"
                 onClick={() => window.location.reload()}
               >
                 <RefreshCw className="w-3 h-3" />
                 Refresh
               </Button>
-              <Button size="sm" className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50" onClick={clearFilters}>
+              <Button size="sm" className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50" onClick={clearFilters}>
                 Clear Filters
               </Button>
             </div>
@@ -526,22 +526,22 @@ export default function AdminUsersPage() {
         </Card>
 
         {/* Members Table */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-md overflow-hidden">
+        <div className="bg-[var(--color-bg-surface)] rounded-xl border border-[var(--color-border)] shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-gradient-to-r from-[#FF9933]/10 to-[#138808]/10 border-b border-gray-200">
+              <thead className="bg-gradient-to-r from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 border-b border-[var(--color-border)]">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">No.</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Name</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Username</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Score</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Wallet</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Code</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Date</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Status</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Area</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Note</th>
-                  <th className="px-4 py-3 text-left font-semibold text-[#212529]">Actions</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">No.</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Name</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Username</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Score</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Wallet</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Code</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Date</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Status</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Area</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Note</th>
+                  <th className="px-4 py-3 text-left font-semibold text-[var(--color-text-primary)]">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -549,57 +549,57 @@ export default function AdminUsersPage() {
                   <tr>
                     <td colSpan={11} className="px-6 py-8 text-center">
                       <div className="flex flex-col items-center justify-center gap-3">
-                        <div className="w-10 h-10 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin" />
-                        <span className="text-[#6C757D]">Loading members...</span>
+                        <div className="w-10 h-10 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin" />
+                        <span className="text-[var(--color-text-secondary)]">Loading members...</span>
                       </div>
                     </td>
                   </tr>
                 ) : members.length > 0 ? (
                   members.map((member, index) => (
-                    <tr key={member.id} className="border-b border-gray-100 hover:bg-orange-50/30 transition-colors">
-                      <td className="px-4 py-4 text-[#212529]">{(page - 1) * pageSize + index + 1}</td>
-                      <td className="px-4 py-4 text-[#212529] font-medium">{member.name}</td>
-                      <td className="px-4 py-4 text-[#212529] text-sm">{member.username}</td>
+                    <tr key={member.id} className="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-100)]/30 transition-colors">
+                      <td className="px-4 py-4 text-[var(--color-text-primary)]">{(page - 1) * pageSize + index + 1}</td>
+                      <td className="px-4 py-4 text-[var(--color-text-primary)] font-medium">{member.name}</td>
+                      <td className="px-4 py-4 text-[var(--color-text-primary)] text-sm">{member.username}</td>
                       <td className="px-4 py-4">
                         <span className="flex items-center gap-1">
-                          <Award className="w-3 h-3 text-[#FF9933]" />
-                          <span className="text-[#212529]">{member.score}</span>
+                          <Award className="w-3 h-3 text-[var(--color-accent-500)]" />
+                          <span className="text-[var(--color-text-primary)]">{member.score}</span>
                         </span>
                       </td>
                       <td className="px-4 py-4">
                         <span className="flex items-center gap-1">
-                          <Wallet className="w-3 h-3 text-[#00A86B]" />
-                          <span className="text-[#212529]">{formatCurrency(member.wallet)}</span>
+                          <Wallet className="w-3 h-3 text-[var(--color-secondary-600)]" />
+                          <span className="text-[var(--color-text-primary)]">{formatCurrency(member.wallet)}</span>
                         </span>
                       </td>
                       <td className="px-4 py-4">
-                        <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
+                        <span className="font-mono text-xs bg-[var(--color-bg-main)] px-2 py-1 rounded">
                           {member.withdrawalCode || '-'}
                         </span>
                       </td>
-                      <td className="px-4 py-4 text-[#212529] text-sm">{formatDate(member.registrationDate)}</td>
+                      <td className="px-4 py-4 text-[var(--color-text-primary)] text-sm">{formatDate(member.registrationDate)}</td>
                       <td className="px-4 py-4">
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-medium ${member.status === 'active'
-                            ? 'bg-green-50 text-[#00A86B] border border-green-200'
-                            : 'bg-red-50 text-red-700 border border-red-200'
+                            ? 'bg-[var(--color-secondary-100)] text-[var(--color-secondary-600)] border border-[var(--color-border)]'
+                            : 'bg-[var(--color-primary-100)] text-red-700 border border-[var(--color-border)]'
                             }`}
                         >
                           {member.status === 'active' ? 'Enabled' : 'Disabled'}
                         </span>
                       </td>
                       <td
-                        className="px-4 py-4 text-[#212529] text-xs max-w-[200px] truncate cursor-pointer hover:text-[#FF9933] group"
+                        className="px-4 py-4 text-[var(--color-text-primary)] text-xs max-w-[200px] truncate cursor-pointer hover:text-[var(--color-accent-500)] group"
                         title={formatRegistrationArea(member)}
                       >
                         {member.lastLoginLocation ? (
                           <span className="flex items-center gap-1">
-                            <Globe className="w-3 h-3 text-[#00A86B]" />
+                            <Globe className="w-3 h-3 text-[var(--color-secondary-600)]" />
                             {member.lastLoginLocation}
                           </span>
                         ) : (
                           <span className="flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-[#6C757D]" />
+                            <MapPin className="w-3 h-3 text-[var(--color-text-secondary)]" />
                             {member.registrationArea}
                           </span>
                         )}
@@ -608,24 +608,24 @@ export default function AdminUsersPage() {
                         {member.note ? (
                           <button
                             onClick={() => handleViewNote(member.note)}
-                            className="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200 transition-colors group"
+                            className="flex items-center gap-1 text-xs bg-[var(--color-bg-main)] px-2 py-1 rounded hover:bg-gray-200 transition-colors group"
                             title="Click to view full note"
                           >
-                            <FileText className="w-3 h-3 text-[#FF9933]" />
-                            <span className="text-[#212529] max-w-[100px] truncate">
+                            <FileText className="w-3 h-3 text-[var(--color-accent-500)]" />
+                            <span className="text-[var(--color-text-primary)] max-w-[100px] truncate">
                               {member.note.length > 15 ? member.note.substring(0, 15) + '...' : member.note}
                             </span>
-                            <Eye className="w-3 h-3 text-[#6C757D] opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <Eye className="w-3 h-3 text-[var(--color-text-secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
                           </button>
                         ) : (
-                          <span className="text-[#6C757D] text-xs">-</span>
+                          <span className="text-[var(--color-text-secondary)] text-xs">-</span>
                         )}
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex flex-wrap gap-1 min-w-[200px]">
                           <button
                             onClick={() => handleViewMember(member)}
-                            className="px-2 py-1 text-xs font-medium bg-blue-50 text-[#FF9933] rounded-md hover:bg-blue-100 transition-colors whitespace-nowrap"
+                            className="px-2 py-1 text-xs font-medium bg-blue-50 text-[var(--color-accent-500)] rounded-md hover:bg-blue-100 transition-colors whitespace-nowrap"
                             title="View member details"
                           >
                             <span className="flex items-center gap-1">
@@ -635,7 +635,7 @@ export default function AdminUsersPage() {
                           </button>
                           <Link
                             href={`/admin/users/${member.id}?tab=activityLog`}
-                            className="px-2 py-1 text-xs font-medium bg-gray-100 text-[#6C757D] rounded-md hover:bg-gray-200 transition-colors whitespace-nowrap inline-flex items-center gap-1"
+                            className="px-2 py-1 text-xs font-medium bg-[var(--color-bg-main)] text-[var(--color-text-secondary)] rounded-md hover:bg-gray-200 transition-colors whitespace-nowrap inline-flex items-center gap-1"
                             title="View activity log"
                           >
                             <History className="w-3 h-3" />
@@ -643,7 +643,7 @@ export default function AdminUsersPage() {
                           </Link>
                           <button
                             onClick={() => handleAction(member, 'wallet')}
-                            className="px-2 py-1 text-xs font-medium bg-emerald-50 text-[#00A86B] rounded-md hover:bg-emerald-100 transition-colors whitespace-nowrap"
+                            className="px-2 py-1 text-xs font-medium bg-emerald-50 text-[var(--color-secondary-600)] rounded-md hover:bg-emerald-100 transition-colors whitespace-nowrap"
                           >
                             <span className="flex items-center gap-1">
                               <Wallet className="w-3 h-3" />
@@ -679,7 +679,7 @@ export default function AdminUsersPage() {
                           </button>
                           <button
                             onClick={() => handleAction(member, 'password')}
-                            className="px-2 py-1 text-xs font-medium bg-orange-50 text-orange-700 rounded-md hover:bg-orange-100 transition-colors whitespace-nowrap"
+                            className="px-2 py-1 text-xs font-medium bg-[var(--color-accent-100)] text-orange-700 rounded-md hover:bg-orange-100 transition-colors whitespace-nowrap"
                           >
                             <span className="flex items-center gap-1">
                               <Lock className="w-3 h-3" />
@@ -698,8 +698,8 @@ export default function AdminUsersPage() {
                           <button
                             onClick={() => handleAction(member, 'status')}
                             className={`px-2 py-1 text-xs font-medium rounded-md transition-colors whitespace-nowrap ${member.status === 'active'
-                              ? 'bg-red-50 text-red-700 hover:bg-red-100'
-                              : 'bg-green-50 text-[#00A86B] hover:bg-green-100'
+                              ? 'bg-[var(--color-primary-100)] text-red-700 hover:bg-red-100'
+                              : 'bg-[var(--color-secondary-100)] text-[var(--color-secondary-600)] hover:bg-[var(--color-secondary-100)]'
                               }`}
                           >
                             {member.status === 'active' ? 'Disable' : 'Enable'}
@@ -713,8 +713,8 @@ export default function AdminUsersPage() {
                     <td colSpan={11} className="px-6 py-12 text-center">
                       <div className="flex flex-col items-center gap-2">
                         <Users className="w-12 h-12 text-gray-300" />
-                        <p className="text-[#6C757D] text-lg">No members found</p>
-                        <p className="text-gray-400 text-sm">Try adjusting your filters</p>
+                        <p className="text-[var(--color-text-secondary)] text-lg">No members found</p>
+                        <p className="text-[var(--color-text-secondary)] text-sm">Try adjusting your filters</p>
                       </div>
                     </td>
                   </tr>
@@ -724,21 +724,21 @@ export default function AdminUsersPage() {
           </div>
 
           {/* Pagination */}
-          <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-white">
+          <div className="px-6 py-4 border-t border-[var(--color-border)] flex items-center justify-between bg-[var(--color-bg-surface)]">
             <Button
               onClick={() => setPage(page - 1)}
               disabled={page === 1 || isFetching}
-              className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50 disabled:opacity-50"
+              className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50 disabled:opacity-50"
             >
               <ChevronLeft className="w-4 h-4 mr-2" /> Previous
             </Button>
-            <span className="text-sm text-[#6C757D]">
+            <span className="text-sm text-[var(--color-text-secondary)]">
               Page {page} of {totalPages}
             </span>
             <Button
               onClick={() => setPage(page + 1)}
               disabled={page === totalPages || isFetching}
-              className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-blue-50 disabled:opacity-50"
+              className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-blue-50 disabled:opacity-50"
             >
               Next <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
@@ -746,25 +746,25 @@ export default function AdminUsersPage() {
         </div>
 
         {/* Government Logos */}
-        <div className="mt-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-4 border border-[#FF9933]/20">
+        <div className="mt-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-4 border border-[var(--color-accent-500)]/20">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="MCA" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#00A86B]">MCA Supervised</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Supervised</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.meity} alt="MeitY" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">MeitY Accredited</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MeitY Accredited</span>
             </div>
           </div>
         </div>
@@ -781,32 +781,32 @@ export default function AdminUsersPage() {
       {/* Note Modal */}
       {showNoteModal && selectedNote && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-          <Card className="max-w-md w-full p-6 border border-gray-100 shadow-xl">
+          <Card className="max-w-md w-full p-6 border border-[var(--color-border)] shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-                  <FileText className="w-4 h-4 text-white" />
+                <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+                  <FileText className="w-4 h-4 text-[var(--color-bg-surface)]" />
                 </div>
-                <h3 className="text-lg font-bold text-[#212529]">User Note</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)]">User Note</h3>
               </div>
               <button
                 onClick={() => setShowNoteModal(false)}
-                className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+                className="p-1 hover:bg-[var(--color-bg-main)] rounded-md transition-colors"
               >
-                <X className="w-5 h-5 text-[#6C757D]" />
+                <X className="w-5 h-5 text-[var(--color-text-secondary)]" />
               </button>
             </div>
 
             <div className="mb-6">
-              <p className="text-sm text-[#6C757D] mb-2">Full Note:</p>
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 max-h-[300px] overflow-y-auto">
-                <p className="text-[#212529] whitespace-pre-wrap break-words">{selectedNote}</p>
+              <p className="text-sm text-[var(--color-text-secondary)] mb-2">Full Note:</p>
+              <div className="bg-[var(--color-bg-main)] rounded-lg p-4 border border-[var(--color-border)] max-h-[300px] overflow-y-auto">
+                <p className="text-[var(--color-text-primary)] whitespace-pre-wrap break-words">{selectedNote}</p>
               </div>
             </div>
 
             <Button
               onClick={() => setShowNoteModal(false)}
-              className="w-full bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#002c86] hover:to-[#b80f20] text-white"
+              className="w-full bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
             >
               Close
             </Button>
@@ -817,19 +817,19 @@ export default function AdminUsersPage() {
       {/* Action Modal */}
       {showActionModal && selectedMember && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-          <Card className="max-w-md w-full p-6 border border-gray-100 shadow-xl">
+          <Card className="max-w-md w-full p-6 border border-[var(--color-border)] shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-                  {actionType === 'wallet' && <Wallet className="w-4 h-4 text-white" />}
-                  {actionType === 'withdrawal-code' && <Fingerprint className="w-4 h-4 text-white" />}
-                  {actionType === 'score' && <TrendingUp className="w-4 h-4 text-white" />}
-                  {actionType === 'identity' && <CreditCard className="w-4 h-4 text-white" />}
-                  {actionType === 'password' && <Lock className="w-4 h-4 text-white" />}
-                  {actionType === 'bank' && <Banknote className="w-4 h-4 text-white" />}
-                  {actionType === 'status' && <User className="w-4 h-4 text-white" />}
+                <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+                  {actionType === 'wallet' && <Wallet className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'withdrawal-code' && <Fingerprint className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'score' && <TrendingUp className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'identity' && <CreditCard className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'password' && <Lock className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'bank' && <Banknote className="w-4 h-4 text-[var(--color-bg-surface)]" />}
+                  {actionType === 'status' && <User className="w-4 h-4 text-[var(--color-bg-surface)]" />}
                 </div>
-                <h3 className="text-lg font-bold text-[#212529]">
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
                   {actionType === 'wallet' && 'Wallet Modification'}
                   {actionType === 'withdrawal-code' && 'Withdrawal Code'}
                   {actionType === 'score' && 'Credit Score'}
@@ -841,53 +841,53 @@ export default function AdminUsersPage() {
               </div>
               <button
                 onClick={() => setShowActionModal(false)}
-                className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+                className="p-1 hover:bg-[var(--color-bg-main)] rounded-md transition-colors"
               >
-                <X className="w-5 h-5 text-[#6C757D]" />
+                <X className="w-5 h-5 text-[var(--color-text-secondary)]" />
               </button>
             </div>
 
-            <p className="text-sm text-[#6C757D] mb-4">
-              Member: <span className="font-medium text-[#212529]">{selectedMember.name}</span>
+            <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+              Member: <span className="font-medium text-[var(--color-text-primary)]">{selectedMember.name}</span>
             </p>
 
             {actionType === 'wallet' && (
               <div className="mb-4">
-                <p className="text-sm text-[#6C757D] mb-2">Current Balance</p>
-                <p className="text-[#212529] font-medium mb-4 text-xl text-[#FF9933]">{formatCurrency(selectedMember.wallet)}</p>
-                <label className="block text-sm font-medium text-[#212529] mb-2">New Amount</label>
+                <p className="text-sm text-[var(--color-text-secondary)] mb-2">Current Balance</p>
+                <p className="text-[var(--color-text-primary)] font-medium mb-4 text-xl text-[var(--color-accent-500)]">{formatCurrency(selectedMember.wallet)}</p>
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">New Amount</label>
                 <input
                   type="number"
                   placeholder="Enter new amount"
                   value={actionData.amount || ''}
                   onChange={(e) => setActionData({ ...actionData, amount: parseFloat(e.target.value) })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             )}
 
             {actionType === 'withdrawal-code' && (
               <div className="mb-4">
-                <label className="block text-sm font-medium text-[#212529] mb-2">Enter A Withdraw Code</label>
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Enter A Withdraw Code</label>
                 <input
                   type="text"
                   placeholder="Enter code"
                   value={actionData.code || ''}
                   onChange={(e) => setActionData({ ...actionData, code: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             )}
 
             {actionType === 'score' && (
               <div className="mb-4">
-                <label className="block text-sm font-medium text-[#212529] mb-2">Credit Score (Default: 500)</label>
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Credit Score (Default: 500)</label>
                 <input
                   type="number"
                   placeholder="Enter score"
                   defaultValue={selectedMember.score || 500}
                   onChange={(e) => setActionData({ ...actionData, score: parseInt(e.target.value) })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             )}
@@ -895,23 +895,23 @@ export default function AdminUsersPage() {
             {actionType === 'identity' && (
               <div className="mb-4 space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">ID Card Number</label>
+                  <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">ID Card Number</label>
                   <input
                     type="text"
                     placeholder="Enter ID card number"
                     value={actionData.idNumber || ''}
                     onChange={(e) => setActionData({ ...actionData, idNumber: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">Actual Name</label>
+                  <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Actual Name</label>
                   <input
                     type="text"
                     placeholder="Enter actual name"
                     value={actionData.actualName || ''}
                     onChange={(e) => setActionData({ ...actionData, actualName: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -919,14 +919,14 @@ export default function AdminUsersPage() {
 
             {actionType === 'password' && (
               <div className="mb-4">
-                <p className="text-sm text-[#6C757D] mb-3">Phone: <span className="font-medium text-[#212529]">{selectedMember.username}</span></p>
-                <label className="block text-sm font-medium text-[#212529] mb-2">Enter New Password</label>
+                <p className="text-sm text-[var(--color-text-secondary)] mb-3">Phone: <span className="font-medium text-[var(--color-text-primary)]">{selectedMember.username}</span></p>
+                <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Enter New Password</label>
                 <input
                   type="password"
                   placeholder="Enter new password"
                   value={actionData.password || ''}
                   onChange={(e) => setActionData({ ...actionData, password: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
               </div>
             )}
@@ -934,33 +934,33 @@ export default function AdminUsersPage() {
             {actionType === 'bank' && (
               <div className="mb-4 space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">Bank Name</label>
+                  <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Bank Name</label>
                   <input
                     type="text"
                     placeholder="Enter bank name"
                     value={actionData.bankName || ''}
                     onChange={(e) => setActionData({ ...actionData, bankName: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">Account Number</label>
+                  <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Account Number</label>
                   <input
                     type="text"
                     placeholder="Enter account number"
                     value={actionData.accountNumber || ''}
                     onChange={(e) => setActionData({ ...actionData, accountNumber: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">IFSC Code</label>
+                  <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">IFSC Code</label>
                   <input
                     type="text"
                     placeholder="Enter IFSC code"
                     value={actionData.ifscCode || ''}
                     onChange={(e) => setActionData({ ...actionData, ifscCode: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -978,7 +978,7 @@ export default function AdminUsersPage() {
               <Button
                 onClick={handleActionSubmit}
                 disabled={actionLoading}
-                className="flex-1 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#002c86] hover:to-[#b80f20] text-white"
+                className="flex-1 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-primary-700)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
               >
                 {actionLoading ? (
                   <span className="flex items-center gap-2">
@@ -987,7 +987,7 @@ export default function AdminUsersPage() {
                   </span>
                 ) : 'Confirm'}
               </Button>
-              <Button onClick={() => setShowActionModal(false)} variant="outline" className="flex-1 border-2 border-gray-200">
+              <Button onClick={() => setShowActionModal(false)} variant="outline" className="flex-1 border-2 border-[var(--color-border)]">
                 Cancel
               </Button>
             </div>

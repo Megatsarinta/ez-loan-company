@@ -247,7 +247,7 @@ export default function PersonalInformationPage() {
         body: JSON.stringify({ step: 'personal_info' }),
       }).catch(err => console.error('Error marking verification:', err))
 
-      router.push('/signature')
+      router.push('/bank-information')
       
     } catch (err) {
       console.error('Submit error:', err)
@@ -258,23 +258,23 @@ export default function PersonalInformationPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-[#6C757D]">Loading your information...</p>
+          <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-[var(--color-text-secondary)]">Loading your information...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] pb-8">
-      <header className="bg-white border-b border-[#e9ecef] shadow-sm sticky top-0 z-40">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] pb-8">
+      <header className="bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] shadow-sm sticky top-0 z-40">
         <div className="px-4 py-4 flex items-center justify-between max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-4">
             <Link
               href="/kyc-upload"
-              className="flex items-center gap-2 text-[#FF9933] hover:text-[#e68a2e] transition-colors"
+              className="flex items-center gap-2 text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
@@ -285,42 +285,43 @@ export default function PersonalInformationPage() {
               <div>
                 <div className="flex items-baseline">
                   <span className="text-lg font-black tracking-tight">
-                    <span className="text-[#FF9933]">EASY</span>
-                    <span className="text-[#138808]">LOAN</span>
+                    <span className="text-[var(--color-accent-500)]">EASY</span>
+                    <span className="text-[var(--color-secondary-600)]">LOAN</span>
                   </span>
                 </div>
-                <p className="text-xs text-gray-500">Personal Information</p>
+                <p className="text-xs text-[var(--color-text-secondary)]">Personal Information</p>
               </div>
             </div>
           </div>
           
-          <div className="hidden sm:flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-full">
-            <Shield className="w-4 h-4 text-[#FF9933]" />
-            <span className="text-xs font-medium text-[#FF9933]">RBI Regd NBFC</span>
+          <div className="hidden sm:flex items-center gap-2 bg-[var(--color-accent-100)] px-3 py-1.5 rounded-full">
+            <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+            <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Regd NBFC</span>
           </div>
         </div>
       </header>
 
       <main className="px-4 py-6 max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#212529] mb-2">
-            <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-2">
+            <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
               Complete Your Profile
             </span>
           </h1>
-          <p className="text-[#6C757D]">Please fill in all required information for KYC compliance</p>
+          <p className="text-[var(--color-text-secondary)]">Please fill in all required information for KYC compliance</p>
         </div>
 
+        {/* Progress: 4 steps — KYC, Personal (current), Bank, Signature */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-6 h-2 bg-[#FF9933] rounded-full"></div>
-          <div className="w-6 h-2 bg-[#FF9933] rounded-full"></div>
-          <div className="w-6 h-2 bg-[#FF9933] rounded-full"></div>
-          <div className="w-2 h-2 bg-[#e9ecef] rounded-full"></div>
+          <div className="w-6 h-2 bg-[var(--color-accent-500)] rounded-full"></div>
+          <div className="w-6 h-2 bg-[var(--color-accent-500)] rounded-full"></div>
+          <div className="w-2 h-2 bg-[var(--color-border)] rounded-full"></div>
+          <div className="w-2 h-2 bg-[var(--color-border)] rounded-full"></div>
         </div>
 
         {isCompleted && (
-          <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-[#138808] mt-0.5 flex-shrink-0" />
+          <div className="bg-[var(--color-secondary-100)] border border-green-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-[var(--color-secondary-600)] mt-0.5 flex-shrink-0" />
             <div>
               <p className="text-sm text-green-900 font-medium">✓ Personal information already completed</p>
               <p className="text-xs text-green-700 mt-1">You can update your information below if needed</p>
@@ -329,17 +330,17 @@ export default function PersonalInformationPage() {
         )}
 
         {apiError && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
-            <p className="text-sm text-red-600 font-medium">{apiError}</p>
+          <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-xl p-4 mb-6 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] mt-0.5 flex-shrink-0" />
+            <p className="text-sm text-[var(--color-primary-900)] font-medium">{apiError}</p>
           </div>
         )}
 
-        <div className="bg-white border border-[#e9ecef] rounded-2xl p-6 md:p-8 shadow-lg">
+        <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="full_name" className="text-[#212529] font-medium">
+                <Label htmlFor="full_name" className="text-[var(--color-text-primary)] font-medium">
                   Full Name <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -348,8 +349,8 @@ export default function PersonalInformationPage() {
                   value={formData.full_name}
                   onChange={handleChange}
                   placeholder="As per Aadhaar/PAN card"
-                  className={`bg-white border-2 ${
-                    errors.full_name ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.full_name ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -359,7 +360,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="id_type" className="text-[#212529] font-medium">
+                <Label htmlFor="id_type" className="text-[var(--color-text-primary)] font-medium">
                   ID Type <span className="text-red-500">*</span>
                 </Label>
                 <select
@@ -367,9 +368,9 @@ export default function PersonalInformationPage() {
                   name="id_type"
                   value={formData.id_type}
                   onChange={handleChange}
-                  className={`w-full bg-white border-2 ${
-                    errors.id_type ? 'border-red-300' : 'border-[#e9ecef]'
-                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[#FF9933] transition-colors`}
+                  className={`w-full bg-[var(--color-bg-surface)] border-2 ${
+                    errors.id_type ? 'border-red-300' : 'border-[var(--color-border)]'
+                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--color-accent-500)] transition-colors`}
                   disabled={isSubmitting}
                 >
                   <option value="aadhaar">Aadhaar Card</option>
@@ -384,7 +385,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="id_card_number" className="text-[#212529] font-medium">
+                <Label htmlFor="id_card_number" className="text-[var(--color-text-primary)] font-medium">
                   ID Number <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -397,8 +398,8 @@ export default function PersonalInformationPage() {
                     formData.id_type === 'pan' ? '10-digit PAN (e.g., ABCDE1234F)' :
                     'Enter ID number'
                   }
-                  className={`bg-white border-2 ${
-                    errors.id_card_number ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.id_card_number ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -408,7 +409,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="gender" className="text-[#212529] font-medium">
+                <Label htmlFor="gender" className="text-[var(--color-text-primary)] font-medium">
                   Gender <span className="text-red-500">*</span>
                 </Label>
                 <select
@@ -416,9 +417,9 @@ export default function PersonalInformationPage() {
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
-                  className={`w-full bg-white border-2 ${
-                    errors.gender ? 'border-red-300' : 'border-[#e9ecef]'
-                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[#FF9933] transition-colors`}
+                  className={`w-full bg-[var(--color-bg-surface)] border-2 ${
+                    errors.gender ? 'border-red-300' : 'border-[var(--color-border)]'
+                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--color-accent-500)] transition-colors`}
                   disabled={isSubmitting}
                 >
                   <option value="">Select gender</option>
@@ -432,7 +433,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="date_of_birth" className="text-[#212529] font-medium">
+                <Label htmlFor="date_of_birth" className="text-[var(--color-text-primary)] font-medium">
                   Date of Birth <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -442,8 +443,8 @@ export default function PersonalInformationPage() {
                   value={formData.date_of_birth}
                   onChange={handleChange}
                   max={new Date().toISOString().split('T')[0]}
-                  className={`bg-white border-2 ${
-                    errors.date_of_birth ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.date_of_birth ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -453,7 +454,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="current_job" className="text-[#212529] font-medium">
+                <Label htmlFor="current_job" className="text-[var(--color-text-primary)] font-medium">
                   Current Occupation <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -462,8 +463,8 @@ export default function PersonalInformationPage() {
                   value={formData.current_job}
                   onChange={handleChange}
                   placeholder="e.g., Software Engineer, Business Owner"
-                  className={`bg-white border-2 ${
-                    errors.current_job ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.current_job ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -473,19 +474,19 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="monthly_income" className="text-[#212529] font-medium">
+                <Label htmlFor="monthly_income" className="text-[var(--color-text-primary)] font-medium">
                   Monthly Income (₹) <span className="text-red-500">*</span>
                 </Label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6C757D]">₹</span>
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]">₹</span>
                   <Input
                     id="monthly_income"
                     name="monthly_income"
                     value={formData.monthly_income}
                     onChange={handleChange}
                     placeholder="e.g., 50000"
-                    className={`bg-white border-2 pl-8 ${
-                      errors.monthly_income ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                    className={`bg-[var(--color-bg-surface)] border-2 pl-8 ${
+                      errors.monthly_income ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                     } rounded-xl px-4 py-3 transition-colors`}
                     disabled={isSubmitting}
                   />
@@ -496,7 +497,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="loan_purpose" className="text-[#212529] font-medium">
+                <Label htmlFor="loan_purpose" className="text-[var(--color-text-primary)] font-medium">
                   Purpose of Loan <span className="text-red-500">*</span>
                 </Label>
                 <select
@@ -504,9 +505,9 @@ export default function PersonalInformationPage() {
                   name="loan_purpose"
                   value={formData.loan_purpose}
                   onChange={handleChange}
-                  className={`w-full bg-white border-2 ${
-                    errors.loan_purpose ? 'border-red-300' : 'border-[#e9ecef]'
-                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[#FF9933] transition-colors`}
+                  className={`w-full bg-[var(--color-bg-surface)] border-2 ${
+                    errors.loan_purpose ? 'border-red-300' : 'border-[var(--color-border)]'
+                  } rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--color-accent-500)] transition-colors`}
                   disabled={isSubmitting}
                 >
                   <option value="">Select loan purpose</option>
@@ -520,7 +521,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="living_address" className="text-[#212529] font-medium">
+                <Label htmlFor="living_address" className="text-[var(--color-text-primary)] font-medium">
                   Current Residential Address <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -529,8 +530,8 @@ export default function PersonalInformationPage() {
                   value={formData.living_address}
                   onChange={handleChange}
                   placeholder="Flat/House No., Area, City, PIN Code"
-                  className={`bg-white border-2 ${
-                    errors.living_address ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.living_address ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -540,7 +541,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="emergency_contact_name" className="text-[#212529] font-medium">
+                <Label htmlFor="emergency_contact_name" className="text-[var(--color-text-primary)] font-medium">
                   Emergency Contact Name <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -549,8 +550,8 @@ export default function PersonalInformationPage() {
                   value={formData.emergency_contact_name}
                   onChange={handleChange}
                   placeholder="Full name of family member"
-                  className={`bg-white border-2 ${
-                    errors.emergency_contact_name ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.emergency_contact_name ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -560,7 +561,7 @@ export default function PersonalInformationPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="emergency_contact_phone" className="text-[#212529] font-medium">
+                <Label htmlFor="emergency_contact_phone" className="text-[var(--color-text-primary)] font-medium">
                   Emergency Contact Number <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -570,8 +571,8 @@ export default function PersonalInformationPage() {
                   onChange={handleChange}
                   placeholder="10-digit mobile number"
                   maxLength={10}
-                  className={`bg-white border-2 ${
-                    errors.emergency_contact_phone ? 'border-red-300 focus:border-red-500' : 'border-[#e9ecef] focus:border-[#FF9933]'
+                  className={`bg-[var(--color-bg-surface)] border-2 ${
+                    errors.emergency_contact_phone ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
                   disabled={isSubmitting}
                 />
@@ -581,11 +582,11 @@ export default function PersonalInformationPage() {
               </div>
             </div>
 
-            <div className="flex justify-center pt-6 border-t border-[#e9ecef]">
+            <div className="flex justify-center pt-6 border-t border-[var(--color-border)]">
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white font-semibold py-3 px-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] font-semibold py-3 px-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -601,7 +602,7 @@ export default function PersonalInformationPage() {
         </div>
 
         <div className="text-center mt-6">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             Your information is secure and encrypted. {COMPANY_INFO.name} is an RBI Registered NBFC.
           </p>
         </div>

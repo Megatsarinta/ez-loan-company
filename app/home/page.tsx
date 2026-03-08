@@ -133,10 +133,10 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#f5f7fa] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--color-bg-main)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-gray-600">Loading your dashboard...</p>
+          <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-[var(--color-text-secondary)]">Loading your dashboard...</p>
         </div>
       </div>
     )
@@ -147,9 +147,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f7fa] text-[#212529] pb-24">
+    <div className="min-h-screen bg-[var(--color-bg-main)] text-[var(--color-text-primary)] pb-24">
       {/* Header - Fixed vertical alignment */}
-      <header className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-3">
+      <header className="bg-[var(--color-bg-surface)] shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-3">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-start justify-between">
             {/* Left - EASYLOAN with NRI aligned properly */}
@@ -166,11 +166,11 @@ export default function HomePage() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm md:text-base font-black tracking-tight whitespace-nowrap">
-                  <span className="text-[#FF9933]">EASY</span>
-                  <span className="text-[#138808]">LOAN</span>
+                  <span className="text-[var(--color-accent-500)]">EASY</span>
+                  <span className="text-[var(--color-secondary-600)]">LOAN</span>
                 </span>
                 {/* NRI badge - now directly below with no extra spacing */}
-                <span className="text-[8px] md:text-[10px] bg-[#FF9933] text-white px-2 py-0.5 rounded-full font-semibold self-start mt-0.5">
+                <span className="text-[8px] md:text-[10px] bg-[var(--color-accent-500)] text-[var(--color-bg-surface)] px-2 py-0.5 rounded-full font-semibold self-start mt-0.5">
                   NRI
                 </span>
               </div>
@@ -178,11 +178,11 @@ export default function HomePage() {
             
             {/* Right - Welcome: phone number and credit score below */}
             <div className="flex flex-col items-end min-w-0 max-w-[60%] sm:max-w-[70%]">
-              <div className="text-xs text-[#6C757D] truncate w-full text-right">
-                Welcome: <span className="font-mono font-medium text-[#212529]">{formatStoredPhone(user.phone_number)}</span>
+              <div className="text-xs text-[var(--color-text-secondary)] truncate w-full text-right">
+                Welcome: <span className="font-mono font-medium text-[var(--color-text-primary)]">{formatStoredPhone(user.phone_number)}</span>
               </div>
-              <div className="flex items-center gap-1 text-xs mt-0.5 bg-gradient-to-r from-[#FF9933]/10 to-[#138808]/10 px-2 py-0.5 rounded-full">
-                <Sparkles className="w-3 h-3 text-[#FF9933] flex-shrink-0" />
+              <div className="flex items-center gap-1 text-xs mt-0.5 bg-gradient-to-r from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 px-2 py-0.5 rounded-full">
+                <Sparkles className="w-3 h-3 text-[var(--color-accent-500)] flex-shrink-0" />
                 <span className="whitespace-nowrap font-medium">CIBIL Score: {(user as any).cibil_score ?? user.credit_score ?? '750'}</span>
               </div>
             </div>
@@ -221,8 +221,8 @@ export default function HomePage() {
                   onClick={() => setCurrentAdIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${
                     index === currentAdIndex 
-                      ? 'bg-white w-4' 
-                      : 'bg-white/50 hover:bg-white/80'
+                      ? 'bg-[var(--color-bg-surface)] w-4' 
+                      : 'bg-[var(--color-bg-surface)]/50 hover:bg-[var(--color-bg-surface)]/80'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -233,13 +233,13 @@ export default function HomePage() {
 
         {/* Click-to-Borrow Loans */}
         <section className="mb-6">
-          <div className="p-4 bg-white rounded-lg shadow">
+          <div className="p-4 bg-[var(--color-bg-surface)] rounded-lg shadow">
             <h2 className="text-xl font-semibold text-gray-800">Click-to-Borrow Loans</h2>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center">
                 <IndianRupee className="h-5 w-5 text-green-600 mr-2 shrink-0" />
                 <div>
-                  <p className="text-sm text-gray-500">Maximum Loan Amount</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Maximum Loan Amount</p>
                   <p className="text-lg font-bold text-gray-900">
                     {CURRENCY_CONFIG.symbol}{CURRENCY_CONFIG.maxLoan.toLocaleString('en-IN')}
                   </p>
@@ -248,7 +248,7 @@ export default function HomePage() {
               <div className="flex items-center">
                 <Percent className="h-5 w-5 text-blue-600 mr-2 shrink-0" />
                 <div>
-                  <p className="text-sm text-gray-500">Maximum Monthly Interest Rate</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Maximum Monthly Interest Rate</p>
                   <p className="text-lg font-bold text-gray-900">
                     {(Math.max(...CURRENCY_CONFIG.loanTerms.map(t => t.interestRate)) * 100).toFixed(1)}%
                   </p>
@@ -260,18 +260,18 @@ export default function HomePage() {
 
         {/* Quick Loan Info Section */}
         <section className="mb-8">
-          <div className="bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-2xl p-6 text-[var(--color-bg-surface)] shadow-lg">
             <div className="flex items-center gap-3 mb-3">
               <Gift className="w-8 h-8" />
               <h2 className="text-2xl font-bold">Need funds urgently?</h2>
             </div>
-            <p className="text-white/90 mb-4 max-w-2xl">
+            <p className="text-[var(--color-bg-surface)]/90 mb-4 max-w-2xl">
               Get approved for a loan in as fast as 24 hours with our Quick Loan application. 
               Low interest rates, flexible terms, and no collateral required. RBI Regulated NBFC.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/loan-application" className="inline-block">
-                <button className="bg-white text-[#FF9933] hover:bg-gray-100 font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                <button className="bg-[var(--color-bg-surface)] text-[var(--color-accent-500)] hover:bg-[var(--color-bg-main)] font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
                   Apply Quick Loan
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -286,9 +286,9 @@ export default function HomePage() {
 
         {/* Recent Withdrawals Section */}
         <section className="mb-12">
-          <div className="bg-white rounded-2xl shadow-lg p-6 max-w-lg mx-auto">
+          <div className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg p-6 max-w-lg mx-auto">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-[#FF9933]" />
+              <Clock className="w-5 h-5 text-[var(--color-accent-500)]" />
               Recent Transactions
             </h3>
             
@@ -297,14 +297,14 @@ export default function HomePage() {
               <div key={currentNotificationIndex} className="flex justify-between items-center py-4 border-b border-[#eee]">
                 <div>
                   <div className="font-semibold text-lg">{formatPhoneNumber(mockNotifications[currentNotificationIndex].phone)}</div>
-                  <div className="text-sm text-[#6C757D] flex items-center gap-1">
+                  <div className="text-sm text-[var(--color-text-secondary)] flex items-center gap-1">
                     <MapPin className="w-3 h-3" />
                     {mockNotifications[currentNotificationIndex].location}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xl font-bold text-[#138808]">₹{formatCurrency(mockNotifications[currentNotificationIndex].amount)}</div>
-                  <div className="text-sm text-[#6C757D]">
+                  <div className="text-xl font-bold text-[var(--color-secondary-600)]">₹{formatCurrency(mockNotifications[currentNotificationIndex].amount)}</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">
                     <div className="font-medium">{mockNotifications[currentNotificationIndex].method}</div>
                     <div>
                       {currentNotificationIndex === 0 ? 'Just now' : 
@@ -326,14 +326,14 @@ export default function HomePage() {
                   <div key={`notification-${notificationIdx}`} className="flex justify-between items-center py-3">
                     <div>
                       <div className="font-medium">{formatPhoneNumber(mockNotifications[notificationIdx].phone)}</div>
-                      <div className="text-xs text-[#6C757D] flex items-center gap-1">
+                      <div className="text-xs text-[var(--color-text-secondary)] flex items-center gap-1">
                         <MapPin className="w-3 h-3" />
                         {mockNotifications[notificationIdx].location}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-[#138808]">₹{formatCurrency(mockNotifications[notificationIdx].amount)}</div>
-                      <div className="text-xs text-[#6C757D]">
+                      <div className="font-semibold text-[var(--color-secondary-600)]">₹{formatCurrency(mockNotifications[notificationIdx].amount)}</div>
+                      <div className="text-xs text-[var(--color-text-secondary)]">
                         <div>{mockNotifications[notificationIdx].method}</div>
                         <div>{offset === 1 ? 'Recently' : 'Earlier today'}</div>
                       </div>
@@ -347,15 +347,15 @@ export default function HomePage() {
       </main>
 
       {/* BOTTOM NAVIGATION */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
             onClick={() => setActiveNav('home')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'home' 
-                ? 'text-[#FF9933] bg-[rgba(255,153,51,0.05)]' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[rgba(255,153,51,0.05)]' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <Home className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'home' ? 'scale-110' : ''}`} />
@@ -367,8 +367,8 @@ export default function HomePage() {
             onClick={() => setActiveNav('wallet')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'wallet' 
-                ? 'text-[#FF9933] bg-[rgba(255,153,51,0.05)]' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[rgba(255,153,51,0.05)]' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <Wallet className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'wallet' ? 'scale-110' : ''}`} />
@@ -380,8 +380,8 @@ export default function HomePage() {
             onClick={() => setActiveNav('account')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'account' 
-                ? 'text-[#FF9933] bg-[rgba(255,153,51,0.05)]' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[rgba(255,153,51,0.05)]' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <UserIcon className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'account' ? 'scale-110' : ''}`} />

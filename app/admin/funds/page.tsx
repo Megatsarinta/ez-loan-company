@@ -159,12 +159,12 @@ export default function WithdrawalListPage() {
   return (
     <>
       {/* Header - same structure as Deposit Management */}
-      <header className="bg-white border-b border-[#e9ecef] shadow-sm sticky top-0 z-30">
+      <header className="bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] shadow-sm sticky top-0 z-30">
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/admin/dashboard"
-              className="flex items-center gap-2 text-[#6C757D] hover:text-[#FF9933] transition-colors"
+              className="flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
               Back
@@ -174,14 +174,14 @@ export default function WithdrawalListPage() {
                 <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={40} height={40} className="object-contain" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#1e3a5f]">Fund Management</h1>
-                <p className="text-sm text-[#6C757D]">Manage member withdrawal requests</p>
+                <h1 className="text-xl font-bold text-[var(--color-primary-900)]">Fund Management</h1>
+                <p className="text-sm text-[var(--color-text-secondary)]">Manage member withdrawal requests</p>
               </div>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[#FF9933]/20">
-            <Shield className="w-4 h-4 text-[#FF9933]" />
-            <span className="text-xs font-medium text-[#212529]">RBI • MCA • CIBIL</span>
+          <div className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 px-3 py-1.5 rounded-full border border-[var(--color-accent-500)]/20">
+            <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+            <span className="text-xs font-medium text-[var(--color-text-primary)]">RBI • MCA • CIBIL</span>
           </div>
         </div>
       </header>
@@ -189,53 +189,53 @@ export default function WithdrawalListPage() {
       {/* Main Content */}
       <main className="px-6 py-8">
         {/* Filters */}
-        <Card className="p-6 mb-6 border border-gray-100 shadow-md bg-white">
+        <Card className="p-6 mb-6 border border-[var(--color-border)] shadow-md bg-[var(--color-bg-surface)]">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Filter className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Filter className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
-            <h3 className="text-lg font-semibold text-[#212529]">Filter & Search</h3>
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">Filter & Search</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Start Date */}
             <div>
-              <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                <Calendar className="w-4 h-4 text-[#FF9933]" />
+              <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                <Calendar className="w-4 h-4 text-[var(--color-accent-500)]" />
                 Start Date
               </label>
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
               />
             </div>
 
             {/* End Date */}
             <div>
-              <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                <Calendar className="w-4 h-4 text-[#138808]" />
+              <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                <Calendar className="w-4 h-4 text-[var(--color-secondary-600)]" />
                 End Date
               </label>
               <input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
               />
             </div>
 
             {/* Status Filter */}
             <div>
-              <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                <Clock className="w-4 h-4 text-[#FF6B00]" />
+              <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                <Clock className="w-4 h-4 text-[var(--color-accent-600)]" />
                 Status
               </label>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
               >
                 <option value="">All Statuses</option>
                 <option value="Pending">Pending</option>
@@ -249,8 +249,8 @@ export default function WithdrawalListPage() {
 
             {/* Search */}
             <div>
-              <label className="block text-sm font-medium text-[#212529] mb-2 flex items-center gap-1">
-                <Users className="w-4 h-4 text-[#FF9933]" />
+              <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-1">
+                <Users className="w-4 h-4 text-[var(--color-accent-500)]" />
                 Search
               </label>
               <div className="flex gap-2">
@@ -259,12 +259,12 @@ export default function WithdrawalListPage() {
                   placeholder="Search by document number or name..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-200 rounded-lg bg-white text-[#212529] placeholder-[#6C757D] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:border-transparent"
+                  className="flex-1 px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
                 />
                 <Button
                   onClick={handleSearch}
                   size="icon"
-                  className="px-4 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white"
+                  className="px-4 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
                 >
                   <Search className="w-4 h-4" />
                 </Button>
@@ -277,7 +277,7 @@ export default function WithdrawalListPage() {
             <Button
               onClick={handleRefresh}
               size="sm"
-              className="gap-2 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white"
+              className="gap-2 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
             >
               <RefreshCw className="w-4 h-4" />
               Refresh
@@ -287,29 +287,29 @@ export default function WithdrawalListPage() {
 
         {/* Error Message */}
         {error && (
-          <Card className="p-4 mb-6 bg-red-50 border border-red-200 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <Card className="p-4 mb-6 bg-[var(--color-primary-100)] border border-[var(--color-border)] flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-700">{error}</p>
           </Card>
         )}
 
         {/* Table */}
-        <Card className="border border-gray-100 shadow-md overflow-hidden">
+        <Card className="border border-[var(--color-border)] shadow-md overflow-hidden">
           {loading ? (
             <div className="p-12 text-center">
               <div className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin" />
-                <p className="text-[#6C757D]">Loading withdrawals...</p>
+                <div className="w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin" />
+                <p className="text-[var(--color-text-secondary)]">Loading withdrawals...</p>
               </div>
             </div>
           ) : withdrawals.length === 0 ? (
             <div className="p-12 text-center">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <DollarSign className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 bg-[var(--color-bg-main)] rounded-full flex items-center justify-center">
+                  <DollarSign className="w-8 h-8 text-[var(--color-text-secondary)]" />
                 </div>
-                <p className="text-gray-500 text-lg">No withdrawals found</p>
-                <p className="text-gray-400 text-sm">Try adjusting your filters or check back later</p>
+                <p className="text-[var(--color-text-secondary)] text-lg">No withdrawals found</p>
+                <p className="text-[var(--color-text-secondary)] text-sm">Try adjusting your filters or check back later</p>
               </div>
             </div>
           ) : (
@@ -322,21 +322,21 @@ export default function WithdrawalListPage() {
               />
 
               {/* Pagination */}
-              <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-white">
+              <div className="px-6 py-4 border-t border-[var(--color-border)] flex items-center justify-between bg-[var(--color-bg-surface)]">
                 <Button
                   onClick={() => setPage(page - 1)}
                   disabled={page === 1}
-                  className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-orange-50 disabled:opacity-50"
+                  className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-accent-100)] disabled:opacity-50"
                 >
                   <ChevronLeft className="w-4 h-4 mr-2" /> Previous
                 </Button>
-                <span className="text-sm text-[#6C757D]">
+                <span className="text-sm text-[var(--color-text-secondary)]">
                   Page {page} of {totalPages}
                 </span>
                 <Button
                   onClick={() => setPage(page + 1)}
                   disabled={page === totalPages}
-                  className="border-2 border-[#FF9933] text-[#FF9933] bg-white hover:bg-orange-50 disabled:opacity-50"
+                  className="border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-accent-100)] disabled:opacity-50"
                 >
                   Next <ChevronRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -346,25 +346,25 @@ export default function WithdrawalListPage() {
         </Card>
 
         {/* Government Logos */}
-        <div className="mt-6 bg-gradient-to-r from-orange-50 to-green-50 rounded-xl p-4 border border-[#FF9933]/20">
+        <div className="mt-6 bg-gradient-to-r from-orange-50 to-green-50 rounded-xl p-4 border border-[var(--color-accent-500)]/20">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="SEC" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="BSP" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">MCA Registered</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.cibil} alt="DMW" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">CIBIL Partner</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">CIBIL Partner</span>
             </div>
           </div>
         </div>

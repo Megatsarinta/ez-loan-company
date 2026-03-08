@@ -236,13 +236,13 @@ export default function AdminDepositsPage() {
   const totalPages = Math.ceil(depositsTotal / depositsLimit);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-blue-50 to-red-50">
-      <header className="bg-white border-b border-[#e9ecef] shadow-sm sticky top-0 z-30">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--color-bg-main)] via-[var(--color-primary-100)] to-[var(--color-accent-100)]">
+      <header className="bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] shadow-sm sticky top-0 z-30">
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/admin/dashboard"
-              className="flex items-center gap-2 text-[#6C757D] hover:text-[#FF9933] transition-colors"
+              className="flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               Back
@@ -252,8 +252,8 @@ export default function AdminDepositsPage() {
                 <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={40} height={40} className="object-contain" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#1e3a5f]">Deposit Management</h1>
-                <p className="text-sm text-[#6C757D]">Manual top-up and deposit history</p>
+                <h1 className="text-xl font-bold text-[var(--color-primary-900)]">Deposit Management</h1>
+                <p className="text-sm text-[var(--color-text-secondary)]">Manual top-up and deposit history</p>
               </div>
             </div>
           </div>
@@ -261,14 +261,14 @@ export default function AdminDepositsPage() {
       </header>
 
       <main className="p-6 max-w-6xl mx-auto">
-        <div className="flex gap-2 mb-6 border-b border-[#e9ecef]">
+        <div className="flex gap-2 mb-6 border-b border-[var(--color-border)]">
           <button
             type="button"
             onClick={() => setActiveTab('topup')}
             className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
               activeTab === 'topup'
-                ? 'bg-[#FF9933] text-white'
-                : 'bg-[#f8f9fa] text-[#6C757D] hover:bg-[#e9ecef]'
+                ? 'bg-[var(--color-accent-500)] text-[var(--color-bg-surface)]'
+                : 'bg-[var(--color-bg-main)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
             }`}
           >
             Manual Top-up
@@ -278,8 +278,8 @@ export default function AdminDepositsPage() {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
               activeTab === 'history'
-                ? 'bg-[#FF9933] text-white'
-                : 'bg-[#f8f9fa] text-[#6C757D] hover:bg-[#e9ecef]'
+                ? 'bg-[var(--color-accent-500)] text-[var(--color-bg-surface)]'
+                : 'bg-[var(--color-bg-main)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
             }`}
           >
             Deposit History
@@ -287,16 +287,16 @@ export default function AdminDepositsPage() {
         </div>
 
         {error && (
-          <Card className="p-4 mb-6 bg-red-50 border border-red-200 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <Card className="p-4 mb-6 bg-[var(--color-primary-100)] border border-[var(--color-border)] flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-700">{error}</p>
           </Card>
         )}
 
         {activeTab === 'topup' && (
-          <Card className="p-6 border border-[#e9ecef]">
-            <h2 className="text-lg font-semibold text-[#212529] mb-4 flex items-center gap-2">
-              <Banknote className="w-5 h-5 text-[#FF9933]" />
+          <Card className="p-6 border border-[var(--color-border)]">
+            <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
+              <Banknote className="w-5 h-5 text-[var(--color-accent-500)]" />
               Find user and add funds
             </h2>
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -312,7 +312,7 @@ export default function AdminDepositsPage() {
               <Button
                 onClick={handleSearchUser}
                 disabled={searching}
-                className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white gap-2"
+                className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] gap-2"
               >
                 {searching ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
                 Search
@@ -320,18 +320,18 @@ export default function AdminDepositsPage() {
             </div>
 
             {searchResult && (
-              <div className="border border-[#e9ecef] rounded-xl p-4 mb-6 bg-[#f8f9fa]">
+              <div className="border border-[var(--color-border)] rounded-xl p-4 mb-6 bg-[var(--color-bg-main)]">
                 <div className="flex items-center gap-2 mb-3">
-                  <User className="w-5 h-5 text-[#FF9933]" />
-                  <span className="font-medium text-[#212529]">User found</span>
+                  <User className="w-5 h-5 text-[var(--color-accent-500)]" />
+                  <span className="font-medium text-[var(--color-text-primary)]">User found</span>
                 </div>
-                <p className="text-[#212529] font-medium">{searchResult.full_name}</p>
-                <p className="text-sm text-[#6C757D]">{searchResult.phone_number}</p>
+                <p className="text-[var(--color-text-primary)] font-medium">{searchResult.full_name}</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">{searchResult.phone_number}</p>
                 {searchResult.document_number && (
-                  <p className="text-sm text-[#6C757D]">Order: {searchResult.document_number}</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Order: {searchResult.document_number}</p>
                 )}
                 <p className="text-sm mt-2">
-                  Current balance: <span className="font-semibold text-[#FF9933]">{formatINR(searchResult.wallet_balance)}</span>
+                  Current balance: <span className="font-semibold text-[var(--color-accent-500)]">{formatINR(searchResult.wallet_balance)}</span>
                 </p>
 
                 <div className="mt-4 space-y-4">
@@ -354,14 +354,14 @@ export default function AdminDepositsPage() {
                       placeholder="Optional note for this deposit"
                       value={topupNote}
                       onChange={(e) => setTopupNote(e.target.value)}
-                      className="mt-1 w-full px-3 py-2 border border-[#e9ecef] rounded-lg bg-white text-[#212529] min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#FF9933]"
+                      className="mt-1 w-full px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)]"
                     />
                   </div>
                   <div className="flex gap-3">
                     <Button
                       onClick={handleConfirmTopup}
                       disabled={submitting}
-                      className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white gap-2"
+                      className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] gap-2"
                     >
                       {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                       Confirm
@@ -386,16 +386,16 @@ export default function AdminDepositsPage() {
 
         {activeTab === 'history' && (
           <>
-            <Card className="p-4 mb-6 border border-[#e9ecef]">
+            <Card className="p-4 mb-6 border border-[var(--color-border)]">
               <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#FF9933]" />
-                  <span className="text-sm font-medium text-[#212529]">Date</span>
+                  <Calendar className="w-4 h-4 text-[var(--color-accent-500)]" />
+                  <span className="text-sm font-medium text-[var(--color-text-primary)]">Date</span>
                 </div>
                 <select
                   value={datePreset}
                   onChange={(e) => setDatePreset(e.target.value)}
-                  className="px-3 py-2 border border-[#e9ecef] rounded-lg bg-white text-[#212529] text-sm"
+                  className="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] text-sm"
                 >
                   <option value="today">Today</option>
                   <option value="yesterday">Yesterday</option>
@@ -409,13 +409,13 @@ export default function AdminDepositsPage() {
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="px-3 py-2 border border-[#e9ecef] rounded-lg bg-white text-[#212529] text-sm"
+                  className="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] text-sm"
                 />
                 <input
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="px-3 py-2 border border-[#e9ecef] rounded-lg bg-white text-[#212529] text-sm"
+                  className="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] text-sm"
                 />
                 <div className="flex gap-2 flex-1">
                   <Input
@@ -426,7 +426,7 @@ export default function AdminDepositsPage() {
                   />
                   <Button
                     onClick={() => { setDepositsPage(1); fetchDeposits(); }}
-                    className="bg-[#FF9933] text-white"
+                    className="bg-[var(--color-accent-500)] text-[var(--color-bg-surface)]"
                   >
                     Search
                   </Button>
@@ -434,53 +434,53 @@ export default function AdminDepositsPage() {
               </div>
             </Card>
 
-            <Card className="border border-[#e9ecef] overflow-hidden">
+            <Card className="border border-[var(--color-border)] overflow-hidden">
               <div className="overflow-x-auto">
                 {depositsLoading ? (
                   <div className="p-12 text-center">
-                    <Loader2 className="w-10 h-10 animate-spin text-[#FF9933] mx-auto mb-4" />
-                    <p className="text-[#6C757D]">Loading deposit history...</p>
+                    <Loader2 className="w-10 h-10 animate-spin text-[var(--color-accent-500)] mx-auto mb-4" />
+                    <p className="text-[var(--color-text-secondary)]">Loading deposit history...</p>
                   </div>
                 ) : (
                   <>
                     <table className="w-full">
                       <thead>
-                        <tr className="bg-[#f8f9fa] border-b border-[#e9ecef]">
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">#</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Loan Order Number</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Name & Phone</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Amount</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Remarks</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Creation Date</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-[#212529]">Operator</th>
+                        <tr className="bg-[var(--color-bg-main)] border-b border-[var(--color-border)]">
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">#</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Loan Order Number</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Name & Phone</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Amount</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Remarks</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Creation Date</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--color-text-primary)]">Operator</th>
                         </tr>
                       </thead>
                       <tbody>
                         {deposits.length === 0 ? (
                           <tr>
-                            <td colSpan={7} className="px-4 py-8 text-center text-[#6C757D]">
+                            <td colSpan={7} className="px-4 py-8 text-center text-[var(--color-text-secondary)]">
                               No deposits found.
                             </td>
                           </tr>
                         ) : (
                           deposits.map((row, index) => (
-                            <tr key={row.id} className="border-b border-[#e9ecef] hover:bg-[#f8f9fa]">
-                              <td className="px-4 py-3 text-sm text-[#6C757D]">
+                            <tr key={row.id} className="border-b border-[var(--color-border)] hover:bg-[var(--color-bg-main)]">
+                              <td className="px-4 py-3 text-sm text-[var(--color-text-secondary)]">
                                 {(depositsPage - 1) * depositsLimit + index + 1}
                               </td>
-                              <td className="px-4 py-3 text-sm text-[#212529]">
+                              <td className="px-4 py-3 text-sm text-[var(--color-text-primary)]">
                                 {row.document_number || '—'}
                               </td>
                               <td className="px-4 py-3">
-                                <div className="font-medium text-[#212529]">{row.user?.full_name ?? '—'}</div>
-                                <div className="text-xs text-[#6C757D]">{row.user?.phone_number ?? '—'}</div>
+                                <div className="font-medium text-[var(--color-text-primary)]">{row.user?.full_name ?? '—'}</div>
+                                <div className="text-xs text-[var(--color-text-secondary)]">{row.user?.phone_number ?? '—'}</div>
                               </td>
-                              <td className="px-4 py-3 font-medium text-[#212529]">{formatINR(row.amount)}</td>
-                              <td className="px-4 py-3 text-sm text-[#6C757D] max-w-[200px] truncate" title={row.metadata?.note || row.description}>
+                              <td className="px-4 py-3 font-medium text-[var(--color-text-primary)]">{formatINR(row.amount)}</td>
+                              <td className="px-4 py-3 text-sm text-[var(--color-text-secondary)] max-w-[200px] truncate" title={row.metadata?.note || row.description}>
                                 {row.metadata?.note || row.description || '—'}
                               </td>
-                              <td className="px-4 py-3 text-sm text-[#6C757D]">{formatDate(row.created_at)}</td>
-                              <td className="px-4 py-3 text-sm text-[#212529]">
+                              <td className="px-4 py-3 text-sm text-[var(--color-text-secondary)]">{formatDate(row.created_at)}</td>
+                              <td className="px-4 py-3 text-sm text-[var(--color-text-primary)]">
                                 {row.metadata?.operatorRole && row.metadata?.operatorUsername
                                   ? `${row.metadata.operatorRole} - ${row.metadata.operatorUsername}`
                                   : '—'}
@@ -490,22 +490,22 @@ export default function AdminDepositsPage() {
                         )}
                       </tbody>
                     </table>
-                    <div className="p-4 border-t border-[#e9ecef] flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="p-4 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <span className="text-sm text-[#6C757D]">
+                        <span className="text-sm text-[var(--color-text-secondary)]">
                           Rows per page:
                         </span>
                         <select
                           value={depositsLimit}
                           onChange={(e) => { setDepositsLimit(Number(e.target.value)); setDepositsPage(1); }}
-                          className="px-2 py-1 border border-[#e9ecef] rounded bg-white text-[#212529] text-sm"
+                          className="px-2 py-1 border border-[var(--color-border)] rounded bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] text-sm"
                         >
                           <option value={10}>10</option>
                           <option value={20}>20</option>
                           <option value={50}>50</option>
                           <option value={100}>100</option>
                         </select>
-                        <span className="text-sm text-[#6C757D]">
+                        <span className="text-sm text-[var(--color-text-secondary)]">
                           Total: {depositsTotal} records
                         </span>
                       </div>
@@ -519,7 +519,7 @@ export default function AdminDepositsPage() {
                           <ChevronLeft className="w-4 h-4" />
                           Previous
                         </Button>
-                        <span className="text-sm text-[#212529]">
+                        <span className="text-sm text-[var(--color-text-primary)]">
                           Page {depositsPage} of {totalPages || 1}
                         </span>
                         <Button

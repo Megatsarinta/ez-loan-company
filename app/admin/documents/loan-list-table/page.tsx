@@ -147,11 +147,11 @@ export default function LoanListTablePage() {
     }
   ]
 
-  // Fetch all loans on mount
+  // Fetch loans on mount (API caps at 100 per request to protect DB)
   useEffect(() => {
     const fetchLoans = async () => {
       try {
-        const response = await fetch('/api/admin/loans?limit=1000')
+        const response = await fetch('/api/admin/loans?limit=100')
         if (response.ok) {
           const data = await response.json()
           const realLoans = data.loans || []

@@ -974,7 +974,7 @@ export async function markSignatureCompleted(userId: number) {
 
 export async function getVerificationStatus(userId: number) {
   try {
-    let data: { personal_info_completed?: boolean; kyc_completed?: boolean; signature_completed?: boolean; last_verified_at?: string } | null = null;
+    let data: { personal_info_completed?: boolean; kyc_completed?: boolean; bank_info_completed?: boolean; signature_completed?: boolean; last_verified_at?: string } | null = null;
     const { data: userRow, error } = await supabase
       .from('users')
       .select('personal_info_completed, kyc_completed, signature_completed, last_verified_at')
@@ -1005,6 +1005,15 @@ export async function getVerificationStatus(userId: number) {
       if (hasSignature) data.signature_completed = true;
       if (app.kyc_front_url && app.kyc_back_url && app.selfie_url) data.kyc_completed = true;
     }
+
+    // Bank info complete: derive from bank_details table
+    const bankResult = await getBankDetails(userId);
+    const bankRow = bankResult.success && bankResult.data ? (bankResult.data as any) : null;
+    const hasBankInfo = !!(bankRow?.bank_name && bankRow?.account_number && bankRow?.ifsc_code);
+    if (!data) {
+      data = { personal_info_completed: false, kyc_completed: false, signature_completed: false };
+    }
+    (data as any).bank_info_completed = hasBankInfo;
 
     return { success: true, data };
   } catch (error) {
@@ -2226,6 +2235,8 @@ export async function getLoanApplicationWithUserByDocumentNumber(documentNumber:
 }
 
 /** Admin loans list via PG (no is_active - column may not exist on loan_applications). */
+const ADMIN_LOANS_MAX_LIMIT = 100;
+
 export async function getAdminLoanApplicationsPaginated(options: {
   limit: number;
   offset: number;
@@ -2235,7 +2246,9 @@ export async function getAdminLoanApplicationsPaginated(options: {
   endDate?: string;
 }) {
   try {
-    const { limit, offset, search, status, startDate, endDate } = options;
+    const safeLimit = Math.min(Math.max(1, options.limit), ADMIN_LOANS_MAX_LIMIT);
+    const safeOffset = Math.max(0, options.offset);
+    const { search, status, startDate, endDate } = options;
     const conditions: string[] = [];
     const params: (string | number)[] = [];
     let paramIndex = 1;
@@ -2269,7 +2282,7 @@ export async function getAdminLoanApplicationsPaginated(options: {
     });
     const total = typeof countRes === 'number' ? countRes : 0;
 
-    const listParams = [...params, limit, offset];
+    const listParams = [...params, safeLimit, safeOffset];
     const rows = await withDbClient(async (client) => {
       const listQuery = `
         SELECT la.id, la.user_id, la.document_number, la.amount_requested, la.loan_term_months, la.interest_rate,

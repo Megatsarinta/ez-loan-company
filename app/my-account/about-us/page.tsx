@@ -164,37 +164,37 @@ export default function AboutUsPage() {
         title: 'Transparency',
         description: 'No hidden fees, clear terms, and upfront disclosure of all charges as per RBI guidelines.',
         icon: 'target',
-        color: '#FF9933'
+        color: 'var(--color-accent-500)'
       },
       {
         title: 'Security',
         description: 'Bank-grade security, RBI regulation, and ISO 27001 certification.',
         icon: 'shield',
-        color: '#138808'
+        color: 'var(--color-secondary-600)'
       },
       {
         title: 'Accessibility',
         description: 'Available 24/7, designed for Indians worldwide including NRIs.',
         icon: 'globe',
-        color: '#000080'
+        color: 'var(--color-primary-900)'
       },
       {
         title: 'Speed',
         description: 'Fast approval and disbursement within 24 hours for qualified applicants.',
         icon: 'clock',
-        color: '#FF9933'
+        color: 'var(--color-accent-500)'
       },
       {
         title: 'Integrity',
         description: 'We follow the RBI Fair Practices Code and treat every client with respect.',
         icon: 'heart',
-        color: '#138808'
+        color: 'var(--color-secondary-600)'
       },
       {
         title: 'Community',
         description: 'Building a supportive financial ecosystem for our global Indian family.',
         icon: 'hand-heart',
-        color: '#000080'
+        color: 'var(--color-primary-900)'
       }
     ],
     stats: [
@@ -277,10 +277,10 @@ export default function AboutUsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-[#6C757D]">Loading company information...</p>
+          <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-[var(--color-text-secondary)]">Loading company information...</p>
         </div>
       </div>
     )
@@ -288,12 +288,12 @@ export default function AboutUsPage() {
 
   if (!about) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#6C757D] mb-4">Failed to load company information</p>
+          <p className="text-[var(--color-text-secondary)] mb-4">Failed to load company information</p>
           <button 
             onClick={() => router.back()} 
-            className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white px-6 py-3 rounded-xl font-semibold hover:from-[#e68a2e] hover:to-[#0f6d07] transition-all"
+            className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] px-6 py-3 rounded-xl font-semibold hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] transition-all"
           >
             Go Back
           </button>
@@ -303,14 +303,14 @@ export default function AboutUsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] pb-24">
       {/* HEADER - Redesigned with EasyLoan branding */}
-      <header className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4">
+      <header className="bg-[var(--color-bg-surface)] shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => router.back()} 
-              className="text-[#FF9933] hover:text-[#e68a2e] hover:bg-orange-50 p-2 rounded-xl transition-all"
+              className="text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] hover:bg-[var(--color-accent-100)] p-2 rounded-xl transition-all"
             >
               <ArrowLeft className="w-6 h-6" />
             </button>
@@ -328,18 +328,18 @@ export default function AboutUsPage() {
               <div>
                 <div className="flex items-baseline">
                   <span className="text-xl font-black tracking-tight">
-                    <span className="text-[#FF9933]">EASY</span>
-                    <span className="text-[#138808]">LOAN</span>
+                    <span className="text-[var(--color-accent-500)]">EASY</span>
+                    <span className="text-[var(--color-secondary-600)]">LOAN</span>
                   </span>
                 </div>
-                <p className="text-xs text-gray-500">About Us • Company Information</p>
+                <p className="text-xs text-[var(--color-text-secondary)]">About Us • Company Information</p>
               </div>
             </div>
           </div>
           
           {/* Government Badges - Updated to Indian regulators */}
           <div className="hidden sm:flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-full">
+            <div className="flex items-center gap-2 bg-[var(--color-accent-100)] px-3 py-1.5 rounded-full">
               <Image
                 src={GOVERNMENT_LOGOS.rbi}
                 alt="RBI Logo"
@@ -347,9 +347,9 @@ export default function AboutUsPage() {
                 height={20}
                 className="object-contain"
               />
-              <span className="font-semibold text-xs text-[#FF9933]">RBI Registered</span>
+              <span className="font-semibold text-xs text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
-            <div className="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-full">
+            <div className="flex items-center gap-2 bg-[var(--color-secondary-100)] px-3 py-1.5 rounded-full">
               <Image
                 src={GOVERNMENT_LOGOS.cibil}
                 alt="CIBIL Logo"
@@ -357,7 +357,7 @@ export default function AboutUsPage() {
                 height={20}
                 className="object-contain"
               />
-              <span className="font-semibold text-xs text-[#138808]">CIBIL Partner</span>
+              <span className="font-semibold text-xs text-[var(--color-secondary-600)]">CIBIL Partner</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
               <Image
@@ -367,7 +367,7 @@ export default function AboutUsPage() {
                 height={20}
                 className="object-contain"
               />
-              <span className="font-semibold text-xs text-[#000080]">DigiLocker</span>
+              <span className="font-semibold text-xs text-[var(--color-primary-900)]">DigiLocker</span>
             </div>
           </div>
         </div>
@@ -389,8 +389,8 @@ export default function AboutUsPage() {
               onClick={() => scrollToSection(item.id)}
               className={`px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-all ${
                 activeSection === item.id
-                  ? 'bg-gradient-to-r from-[#FF9933] to-[#138808] text-white'
-                  : 'bg-white text-[#6C757D] hover:bg-orange-50 hover:text-[#FF9933]'
+                  ? 'bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)]'
+                  : 'bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] hover:bg-[var(--color-accent-100)] hover:text-[var(--color-accent-500)]'
               }`}
             >
               {item.label}
@@ -401,76 +401,76 @@ export default function AboutUsPage() {
 
       <main className="px-4 py-6 max-w-4xl mx-auto space-y-6">
         {/* HERO SECTION - Redesigned with Indian flag colors */}
-        <section id="company-info" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-2xl p-6 md:p-8 relative overflow-hidden">
+        <section id="company-info" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-2xl p-6 md:p-8 relative overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-8"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-8"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-bg-surface)]/5 rounded-full -translate-y-16 translate-x-8"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--color-bg-surface)]/5 rounded-full translate-y-12 -translate-x-8"></div>
           
           <div className="flex items-center gap-4 mb-6 relative z-10">
-            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+            <div className="w-16 h-16 bg-[var(--color-bg-surface)]/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
               <Building className="w-8 h-8" />
             </div>
             <div>
               <h1 className="text-2xl font-bold">{about.company}</h1>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-2xl">🇮🇳</span>
-                <span className="text-white/90">RBI Registered NBFC • For NRIs, for India</span>
+                <span className="text-[var(--color-bg-surface)]/90">RBI Registered NBFC • For NRIs, for India</span>
               </div>
             </div>
           </div>
           
           <div className="space-y-4 relative z-10">
-            <p className="text-lg text-white/90">{about.intro}</p>
-            <p className="text-white/80">{about.mission}</p>
-            <div className="pt-4 border-t border-white/20">
-              <p className="text-sm text-white/70">Incorporated in {COMPANY_INFO.incorporationDate.split('-')[0]}</p>
+            <p className="text-lg text-[var(--color-bg-surface)]/90">{about.intro}</p>
+            <p className="text-[var(--color-bg-surface)]/80">{about.mission}</p>
+            <div className="pt-4 border-t border-[var(--color-bg-surface)]/20">
+              <p className="text-sm text-[var(--color-bg-surface)]/70">Incorporated in {COMPANY_INFO.incorporationDate.split('-')[0]}</p>
             </div>
           </div>
           
           {/* Company Stats - Redesigned cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 relative z-10">
             {about.stats.map((stat, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20">
+              <div key={index} className="bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-xl p-4 text-center border border-[var(--color-bg-surface)]/20">
                 <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                <div className="text-sm text-white/80">{stat.label}</div>
+                <div className="text-sm text-[var(--color-bg-surface)]/80">{stat.label}</div>
               </div>
             ))}
           </div>
         </section>
 
         {/* OUR VALUES - Redesigned with color-coded cards */}
-        <section id="our-values" className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h2 className="text-xl font-bold text-[#212529] mb-6 flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Target className="w-4 h-4 text-white" />
+        <section id="our-values" className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Target className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             Our Core Values
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {about.values.map((value, index) => (
-              <div key={index} className="bg-[#f8f9fa] rounded-xl p-5 hover:shadow-md transition-all border border-gray-100 hover:border-[#FF9933]/20">
+              <div key={index} className="bg-[var(--color-bg-main)] rounded-xl p-5 hover:shadow-md transition-all border border-[var(--color-border)] hover:border-[var(--color-accent-500)]/20">
                 <div className="mb-3" style={{ color: value.color }}>
                   {getIconComponent(value.icon, value.color)}
                 </div>
-                <h3 className="font-semibold text-[#212529] mb-2">{value.title}</h3>
-                <p className="text-sm text-[#6C757D]">{value.description}</p>
+                <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">{value.title}</h3>
+                <p className="text-sm text-[var(--color-text-secondary)]">{value.description}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* SECURITY & COMPLIANCE - Redesigned with Indian flag colors */}
-        <section id="security-compliance" className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-2xl p-6 md:p-8">
+        <section id="security-compliance" className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-2xl p-6 md:p-8">
           <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
             <Shield className="w-6 h-6" />
             Security & Compliance
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+            <div className="bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-xl p-5 border border-[var(--color-bg-surface)]/20">
               <h3 className="font-semibold mb-3">Bank-Grade Security</h3>
-              <p className="text-white/90 text-sm mb-4">{about.security}</p>
+              <p className="text-[var(--color-bg-surface)]/90 text-sm mb-4">{about.security}</p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4" />
@@ -487,9 +487,9 @@ export default function AboutUsPage() {
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+            <div className="bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-xl p-5 border border-[var(--color-bg-surface)]/20">
               <h3 className="font-semibold mb-3">Regulatory Compliance</h3>
-              <p className="text-white/90 text-sm mb-4">{about.compliance}</p>
+              <p className="text-[var(--color-bg-surface)]/90 text-sm mb-4">{about.compliance}</p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={16} height={16} className="object-contain" />
@@ -509,46 +509,46 @@ export default function AboutUsPage() {
         </section>
 
         {/* CONTACT INFORMATION - Redesigned with color-coded cards */}
-        <section id="contact-info" className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h2 className="text-xl font-bold text-[#212529] mb-6 flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Phone className="w-4 h-4 text-white" />
+        <section id="contact-info" className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Phone className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             Contact Information
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-orange-50 rounded-xl p-5 border border-orange-200">
+            <div className="bg-[var(--color-accent-100)] rounded-xl p-5 border border-orange-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#FF9933] rounded-lg flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-[var(--color-accent-500)] rounded-lg flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-[var(--color-bg-surface)]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#212529]">Email Support</h3>
-                  <p className="text-sm text-[#6C757D]">24/7 Customer Support</p>
+                  <h3 className="font-semibold text-[var(--color-text-primary)]">Email Support</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">24/7 Customer Support</p>
                 </div>
               </div>
               <a 
                 href={`mailto:${about.email}`}
-                className="text-[#FF9933] hover:text-[#e68a2e] font-medium break-all hover:underline"
+                className="text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] font-medium break-all hover:underline"
               >
                 {about.email}
               </a>
             </div>
             
-            <div className="bg-green-50 rounded-xl p-5 border border-green-200">
+            <div className="bg-[var(--color-secondary-100)] rounded-xl p-5 border border-green-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#138808] rounded-lg flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-[var(--color-bg-surface)]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#212529]">Phone Support</h3>
-                  <p className="text-sm text-[#6C757D]">Mon-Sat, 9AM-6PM IST</p>
+                  <h3 className="font-semibold text-[var(--color-text-primary)]">Phone Support</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Mon-Sat, 9AM-6PM IST</p>
                 </div>
               </div>
               <a 
                 href={`tel:${about.phone.replace(/[^+\d]/g, '')}`}
-                className="text-[#138808] hover:text-[#0f6d07] font-medium hover:underline"
+                className="text-[var(--color-secondary-600)] hover:text-[var(--color-secondary-500)] font-medium hover:underline"
               >
                 {about.phone}
               </a>
@@ -556,19 +556,19 @@ export default function AboutUsPage() {
             
             <div className="bg-blue-50 rounded-xl p-5 border border-blue-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#000080] rounded-lg flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-[var(--color-primary-900)] rounded-lg flex items-center justify-center">
+                  <Globe className="w-5 h-5 text-[var(--color-bg-surface)]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#212529]">Website</h3>
-                  <p className="text-sm text-[#6C757D]">Official Information</p>
+                  <h3 className="font-semibold text-[var(--color-text-primary)]">Website</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Official Information</p>
                 </div>
               </div>
               <a 
                 href={`https://${about.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#000080] hover:text-[#000066] font-medium flex items-center gap-1 hover:underline"
+                className="text-[var(--color-primary-900)] hover:text-[var(--color-primary-700)] font-medium flex items-center gap-1 hover:underline"
               >
                 {about.website}
                 <ExternalLink className="w-3 h-3" />
@@ -577,28 +577,28 @@ export default function AboutUsPage() {
           </div>
 
           {/* Additional Contact Info */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="mt-6 pt-6 border-t border-[var(--color-border)]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-[#212529] mb-2">Registered Office</h4>
-                <p className="text-sm text-[#6C757D]">{about.address}</p>
+                <h4 className="font-semibold text-[var(--color-text-primary)] mb-2">Registered Office</h4>
+                <p className="text-sm text-[var(--color-text-secondary)]">{about.address}</p>
               </div>
               <div>
-                <h4 className="font-semibold text-[#212529] mb-2">Operating Hours</h4>
-                <p className="text-sm text-[#6C757D]">{about.operatingHours}</p>
+                <h4 className="font-semibold text-[var(--color-text-primary)] mb-2">Operating Hours</h4>
+                <p className="text-sm text-[var(--color-text-secondary)]">{about.operatingHours}</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* FREQUENTLY ASKED QUESTIONS - Redesigned header */}
-        <section id="faq" className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-          <div className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white p-6">
+        <section id="faq" className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg overflow-hidden border border-[var(--color-border)]">
+          <div className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] p-6">
             <h2 className="text-xl font-bold flex items-center gap-2">
               <FileText className="w-5 h-5" />
               Frequently Asked Questions
             </h2>
-            <p className="text-white/80 text-sm mt-1">Find answers to common questions about our services</p>
+            <p className="text-[var(--color-bg-surface)]/80 text-sm mt-1">Find answers to common questions about our services</p>
           </div>
           
           <div className="divide-y divide-[#f0f0f0]">
@@ -609,23 +609,23 @@ export default function AboutUsPage() {
                   className="w-full flex items-center justify-between text-left group"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-md flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-md flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-sm font-semibold">{index + 1}</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-[#212529] group-hover:text-[#FF9933] transition-colors">
+                      <p className="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-500)] transition-colors">
                         {item.question}
                       </p>
                       {expandedFaq === index && (
-                        <p className="text-sm text-[#6C757D] mt-2">{item.answer}</p>
+                        <p className="text-sm text-[var(--color-text-secondary)] mt-2">{item.answer}</p>
                       )}
                     </div>
                   </div>
                   <div className="ml-4 flex-shrink-0">
                     {expandedFaq === index ? (
-                      <ChevronUp className="w-5 h-5 text-[#FF9933]" />
+                      <ChevronUp className="w-5 h-5 text-[var(--color-accent-500)]" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-[#6C757D]" />
+                      <ChevronDown className="w-5 h-5 text-[var(--color-text-secondary)]" />
                     )}
                   </div>
                 </button>
@@ -635,10 +635,10 @@ export default function AboutUsPage() {
         </section>
 
         {/* POLICIES - Redesigned cards */}
-        <section id="policies" className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h2 className="text-xl font-bold text-[#212529] mb-6 flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <FileText className="w-4 h-4 text-white" />
+        <section id="policies" className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <FileText className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             Company Policies
           </h2>
@@ -650,20 +650,20 @@ export default function AboutUsPage() {
                 href={policy.url}
                 className="group block"
               >
-                <div className="bg-[#f8f9fa] hover:bg-gradient-to-r hover:from-[#FF9933] hover:to-[#138808] group-hover:text-white border border-gray-100 rounded-xl p-4 transition-all group-hover:shadow-md">
+                <div className="bg-[var(--color-bg-main)] hover:bg-gradient-to-r hover:from-[var(--color-accent-500)] hover:to-[var(--color-secondary-600)] group-hover:text-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-4 transition-all group-hover:shadow-md">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-                        <FileText className="w-5 h-5 text-white" />
+                      <div className="w-10 h-10 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+                        <FileText className="w-5 h-5 text-[var(--color-bg-surface)]" />
                       </div>
                       <div>
-                        <span className="font-semibold text-[#212529] group-hover:text-white">
+                        <span className="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-bg-surface)]">
                           {policy.name}
                         </span>
-                        <p className="text-xs text-[#6C757D] group-hover:text-white/80 mt-1">{policy.description}</p>
+                        <p className="text-xs text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-surface)]/80 mt-1">{policy.description}</p>
                       </div>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-[#6C757D] group-hover:text-white" />
+                    <ExternalLink className="w-4 h-4 text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-surface)]" />
                   </div>
                 </div>
               </Link>
@@ -672,25 +672,25 @@ export default function AboutUsPage() {
         </section>
 
         {/* Government Trust Badges - Updated to Indian regulators */}
-        <div className="bg-gradient-to-r from-orange-50 to-green-50 rounded-2xl p-4 border border-[#FF9933]/20">
+        <div className="bg-gradient-to-r from-orange-50 to-green-50 rounded-2xl p-4 border border-[var(--color-accent-500)]/20">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="MCA" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#138808]">MCA Registered</span>
+              <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Registered</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 relative">
                 <Image src={GOVERNMENT_LOGOS.cibil} alt="CIBIL" width={24} height={24} className="object-contain" />
               </div>
-              <span className="text-xs font-medium text-[#000080]">CIBIL Partner</span>
+              <span className="text-xs font-medium text-[var(--color-primary-900)]">CIBIL Partner</span>
             </div>
           </div>
         </div>
@@ -698,7 +698,7 @@ export default function AboutUsPage() {
         {/* BACK BUTTON - Updated gradient */}
         <button
           onClick={() => router.back()}
-          className="w-full bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+          className="w-full bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to My Account
@@ -706,11 +706,11 @@ export default function AboutUsPage() {
       </main>
 
       {/* BOTTOM NAVIGATION - Updated colors */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4 border-t border-gray-100">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4 border-t border-[var(--color-border)]">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
-            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-orange-50"
+            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[var(--color-accent-100)]"
           >
             <Home className="w-7 h-7 mb-1" />
             <span className="text-xs font-semibold">HOME</span>
@@ -718,7 +718,7 @@ export default function AboutUsPage() {
 
           <Link
             href="/wallet"
-            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-orange-50"
+            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[var(--color-accent-100)]"
           >
             <Wallet className="w-7 h-7 mb-1" />
             <span className="text-xs font-semibold">WALLET</span>
@@ -726,7 +726,7 @@ export default function AboutUsPage() {
 
           <Link
             href="/my-account"
-            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[#FF9933] bg-orange-50"
+            className="flex flex-col items-center px-8 py-2 rounded-lg transition-all text-[var(--color-accent-500)] bg-[var(--color-accent-100)]"
           >
             <UserCircle className="w-7 h-7 mb-1" />
             <span className="text-xs font-semibold">ACCOUNT</span>
@@ -736,7 +736,7 @@ export default function AboutUsPage() {
 
       {/* Footer Note */}
       <div className="text-center mt-6 pb-4">
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-[var(--color-text-secondary)]">
           {COMPANY_INFO.name} | CIN: {COMPANY_INFO.cin} | RBI Reg No: {COMPANY_INFO.rbiRegistrationNo}
           <br />
           All rights reserved. For NRIs, for India.

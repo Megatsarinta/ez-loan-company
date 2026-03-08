@@ -9,231 +9,231 @@ const STATUS_PRESETS = [
   { 
     value: 'UNDER_REVIEW', 
     label: 'Under Review', 
-    color: '#3B82F6', 
+    color: 'var(--color-primary-700)', 
     icon: Clock,
     description: 'Your application is currently under review. Please wait for further updates from our Finance Department.'
   },
   { 
     value: 'LOAN_APPROVED', 
     label: 'Loan Approved', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: CheckCircle,
     description: 'Your loan has been approved. Please contact the Finance Department or your credit officer to obtain the OTP code.'
   },
   { 
     value: 'LOAN_APPROVED_CONFIRMATION', 
     label: 'Loan Approved (Confirmation Required)', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: CheckCircle,
     description: 'To obtain the OTP withdrawal code, please confirm 10% of your authorized credit limit.'
   },
   { 
     value: 'OTP_GENERATED', 
     label: 'OTP Code Generated', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: Copy,
     description: 'Your withdrawal OTP code is 798429. Please note that this OTP is valid for a single withdrawal only.'
   },
   { 
     value: 'WITHDRAWAL_PROCESSING', 
     label: 'Withdrawal Processing', 
-    color: '#6366F1', 
+    color: 'var(--color-primary-700)', 
     icon: RotateCw,
     description: 'Your withdrawal request is currently being processed. Please wait for confirmation.'
   },
   { 
     value: 'WITHDRAWAL_FAILED', 
     label: 'Withdrawal Failed', 
-    color: '#DC2626', 
+    color: 'var(--color-primary-900)', 
     icon: XCircle,
     description: 'Your withdrawal request has failed. Please contact the Finance Department for further details.'
   },
   { 
     value: 'INVALID_BANK_NAME', 
     label: 'Invalid Bank Name', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: Ban,
     description: 'Your withdrawal request failed because the bank name provided is invalid. Please update your banking information.'
   },
   { 
     value: 'INVALID_BANK_ACCOUNT', 
     label: 'Invalid Bank Account', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: Ban,
     description: 'The bank account number provided is incorrect. The system failed to transfer funds, and they are temporarily frozen. Please contact us immediately to unfreeze your funds.'
   },
   { 
     value: 'INVALID_BANK_ACCOUNT_FROZEN', 
     label: 'Invalid Bank Account / Fund Frozen', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: Lock,
     description: 'The system was unable to transfer funds to your bank account because the account information provided is incorrect. As a result, the funds have been frozen. Please contact us to resolve the issue and unfreeze your funds.'
   },
   { 
     value: 'MISMATCH_BENEFICIARY', 
     label: 'Mismatch Beneficiary Name', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: AlertTriangle,
     description: 'The bank account number does not match the name on your application. The funds have been temporarily frozen. Please contact us immediately to resolve this issue.'
   },
   { 
     value: 'INVALID_ID_CARD', 
     label: 'Invalid ID Card', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: Fingerprint,
     description: 'Your withdrawal request failed because the ID card information provided is invalid. Please upload a valid identification document.'
   },
   { 
     value: 'FUND_FROZEN', 
     label: 'Fund Frozen', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: Lock,
     description: 'Your account has been temporarily frozen due to modifications made to your loan approved application. Please contact the Finance Department for assistance.'
   },
   { 
     value: 'ERROR_INFO', 
     label: 'Error Information', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: AlertCircle,
     description: 'The system was unable to transfer funds due to an error. The funds have been frozen. Please contact us to unfreeze them.'
   },
   { 
     value: 'ACCOUNT_LIMIT_REACHED', 
     label: 'Account Limit Reached', 
-    color: '#EF4444', 
+    color: 'var(--color-primary-900)', 
     icon: TrendingUp,
     description: 'The system was unable to transfer funds to your bank account as it has reached its limit. The funds have been frozen. Please contact us to unfreeze them.'
   },
   { 
     value: 'PROCESSING_UNFREEZE', 
     label: 'Processing Unfreeze', 
-    color: '#6366F1', 
+    color: 'var(--color-primary-700)', 
     icon: RefreshCw,
     description: 'Your request to unfreeze your funds is currently being processed.'
   },
   { 
     value: 'UNFROZEN', 
     label: 'Unfrozen', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: Unlock,
     description: 'Your account has been successfully unfrozen. We apologize for any inconvenience caused and appreciate your patience.'
   },
   { 
     value: 'LOW_CREDIT_SCORE', 
     label: 'Low Credit Score', 
-    color: '#F97316', 
+    color: 'var(--color-accent-500)', 
     icon: TrendingDown,
     description: 'Your credit score needs attention. Take action now to improve your credit score and secure better financial opportunities.'
   },
   { 
     value: 'TOP_UP_CREDIT_SCORE', 
     label: 'Top-up Credit Score', 
-    color: '#8B5CF6', 
+    color: 'var(--color-primary-700)', 
     icon: TrendingUp,
     description: 'Your credit score requires improvement. Please complete the necessary steps to increase it.'
   },
   { 
     value: 'WITHDRAWAL_REJECTED', 
     label: 'Withdrawal Rejected', 
-    color: '#DC2626', 
+    color: 'var(--color-primary-900)', 
     icon: XCircle,
     description: 'Your withdrawal request has been rejected. Please contact the Finance Department for further details.'
   },
   { 
     value: 'OVERDUE', 
     label: 'Overdue', 
-    color: '#B91C1C', 
+    color: 'var(--color-primary-900)', 
     icon: AlertCircle,
     description: 'Your account is currently overdue. Please deposit the outstanding amount as soon as possible to avoid penalties. We apologize for any inconvenience caused and appreciate your patience.'
   },
   { 
     value: 'TAX', 
     label: 'Tax', 
-    color: '#F59E0B', 
+    color: 'var(--color-accent-500)', 
     icon: Receipt,
     description: 'Tax payment is required before proceeding. Please contact the Finance Department for further instructions.'
   },
   { 
     value: 'TAX_SETTLED', 
     label: 'Tax Settled', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: CheckCircle,
     description: 'Your tax payment has been successfully settled. You may proceed with your transaction.'
   },
   { 
     value: 'WITHDRAWAL_SUCCESSFUL', 
     label: 'Withdrawal Successful', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: Wallet,
     description: 'Your withdrawal has been successfully completed. Please check your bank account for confirmation.'
   },
   { 
     value: 'BANK_INFO_UPDATED', 
     label: 'Bank Info Updated', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: Banknote,
     description: 'Your banking information has been successfully updated.'
   },
   { 
     value: 'PERSONAL_INFO_UPDATED', 
     label: 'Personal Info Updated', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: UserCheck,
     description: 'Your personal information has been successfully updated.'
   },
   { 
     value: 'INSURANCE', 
     label: 'Insurance', 
-    color: '#0EA5E9', 
+    color: 'var(--color-primary-700)', 
     icon: Shield,
     description: 'Insurance verification is required before proceeding. Please contact the Finance Department for details.'
   },
   { 
     value: 'GAMBLING', 
     label: 'Gambling', 
-    color: '#F43F5E', 
+    color: 'var(--color-primary-900)', 
     icon: AlertTriangle,
     description: 'Your account has been flagged due to gambling-related activity. Please contact the Finance Department for clarification.'
   },
   { 
     value: 'IRREGULAR_ACTIVITY', 
     label: 'Irregular Activity Detected', 
-    color: '#DC2626', 
+    color: 'var(--color-primary-900)', 
     icon: Eye,
     description: 'We noticed some irregular activity on your account. Please update your information immediately to avoid any disruption in service.'
   },
   { 
     value: 'DUPLICATE_APPLICATION', 
     label: 'Duplicate Application', 
-    color: '#E11D48', 
+    color: 'var(--color-primary-900)', 
     icon: Copy,
     description: 'A duplicate application has been detected. Please contact the Finance Department to resolve this issue.'
   },
   { 
     value: 'ACCOUNT_SUSPENDED', 
     label: 'Account Suspended', 
-    color: '#DC2626', 
+    color: 'var(--color-primary-900)', 
     icon: Ban,
     description: 'Your account has been temporarily suspended due to a policy violation or unusual activity. Please contact the Finance Department for assistance.'
   },
   { 
     value: 'ACCOUNT_REACTIVATED', 
     label: 'Account Reactivated', 
-    color: '#22C55E', 
+    color: 'var(--color-secondary-600)', 
     icon: RefreshCw,
     description: 'Your account has been successfully reactivated. You may now continue using all services normally.'
   },
   { 
     value: 'ACCOUNT_DEACTIVATED', 
     label: 'Account Deactivated', 
-    color: '#64748B', 
+    color: 'var(--color-text-secondary)', 
     icon: Ban,
     description: 'Your account has been deactivated. Please contact the Finance Department if you wish to reactivate it.'
   },
   { 
     value: 'RENEW_OTP', 
     label: 'Renew OTP Code', 
-    color: '#F59E0B', 
+    color: 'var(--color-accent-500)', 
     icon: RotateCw,
     description: 'Your OTP code has expired. Please contact the Finance Department to request a new one.'
   }
@@ -247,15 +247,14 @@ interface ReviewModalProps {
 
 export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
   const [status, setStatus] = useState(loan.status || '');
-  const [statusColor, setStatusColor] = useState(loan.status_color || '#F59E0B');
+  const [statusColor, setStatusColor] = useState(loan.status_color || 'var(--color-accent-500)');
   const [description, setDescription] = useState(loan.status_description || loan.admin_status_message || '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Brand colors
-  const saffron = '#FF9933';
-  const green = '#138808';
+  const saffron = 'var(--color-accent-500)';
+  const green = 'var(--color-secondary-600)';
 
   // Update color when status changes
   useEffect(() => {
@@ -303,23 +302,23 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
       <Card className="max-w-5xl w-full p-8 max-h-[95vh] overflow-y-auto border-0 shadow-2xl">
-        <div className="flex items-center justify-between mb-8 sticky top-0 bg-white z-10 pb-6 border-b">
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+        <div className="flex items-center justify-between mb-8 sticky top-0 bg-[var(--color-bg-surface)] z-10 pb-6 border-b">
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
             Review Loan Application
           </h3>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-orange-50 rounded-full transition-colors"
+            className="p-2 hover:bg-[var(--color-accent-100)] rounded-full transition-colors"
           >
-            <X className="w-6 h-6 text-[#212529]" />
+            <X className="w-6 h-6 text-[var(--color-text-primary)]" />
           </button>
         </div>
 
         {/* Loan Info Cards - 2x2 Grid */}
         <div className="grid grid-cols-2 gap-6 mb-8">
           {/* Document Number Card */}
-          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border-2 border-[#FF9933]/30 shadow-md">
-            <div className="flex items-center gap-3 text-[#FF9933] mb-3">
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border-2 border-[var(--color-accent-500)]/30 shadow-md">
+            <div className="flex items-center gap-3 text-[var(--color-accent-500)] mb-3">
               <FileText className="w-6 h-6" />
               <span className="text-sm font-bold uppercase tracking-wider">Document Number</span>
             </div>
@@ -329,15 +328,15 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
           </div>
 
           {/* Borrower Name Card */}
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-2 border-[#138808]/30 shadow-md">
-            <div className="flex items-center gap-3 text-[#138808] mb-3">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-2 border-[var(--color-secondary-600)]/30 shadow-md">
+            <div className="flex items-center gap-3 text-[var(--color-secondary-600)] mb-3">
               <UserCheck className="w-6 h-6" />
               <span className="text-sm font-bold uppercase tracking-wider">Borrower Name</span>
             </div>
             <p className="font-bold text-gray-900 text-xl">
               {loan.borrower_name}
             </p>
-            <p className="text-base text-gray-600 mt-2">{loan.borrower_phone}</p>
+            <p className="text-base text-[var(--color-text-secondary)] mt-2">{loan.borrower_phone}</p>
           </div>
 
           {/* Loan Amount Card */}
@@ -360,13 +359,13 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
             <p className="font-bold text-gray-900 text-xl">
               {(Number(loan.interest_rate) * 100).toFixed(2)}%
             </p>
-            <p className="text-base text-gray-600 mt-2">{loan.loan_period_months} months</p>
+            <p className="text-base text-[var(--color-text-secondary)] mt-2">{loan.loan_period_months} months</p>
           </div>
         </div>
 
         {/* Search Presets */}
         <div className="mb-6">
-          <label className="block text-base font-semibold text-gray-700 mb-3">
+          <label className="block text-base font-semibold text-[var(--color-text-primary)] mb-3">
             Search Status Presets
           </label>
           <input
@@ -374,26 +373,26 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
             placeholder="Type to filter statuses..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#FF9933] focus:ring-opacity-20 focus:border-[#FF9933]"
+            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-700)] focus:ring-opacity-20 focus:border-[var(--color-accent-500)]"
           />
         </div>
 
         {/* Status Presets Grid */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <label className="text-base font-semibold text-gray-700">
+            <label className="text-base font-semibold text-[var(--color-text-primary)]">
               Status Presets ({filteredPresets.length})
             </label>
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="text-sm text-[#FF9933] hover:text-[#138808] font-medium"
+                className="text-sm text-[var(--color-accent-500)] hover:text-[var(--color-secondary-600)] font-medium"
               >
                 Clear Search
               </button>
             )}
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto p-2 border-2 border-gray-200 rounded-xl bg-gray-50">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto p-2 border-2 border-[var(--color-border)] rounded-xl bg-[var(--color-bg-main)]">
             {filteredPresets.map((preset) => {
               const Icon = preset.icon;
               const isSelected = status === preset.value;
@@ -408,8 +407,8 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
                   className={`
                     flex items-start gap-4 p-5 rounded-xl border-3 transition-all text-left w-full
                     ${isSelected 
-                      ? 'border-[#FF9933] bg-white shadow-xl scale-[1.02]' 
-                      : 'border-gray-300 bg-white hover:border-gray-400 hover:shadow-lg hover:scale-[1.01]'
+                      ? 'border-[var(--color-accent-500)] bg-[var(--color-bg-surface)] shadow-xl scale-[1.02]' 
+                      : 'border-gray-300 bg-[var(--color-bg-surface)] hover:border-gray-400 hover:shadow-lg hover:scale-[1.01]'
                     }
                   `}
                   style={isSelected ? { borderColor: preset.color } : {}}
@@ -427,16 +426,16 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-lg font-bold text-gray-900">{preset.label}</span>
                       <div 
-                        className="w-6 h-6 rounded-full border-2 border-white shadow-md" 
+                        className="w-6 h-6 rounded-full border-2 border-[var(--color-bg-surface)] shadow-md" 
                         style={{ backgroundColor: preset.color }}
                       />
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed line-clamp-2">
+                    <p className="text-sm text-[var(--color-text-primary)] leading-relaxed line-clamp-2">
                       {preset.description}
                     </p>
                     {isSelected && (
                       <div className="mt-3 flex items-center gap-2">
-                        <span className="text-xs font-medium text-[#FF9933] bg-orange-50 px-3 py-1.5 rounded-full">
+                        <span className="text-xs font-medium text-[var(--color-accent-500)] bg-[var(--color-accent-100)] px-3 py-1.5 rounded-full">
                           Selected
                         </span>
                       </div>
@@ -450,7 +449,7 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
 
         {/* Custom Status Input */}
         <div className="mb-6">
-          <label className="block text-base font-semibold text-gray-700 mb-3">
+          <label className="block text-base font-semibold text-[var(--color-text-primary)] mb-3">
             Custom Status
           </label>
           <input
@@ -458,13 +457,13 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
             value={status}
             onChange={(e) => setStatus(e.target.value)}
             placeholder="Enter custom status..."
-            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#FF9933] focus:ring-opacity-20 focus:border-[#FF9933]"
+            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-700)] focus:ring-opacity-20 focus:border-[var(--color-accent-500)]"
           />
         </div>
 
         {/* Color Picker */}
         <div className="mb-6">
-          <label className="block text-base font-semibold text-gray-700 mb-3">
+          <label className="block text-base font-semibold text-[var(--color-text-primary)] mb-3">
             Status Color
           </label>
           <div className="flex items-center gap-4">
@@ -472,8 +471,8 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
               type="text"
               value={statusColor}
               onChange={(e) => setStatusColor(e.target.value)}
-              placeholder="#00FF00"
-              className="flex-1 px-5 py-4 text-lg border-2 border-gray-300 rounded-xl font-mono focus:outline-none focus:ring-4 focus:ring-[#FF9933] focus:ring-opacity-20 focus:border-[#FF9933]"
+              placeholder=""
+              className="flex-1 px-5 py-4 text-lg border-2 border-gray-300 rounded-xl font-mono focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-700)] focus:ring-opacity-20 focus:border-[var(--color-accent-500)]"
             />
             <div
               className="w-16 h-16 rounded-xl border-4 border-gray-300 shadow-md"
@@ -490,7 +489,7 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
 
         {/* Description */}
         <div className="mb-8">
-          <label className="block text-base font-semibold text-gray-700 mb-3">
+          <label className="block text-base font-semibold text-[var(--color-text-primary)] mb-3">
             Status Description
           </label>
           <textarea
@@ -499,28 +498,28 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
             placeholder="Enter detailed status message..."
             rows={5}
             maxLength={500}
-            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#FF9933] focus:ring-opacity-20 focus:border-[#FF9933] resize-none"
+            className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-700)] focus:ring-opacity-20 focus:border-[var(--color-accent-500)] resize-none"
           />
-          <p className="text-sm text-gray-500 mt-2 text-right font-medium">
+          <p className="text-sm text-[var(--color-text-secondary)] mt-2 text-right font-medium">
             {description.length}/500 characters
           </p>
         </div>
 
         {/* Preview Card */}
         <div className="mb-8 p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-300 shadow-lg">
-          <p className="text-base font-semibold text-gray-700 mb-4">Preview:</p>
+          <p className="text-base font-semibold text-[var(--color-text-primary)] mb-4">Preview:</p>
           <div className="flex items-center gap-4">
             <div className="w-4 h-4 rounded-full" style={{ backgroundColor: statusColor }} />
             <span className="font-bold text-gray-900 text-xl">{status || 'Status'}</span>
           </div>
-          <p className="text-base text-gray-700 mt-4 leading-relaxed bg-white p-4 rounded-lg border border-gray-200">
+          <p className="text-base text-[var(--color-text-primary)] mt-4 leading-relaxed bg-[var(--color-bg-surface)] p-4 rounded-lg border border-[var(--color-border)]">
             {description || 'Description will appear here'}
           </p>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="mb-8 bg-red-50 border-2 border-red-200 text-red-700 text-base p-5 rounded-xl">
+          <div className="mb-8 bg-[var(--color-primary-100)] border-2 border-[var(--color-border)] text-red-700 text-base p-5 rounded-xl">
             {error}
           </div>
         )}
@@ -530,14 +529,14 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
           <Button
             onClick={onClose}
             variant="outline"
-            className="flex-1 py-6 text-lg font-semibold border-2 border-[#FF9933] text-[#FF9933] hover:bg-orange-50"
+            className="flex-1 py-6 text-lg font-semibold border-2 border-[var(--color-accent-500)] text-[var(--color-accent-500)] hover:bg-[var(--color-accent-100)]"
           >
             Cancel
           </Button>
           <Button
             onClick={handleSave}
             disabled={loading}
-            className="flex-1 py-6 text-lg font-semibold bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07] gap-3"
+            className="flex-1 py-6 text-lg font-semibold bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] gap-3"
           >
             {loading && <Loader className="w-6 h-6 animate-spin" />}
             {loading ? 'Saving...' : 'Update Status'}
@@ -545,7 +544,7 @@ export function ReviewModal({ loan, onClose, onSave }: ReviewModalProps) {
         </div>
 
         {/* Optional Admin Footer */}
-        <div className="mt-6 text-center text-xs text-gray-400">
+        <div className="mt-6 text-center text-xs text-[var(--color-text-secondary)]">
           EasyLoan • Admin Portal
         </div>
       </Card>

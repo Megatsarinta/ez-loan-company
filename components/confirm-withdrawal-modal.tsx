@@ -37,11 +37,11 @@ export function ConfirmWithdrawalModal({
   const [verificationCode, setVerificationCode] = useState('');
 
   // Company colors
-  const darkNavy = '#212529'
-  const gold = '#FF9933'
-  const blue = '#FF9933'
-  const red = '#138808'
-  const green = '#138808'
+  const darkNavy = 'var(--color-text-primary)'
+  const gold = 'var(--color-accent-500)'
+  const blue = 'var(--color-accent-500)'
+  const red = 'var(--color-secondary-600)'
+  const green = 'var(--color-secondary-600)'
 
   const handleConfirm = async () => {
     try {
@@ -88,11 +88,11 @@ export function ConfirmWithdrawalModal({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-red-50">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-              <Shield className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+              <Shield className="w-4 h-4 text-[var(--color-bg-surface)]" />
             </div>
             <h2 className="text-lg font-bold">
-              <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
                 Confirm Withdrawal
               </span>
             </h2>
@@ -102,7 +102,7 @@ export function ConfirmWithdrawalModal({
             disabled={loading}
             className="p-1 hover:bg-white/50 rounded-lg transition-colors disabled:opacity-50"
           >
-            <X className="w-5 h-5 text-[#6C757D]" />
+            <X className="w-5 h-5 text-[var(--color-text-secondary)]" />
           </button>
         </div>
 
@@ -118,7 +118,7 @@ export function ConfirmWithdrawalModal({
           {/* Withdrawal Details */}
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+              <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                 <FileText className="w-3 h-3" style={{ color: blue }} />
                 Withdraw Number
               </p>
@@ -126,16 +126,16 @@ export function ConfirmWithdrawalModal({
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+              <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                 <User className="w-3 h-3" style={{ color: red }} />
                 Member
               </p>
               <p className="font-semibold" style={{ color: darkNavy }}>{withdrawal.user.full_name}</p>
-              <p className="text-xs text-[#6C757D]">{withdrawal.user.phone_number}</p>
+              <p className="text-xs text-[var(--color-text-secondary)]">{withdrawal.user.phone_number}</p>
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+              <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                 <DollarSign className="w-3 h-3" style={{ color: green }} />
                 Amount
               </p>
@@ -145,7 +145,7 @@ export function ConfirmWithdrawalModal({
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <p className="text-xs text-[#6C757D] mb-1 flex items-center gap-1">
+              <p className="text-xs text-[var(--color-text-secondary)] mb-1 flex items-center gap-1">
                 <Clock className="w-3 h-3" style={{ color: gold }} />
                 Status
               </p>
@@ -163,15 +163,15 @@ export function ConfirmWithdrawalModal({
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                <p className="text-xs text-[#6C757D] mb-1">Bank Name</p>
+                <p className="text-xs text-[var(--color-text-secondary)] mb-1">Bank Name</p>
                 <p className="font-medium" style={{ color: darkNavy }}>{withdrawal.bank_name}</p>
               </div>
               <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                <p className="text-xs text-[#6C757D] mb-1">Account Number</p>
+                <p className="text-xs text-[var(--color-text-secondary)] mb-1">Account Number</p>
                 <p className="font-medium font-mono" style={{ color: darkNavy }}>{withdrawal.account_number}</p>
               </div>
               <div className="col-span-2 bg-gray-50 p-3 rounded-lg border border-gray-200">
-                <p className="text-xs text-[#6C757D] mb-1">Account Name</p>
+                <p className="text-xs text-[var(--color-text-secondary)] mb-1">Account Name</p>
                 <p className="font-medium" style={{ color: darkNavy }}>{withdrawal.account_name}</p>
               </div>
             </div>
@@ -196,9 +196,9 @@ export function ConfirmWithdrawalModal({
           )}
 
           {/* Confirmation Text */}
-          <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[#FF9933]/20 rounded-lg p-4">
+          <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[var(--color-accent-500)]/20 rounded-lg p-4">
             <div className="flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-[#FF9933] flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-4 h-4 text-[var(--color-accent-500)] flex-shrink-0 mt-0.5" />
               <p className="text-sm" style={{ color: darkNavy }}>
                 <strong>Note:</strong> Confirming this withdrawal will deduct{' '}
                 <strong style={{ color: red }}>₹{new Intl.NumberFormat('en-IN').format(withdrawal.amount)}</strong> from the member's wallet and
@@ -214,14 +214,14 @@ export function ConfirmWithdrawalModal({
             onClick={onClose}
             variant="outline"
             disabled={loading}
-            className="border-2 border-gray-300 text-[#6C757D] hover:bg-gray-50"
+            className="border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-main)]"
           >
             Cancel
           </Button>
           <Button
             onClick={handleConfirm}
             disabled={loading}
-            className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07] flex items-center gap-2"
+            className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] flex items-center gap-2"
           >
             {loading && <Loader className="w-4 h-4 animate-spin" />}
             {loading ? 'Processing...' : 'Confirm Withdrawal'}

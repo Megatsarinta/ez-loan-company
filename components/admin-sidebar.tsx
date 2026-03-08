@@ -97,7 +97,7 @@ export function AdminSidebar() {
   const NavContent = () => (
     <>
       {/* Logo/Brand - Fixed: Using COMPANY_LOGOS.main and Indian colors */}
-      <div className="p-6 border-b border-[#e9ecef] bg-gradient-to-r from-[#FF9933]/5 via-white to-[#138808]/5">
+      <div className="p-6 border-b border-[var(--color-border)] bg-gradient-to-r from-[var(--color-accent-500)]/5 via-[var(--color-bg-surface)] to-[var(--color-secondary-600)]/5">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 relative">
             <Image
@@ -116,11 +116,11 @@ export function AdminSidebar() {
             <div className="flex items-baseline">
               {/* ✅ Fixed: Changed from blue/red to saffron/green */}
               <span className="text-lg font-black tracking-tight">
-                <span className="text-[#FF9933]">EASY</span>
-                <span className="text-[#138808]">LOAN</span>
+                <span className="text-[var(--color-accent-500)]">EASY</span>
+                <span className="text-[var(--color-secondary-600)]">LOAN</span>
               </span>
             </div>
-            <p className="text-xs text-[#6C757D] font-medium">Admin Portal</p>
+            <p className="text-xs text-[var(--color-text-secondary)] font-medium">Admin Portal</p>
           </div>
         </div>
       </div>
@@ -138,8 +138,8 @@ export function AdminSidebar() {
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                 active
-                  ? 'bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md hover:shadow-lg' // ✅ Fixed: Gradient to saffron/green
-                  : 'text-[#6C757D] hover:bg-[#f8f9fa] hover:text-[#FF9933]' // ✅ Fixed: Hover to saffron
+                  ? 'bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md hover:shadow-lg' // ✅ Fixed: Gradient to saffron/green
+                  : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-main)] hover:text-[var(--color-accent-500)]' // ✅ Fixed: Hover to saffron
               }`}
             >
               <Icon className="w-5 h-5" />
@@ -149,13 +149,13 @@ export function AdminSidebar() {
         })}
 
         {/* Document Management Section */}
-        <div className="pt-4 border-t border-[#e9ecef] mt-4">
+        <div className="pt-4 border-t border-[var(--color-border)] mt-4">
           <button
             onClick={() => toggleSection('documents')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
               expandedSections.documents
-                ? 'bg-[#138808]/10 text-[#FF9933] border-l-4 border-[#FF9933]' // Document activation: saffron border, green background
-                : 'text-[#6C757D] hover:bg-[#f8f9fa] hover:text-[#FF9933]'
+                ? 'bg-[var(--color-secondary-600)]/10 text-[var(--color-accent-500)] border-l-4 border-[var(--color-accent-500)]' // Document activation: saffron border, green background
+                : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-main)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <FileText className="w-5 h-5" />
@@ -177,8 +177,8 @@ export function AdminSidebar() {
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all text-sm ${
                       active
-                        ? 'bg-[#138808] text-white border-l-2 border-[#FF9933]' // Active doc: green bg, saffron border
-                        : 'text-[#6C757D] hover:bg-[#f8f9fa] hover:text-[#FF9933]'
+                        ? 'bg-[var(--color-secondary-600)] text-[var(--color-bg-surface)] border-l-2 border-[var(--color-accent-500)]' // Active doc: green bg, saffron border
+                        : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-main)] hover:text-[var(--color-accent-500)]'
                     }`}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
@@ -192,10 +192,10 @@ export function AdminSidebar() {
       </nav>
 
       {/* Footer - Optional */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#e9ecef] bg-white">
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[var(--color-border)] bg-[var(--color-bg-surface)]">
         <div className="flex items-center justify-center gap-1">
-          <div className="w-2 h-2 bg-[#138808] rounded-full"></div> {/* ✅ Fixed: Green status dot */}
-          <span className="text-xs text-[#6C757D]">System Online</span>
+          <div className="w-2 h-2 bg-[var(--color-secondary-600)] rounded-full"></div> {/* ✅ Fixed: Green status dot */}
+          <span className="text-xs text-[var(--color-text-secondary)]">System Online</span>
         </div>
       </div>
     </>
@@ -204,12 +204,12 @@ export function AdminSidebar() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:block w-64 bg-white border-r border-[#e9ecef] min-h-screen fixed left-0 top-0 overflow-y-auto shadow-sm">
+      <aside className="hidden md:block w-64 bg-[var(--color-bg-surface)] border-r border-[var(--color-border)] min-h-screen fixed left-0 top-0 overflow-y-auto shadow-sm">
         <NavContent />
       </aside>
 
       {/* Mobile Menu Button */}
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-[#FF9933]/10 via-white to-[#138808]/10 border-b border-[#e9ecef] z-50 flex items-center justify-between px-4 py-3 shadow-sm">
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-[var(--color-accent-500)]/10 via-[var(--color-bg-surface)] to-[var(--color-secondary-600)]/10 border-b border-[var(--color-border)] z-50 flex items-center justify-between px-4 py-3 shadow-sm">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 relative">
             <Image
@@ -222,8 +222,8 @@ export function AdminSidebar() {
           </div>
           <div className="flex items-baseline">
             <span className="text-base font-black tracking-tight">
-              <span className="text-[#FF9933]">EASY</span>
-              <span className="text-[#138808]">LOAN</span>
+              <span className="text-[var(--color-accent-500)]">EASY</span>
+              <span className="text-[var(--color-secondary-600)]">LOAN</span>
             </span>
           </div>
         </div>
@@ -240,7 +240,7 @@ export function AdminSidebar() {
       {/* Mobile Sidebar */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-black/50" onClick={() => setIsOpen(false)}>
-          <aside className="bg-white w-64 h-screen overflow-y-auto shadow-lg">
+          <aside className="bg-[var(--color-bg-surface)] w-64 h-screen overflow-y-auto shadow-lg">
             <NavContent />
           </aside>
         </div>

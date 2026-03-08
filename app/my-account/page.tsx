@@ -113,9 +113,9 @@ export default function MyAccountPage() {
 
   // Get color based on credit score
   const getCreditScoreColor = (score: number): string => {
-    if (score >= 700) return '#00A86B' // Excellent - Green
-    if (score >= 650) return '#FF6B00' // Fair - Orange
-    return '#138808' // Low - Indian Flag (saffron used for alerts)
+    if (score >= 700) return 'var(--color-secondary-600)'
+    if (score >= 650) return 'var(--color-accent-600)'
+    return 'var(--color-secondary-600)'
   }
 
   const handleLogout = async () => {
@@ -142,7 +142,7 @@ export default function MyAccountPage() {
           label: 'Account Management',
           description: 'Manage personal info & bank accounts',
           href: '/my-account/account-management',
-          color: '#FF9933'
+          color: 'var(--color-accent-500)'
         }
       ]
     },
@@ -155,21 +155,21 @@ export default function MyAccountPage() {
           label: 'Loan Contract',
           description: 'View active loans',
           href: '/my-account/loan-contract',
-          color: '#138808'
+          color: 'var(--color-secondary-600)'
         },
         {
           icon: Calendar,
           label: 'Repayment Schedule',
           description: 'Payment due dates',
           href: '/my-account/repayment-schedule',
-          color: '#FF9933'
+          color: 'var(--color-accent-500)'
         },
         {
           icon: Receipt,
           label: 'Repayment Records',
           description: 'Payment history',
           href: '/my-account/repayment-records',
-          color: '#00A86B'
+          color: 'var(--color-secondary-600)'
         }
       ]
     },
@@ -182,14 +182,14 @@ export default function MyAccountPage() {
           label: 'About EasyLoan',
           description: 'Company information',
           href: '/my-account/about-us',
-          color: '#FF9933'
+          color: 'var(--color-accent-500)'
         },
         {
           icon: Headphones,
           label: 'Customer Support',
           description: '24/7 Help Center',
           href: '/my-account/support',
-          color: '#138808'
+          color: 'var(--color-secondary-600)'
         }
       ]
     }
@@ -197,10 +197,10 @@ export default function MyAccountPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-8 h-8 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-[#212529]/60">Loading account...</p>
+          <div className="inline-block w-8 h-8 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-[var(--color-text-primary)]/60">Loading account...</p>
         </div>
       </div>
     )
@@ -208,12 +208,12 @@ export default function MyAccountPage() {
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#138808] mb-4">Failed to load account</p>
+          <p className="text-[var(--color-secondary-600)] mb-4">Failed to load account</p>
           <Button
             onClick={() => router.push('/home')}
-            className="bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white"
+            className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
           >
             Back to Home
           </Button>
@@ -229,9 +229,9 @@ export default function MyAccountPage() {
   const formattedPercentage = formatPercentage(cibilScore)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5f7fa] to-[#e9ecef] pb-28 md:pb-32">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--color-bg-main)] to-[var(--color-border)] pb-28 md:pb-32">
       {/* Header with EasyLoan branding */}
-      <header className="bg-white shadow-[0_2px_10px_rgba(0,0,0,0.05)] py-4 sticky top-0 z-40">
+      <header className="bg-[var(--color-bg-surface)] shadow-[0_2px_10px_rgba(0,0,0,0.05)] py-4 sticky top-0 z-40">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
             <Link href="/home" className="flex items-center gap-2">
@@ -239,15 +239,15 @@ export default function MyAccountPage() {
                 <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={32} height={32} className="object-contain" />
               </div>
               <span className="text-lg font-black tracking-tight">
-                <span className="text-[#FF9933]">EASY</span>
-                <span className="text-[#138808]">LOAN</span>
+                <span className="text-[var(--color-accent-500)]">EASY</span>
+                <span className="text-[var(--color-secondary-600)]">LOAN</span>
               </span>
             </Link>
 
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
-                <Shield className="w-4 h-4 text-[#FF9933]" />
-                <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+                <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+                <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
               </div>
             </div>
           </div>
@@ -257,28 +257,28 @@ export default function MyAccountPage() {
       <main className="px-4 md:px-6 max-w-6xl mx-auto py-8">
         {/* Profile Card - Redesigned with Indian Flag Gradient */}
         <div className="max-w-4xl mx-auto mb-6">
-          <div className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-8"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-8"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-bg-surface)]/5 rounded-full -translate-y-16 translate-x-8"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--color-bg-surface)]/5 rounded-full translate-y-12 -translate-x-8"></div>
 
             {/* Government Logos Strip */}
             <div className="absolute top-4 right-4 flex gap-2 z-10">
-              <div className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg p-1">
+              <div className="w-8 h-8 bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-lg p-1">
                 <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={24} height={24} className="object-contain" />
               </div>
-              <div className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg p-1">
+              <div className="w-8 h-8 bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-lg p-1">
                 <Image src={GOVERNMENT_LOGOS.mca} alt="MCA" width={24} height={24} className="object-contain" />
               </div>
-              <div className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg p-1">
+              <div className="w-8 h-8 bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-lg p-1">
                 <Image src={GOVERNMENT_LOGOS.meity} alt="MeitY" width={24} height={24} className="object-contain" />
               </div>
             </div>
 
             {/* User Profile Info */}
             <div className="text-center mb-8 relative z-10">
-              <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
-                <UserCircle className="w-12 h-12 text-white" />
+              <div className="w-20 h-20 mx-auto mb-4 bg-[var(--color-bg-surface)]/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-[var(--color-bg-surface)]/30">
+                <UserCircle className="w-12 h-12 text-[var(--color-bg-surface)]" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2 break-words">{profile.full_name}</h2>
               <div className="space-y-1">
@@ -297,7 +297,7 @@ export default function MyAccountPage() {
             </div>
 
             {/* Wallet Balance Section - FIXED for large amounts */}
-            <div className="bg-white/15 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/20 relative z-10">
+            <div className="bg-[var(--color-bg-surface)]/15 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-[var(--color-bg-surface)]/20 relative z-10">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-lg md:text-xl font-bold opacity-90 mb-2">
                   <CreditCard className="w-5 h-5 flex-shrink-0" />
@@ -316,17 +316,17 @@ export default function MyAccountPage() {
 
         {/* Credit Score Card - Redesigned */}
         <div className="max-w-4xl mx-auto mb-6">
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+          <div className="bg-[var(--color-bg-surface)] rounded-3xl p-8 shadow-lg border border-[var(--color-border)]">
             <div className="flex items-center gap-4 mb-8">
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md"
                 style={{ background: `linear-gradient(135deg, ${creditScoreColor}, ${creditScoreColor}cc)` }}
               >
-                <TrendingUp className="w-7 h-7 text-white" />
+                <TrendingUp className="w-7 h-7 text-[var(--color-bg-surface)]" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-[#1e3a5f]">Credit Score</h2>
-                <p className="text-[#6C757D]">Your financial credibility score</p>
+                <h2 className="text-2xl font-bold text-[var(--color-primary-900)]">Credit Score</h2>
+                <p className="text-[var(--color-text-secondary)]">Your financial credibility score</p>
               </div>
             </div>
 
@@ -338,13 +338,13 @@ export default function MyAccountPage() {
               >
                 {cibilScore}
               </div>
-              <div className="text-lg text-[#6C757D] mb-8">
+              <div className="text-lg text-[var(--color-text-secondary)] mb-8">
                 out of {MAX_CIBIL_SCORE}
               </div>
 
               {/* Credit Score Bar */}
               <div className="mb-8">
-                <div className="relative h-8 bg-[#f5f7fa] rounded-full overflow-hidden mb-2">
+                <div className="relative h-8 bg-[var(--color-bg-main)] rounded-full overflow-hidden mb-2">
                   <div
                     className="absolute top-0 left-0 h-full rounded-full transition-all duration-700 ease-out"
                     style={{
@@ -353,13 +353,13 @@ export default function MyAccountPage() {
                     }}
                   ></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm font-semibold px-3 py-1 rounded-full bg-white/90 shadow-sm"
+                    <span className="text-sm font-semibold px-3 py-1 rounded-full bg-[var(--color-bg-surface)]/90 shadow-sm"
                       style={{ color: creditScoreColor }}>
                       {formattedPercentage}%
                     </span>
                   </div>
                 </div>
-                <div className="flex justify-between text-sm text-[#6C757D] px-2">
+                <div className="flex justify-between text-sm text-[var(--color-text-secondary)] px-2">
                   <span>0</span>
                   <span>{MAX_CIBIL_SCORE}</span>
                 </div>
@@ -367,13 +367,13 @@ export default function MyAccountPage() {
 
               {/* Alert Message for Low Score */}
               {isLowScore && (
-                <div className="bg-red-50 border-l-4 border-[#138808] p-5 rounded-lg mb-4">
+                <div className="bg-[var(--color-primary-100)] border-l-4 border-[var(--color-secondary-600)] p-5 rounded-lg mb-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <AlertCircle className="h-5 w-5 text-[#138808]" />
+                      <AlertCircle className="h-5 w-5 text-[var(--color-secondary-600)]" />
                     </div>
                     <div className="ml-3">
-                      <p className="text-sm text-[#138808] font-medium">
+                      <p className="text-sm text-[var(--color-secondary-600)] font-medium">
                         Your credit score is below the required threshold. Please contact our financial support team to review your account and restore your credit status to the standard level required for withdrawals.
                       </p>
                     </div>
@@ -383,13 +383,13 @@ export default function MyAccountPage() {
 
               {/* Success Message for Good Score */}
               {!isLowScore && cibilScore >= 700 && (
-                <div className="bg-green-50 border-l-4 border-[#00A86B] p-5 rounded-lg">
+                <div className="bg-[var(--color-secondary-100)] border-l-4 border-[var(--color-secondary-600)] p-5 rounded-lg">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-[#00A86B]" />
+                      <CheckCircle className="h-5 w-5 text-[var(--color-secondary-600)]" />
                     </div>
                     <div className="ml-3">
-                      <p className="text-sm text-[#00A86B] font-medium">
+                      <p className="text-sm text-[var(--color-secondary-600)] font-medium">
                         Your credit status is excellent. You are fully eligible to apply for loans and access withdrawal services.
                       </p>
                     </div>
@@ -399,13 +399,13 @@ export default function MyAccountPage() {
 
               {/* Fair Score Message */}
               {!isLowScore && cibilScore < 700 && cibilScore >= 650 && (
-                <div className="bg-yellow-50 border-l-4 border-[#FF6B00] p-5 rounded-lg">
+                <div className="bg-[var(--color-accent-100)] border-l-4 border-[var(--color-accent-600)] p-5 rounded-lg">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <Info className="h-5 w-5 text-[#FF6B00]" />
+                      <Info className="h-5 w-5 text-[var(--color-accent-600)]" />
                     </div>
                     <div className="ml-3">
-                      <p className="text-sm text-[#FF6B00] font-medium">
+                      <p className="text-sm text-[var(--color-accent-600)] font-medium">
                         Your credit score is fair. Maintain good payment habits to improve your score.
                       </p>
                     </div>
@@ -419,10 +419,10 @@ export default function MyAccountPage() {
         {/* Menu Sections - Redesigned with Indian Flag Colors */}
         <div className="max-w-4xl mx-auto">
           {menuSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 mb-4">
-              <h3 className="text-lg font-semibold text-[#212529] mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-lg flex items-center justify-center">
-                  <section.icon className="w-4 h-4 text-white" />
+            <div key={sectionIndex} className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-md border border-[var(--color-border)] mb-4">
+              <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-lg flex items-center justify-center">
+                  <section.icon className="w-4 h-4 text-[var(--color-bg-surface)]" />
                 </div>
                 <span>{section.title}</span>
               </h3>
@@ -431,19 +431,19 @@ export default function MyAccountPage() {
                   <Link
                     key={itemIndex}
                     href={item.href}
-                    className="group flex items-center gap-3 p-4 rounded-xl bg-[#f5f7fa] hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 no-underline text-[#212529] border border-gray-100 hover:border-[#FF9933]/30"
+                    className="group flex items-center gap-3 p-4 rounded-xl bg-[var(--color-bg-main)] hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 no-underline text-[var(--color-text-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent-500)]/30"
                   >
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white"
-                      style={{ background: `linear-gradient(135deg, ${item.color || '#FF9933'}, ${item.color === '#138808' ? '#b80f20' : '#002c86'})` }}
+                      className="w-10 h-10 rounded-lg flex items-center justify-center text-[var(--color-bg-surface)]"
+                      style={{ background: `linear-gradient(135deg, ${item.color || 'var(--color-accent-500)'}, ${item.color === 'var(--color-secondary-600)' ? 'var(--color-primary-900)' : 'var(--color-primary-700)'})` }}
                     >
                       <item.icon className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="font-semibold text-sm mb-1 truncate">{item.label}</div>
-                      <div className="text-xs text-[#6C757D] group-hover:text-[#FF9933] transition-colors truncate">{item.description}</div>
+                      <div className="text-xs text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent-500)] transition-colors truncate">{item.description}</div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#FF9933] opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                    <ChevronRight className="w-4 h-4 text-[var(--color-accent-500)] opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                   </Link>
                 ))}
               </div>
@@ -453,25 +453,25 @@ export default function MyAccountPage() {
 
         {/* Government Trust Badges */}
         <div className="max-w-4xl mx-auto mt-6 mb-8">
-          <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 border border-[#FF9933]/20">
+          <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 border border-[var(--color-accent-500)]/20">
             <div className="flex flex-wrap items-center justify-center gap-6">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 relative">
                   <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={24} height={24} className="object-contain" />
                 </div>
-                <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+                <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 relative">
                   <Image src={GOVERNMENT_LOGOS.mca} alt="MCA" width={24} height={24} className="object-contain" />
                 </div>
-                <span className="text-xs font-medium text-[#00A86B]">MCA Supervised</span>
+                <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Supervised</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 relative">
                   <Image src={GOVERNMENT_LOGOS.meity} alt="MeitY" width={24} height={24} className="object-contain" />
                 </div>
-                <span className="text-xs font-medium text-[#138808]">MeitY Accredited</span>
+                <span className="text-xs font-medium text-[var(--color-secondary-600)]">MeitY Accredited</span>
               </div>
             </div>
           </div>
@@ -481,7 +481,7 @@ export default function MyAccountPage() {
         <div className="max-w-4xl mx-auto mt-8">
           <Button
             onClick={handleLogoutClick}
-            className="w-full py-4 rounded-xl border-2 border-[#138808] bg-white text-[#138808] hover:bg-gradient-to-r hover:from-[#FF9933] hover:to-[#138808] hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow hover:shadow-lg flex items-center justify-center gap-2"
+            className="w-full py-4 rounded-xl border-2 border-[var(--color-secondary-600)] bg-[var(--color-bg-surface)] text-[var(--color-secondary-600)] hover:bg-gradient-to-r hover:from-[var(--color-accent-500)] hover:to-[var(--color-secondary-600)] hover:text-[var(--color-bg-surface)] transition-all duration-300 hover:-translate-y-0.5 shadow hover:shadow-lg flex items-center justify-center gap-2"
           >
             <LogOut className="w-4 h-4" />
             Logout
@@ -490,7 +490,7 @@ export default function MyAccountPage() {
 
         {/* Footer Note */}
         <div className="max-w-4xl mx-auto mt-6 text-center">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             EasyLoan is RBI Registered, MCA Supervised, and MeitY Accredited.
             All rights reserved. For NRI, for Family.
           </p>
@@ -500,25 +500,25 @@ export default function MyAccountPage() {
       {/* Logout Confirmation Modal */}
       {showLogoutModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 border border-gray-100">
-            <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-full flex items-center justify-center">
-              <HelpCircle className="w-6 h-6 text-white" />
+          <div className="bg-[var(--color-bg-surface)] rounded-2xl shadow-xl max-w-sm w-full p-6 border border-[var(--color-border)]">
+            <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-full flex items-center justify-center">
+              <HelpCircle className="w-6 h-6 text-[var(--color-bg-surface)]" />
             </div>
-            <h3 className="text-lg font-bold text-[#212529] mb-2 text-center">Logout</h3>
-            <p className="text-sm text-[#6C757D] mb-6 text-center">
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 text-center">Logout</h3>
+            <p className="text-sm text-[var(--color-text-secondary)] mb-6 text-center">
               Are you sure you want to log out of your account?
             </p>
             <div className="flex gap-3">
               <Button
                 onClick={() => setShowLogoutModal(false)}
                 variant="outline"
-                className="flex-1 border-2 border-gray-200 text-[#6C757D] hover:bg-gray-50"
+                className="flex-1 border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-main)]"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleLogout}
-                className="flex-1 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white"
+                className="flex-1 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)]"
               >
                 Logout
               </Button>
@@ -528,11 +528,11 @@ export default function MyAccountPage() {
       )}
 
       {/* Bottom Navigation - Updated with Indian Flag Blue */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-gray-100">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-[var(--color-border)]">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <Home className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">HOME</span>
@@ -540,7 +540,7 @@ export default function MyAccountPage() {
 
           <Link
             href="/wallet"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <Wallet className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">WALLET</span>
@@ -548,7 +548,7 @@ export default function MyAccountPage() {
 
           <Link
             href="/my-account"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#FF9933] bg-[rgba(0,56,168,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-accent-500)] bg-[rgba(0,56,168,0.05)] no-underline"
           >
             <UserCircle className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">ACCOUNT</span>

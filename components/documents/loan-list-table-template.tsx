@@ -26,9 +26,9 @@ export default function LoanListTableTemplate({
 }: LoanListTableTemplateProps) {
   
   // Brand colors (saffron, green, navy)
-  const navy = '#1e3a5f'
-  const saffron = '#FF9933'
-  const green = '#138808'
+  const navy = 'var(--color-primary-900)'
+  const saffron = 'var(--color-accent-500)'
+  const green = 'var(--color-secondary-600)'
   
   // Default mock loans (only valid terms: 6, 12, 24, 36 months)
   const defaultMockLoans = [
@@ -128,10 +128,10 @@ export default function LoanListTableTemplate({
   const getStatusBadgeClass = (status: string) => {
     const normalized = (status || '').trim()
     if (normalized === 'Loan Approved' || normalized === 'Approved' || normalized === 'APPROVED') {
-      return 'bg-[#138808]/15 text-[#138808] border border-[#138808] font-bold'
+      return 'bg-[var(--color-secondary-600)]/15 text-[var(--color-secondary-600)] border border-[var(--color-secondary-600)] font-bold'
     }
-    if (normalized === 'DECLINED' || normalized === 'Declined') return 'bg-red-50 text-red-700 border border-red-300 font-bold'
-    return 'bg-yellow-50 text-[#FF6B00] border border-[#FF6B00] font-bold'
+    if (normalized === 'DECLINED' || normalized === 'Declined') return 'bg-[var(--color-primary-100)] text-red-700 border border-red-300 font-bold'
+    return 'bg-[var(--color-accent-100)] text-[var(--color-accent-600)] border border-[var(--color-accent-600)] font-bold'
   }
 
   const formatCurrency = (amount: number) => {
@@ -139,9 +139,9 @@ export default function LoanListTableTemplate({
   }
 
   return (
-    <div className="w-full bg-white p-6" style={{ fontSize: '12px' }}>
+    <div className="w-full bg-[var(--color-bg-surface)] p-6" style={{ fontSize: '12px' }}>
       {/* Header with Logo and Company Name - brand colors */}
-      <div className="flex justify-center mb-5 pb-4 border-b-2 border-[#FF9933]/30">
+      <div className="flex justify-center mb-5 pb-4 border-b-2 border-[var(--color-accent-500)]/30">
   <div className="flex items-center gap-4">
     <div className="w-16 h-16 relative flex-shrink-0">
       <Image
@@ -165,23 +165,23 @@ export default function LoanListTableTemplate({
 
       {/* Filter Tabs and Mock Search Field - EMPTY, no document number displayed */}
       <div className="flex items-center justify-between mb-5">
-        <div className="flex gap-1 bg-gray-100 p-1 rounded-full">
-          <button className="px-5 py-1.5 rounded-full text-xs font-semibold bg-white shadow-sm" style={{ color: navy }}>All</button>
-          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-gray-600 hover:bg-white/50">Loan Approved</button>
-          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-gray-600 hover:bg-white/50">Declined</button>
-          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-gray-600 hover:bg-white/50">Pending</button>
+        <div className="flex gap-1 bg-[var(--color-bg-main)] p-1 rounded-full">
+          <button className="px-5 py-1.5 rounded-full text-xs font-semibold bg-[var(--color-bg-surface)] shadow-sm" style={{ color: navy }}>All</button>
+          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)]/50">Loan Approved</button>
+          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)]/50">Declined</button>
+          <button className="px-5 py-1.5 rounded-full text-xs font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)]/50">Pending</button>
         </div>
-        <div className="flex items-center border border-gray-300 rounded-lg px-3 py-1.5 bg-white w-60">
-          <span className="text-gray-400 mr-2 text-sm">🔍</span>
-          <span className="text-xs text-gray-400 italic">Search document number...</span>
+        <div className="flex items-center border border-gray-300 rounded-lg px-3 py-1.5 bg-[var(--color-bg-surface)] w-60">
+          <span className="text-[var(--color-text-secondary)] mr-2 text-sm">🔍</span>
+          <span className="text-xs text-[var(--color-text-secondary)] italic">Search document number...</span>
         </div>
       </div>
 
       {/* Table */}
       <div className="overflow-x-auto mb-4">
-        <table className="w-full text-xs border border-gray-200 rounded-lg overflow-hidden">
+        <table className="w-full text-xs border border-[var(--color-border)] rounded-lg overflow-hidden">
           <thead>
-            <tr className="bg-gradient-to-r from-[#FF9933] to-[#138808] text-white">
+            <tr className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)]">
               <th className="px-3 py-2.5 text-left font-bold">Document Number</th>
               <th className="px-3 py-2.5 text-left font-bold">Applicant</th>
               <th className="px-3 py-2.5 text-left font-bold">Loan Amount</th>
@@ -192,12 +192,12 @@ export default function LoanListTableTemplate({
           </thead>
           <tbody>
             {/* Real User - From Search */}
-            <tr className="border-b border-gray-200 bg-white">
-              <td className="px-3 py-2.5 font-mono text-gray-700" style={{ color: navy }}>{displayRealUser.document_number}</td>
-              <td className="px-3 py-2.5 text-gray-700">{displayRealUser.borrower_name}</td>
+            <tr className="border-b border-[var(--color-border)] bg-[var(--color-bg-surface)]">
+              <td className="px-3 py-2.5 font-mono text-[var(--color-text-primary)]" style={{ color: navy }}>{displayRealUser.document_number}</td>
+              <td className="px-3 py-2.5 text-[var(--color-text-primary)]">{displayRealUser.borrower_name}</td>
               <td className="px-3 py-2.5 font-semibold text-gray-800" style={{ color: navy }}>₹{formatCurrency(displayRealUser.loan_amount)}</td>
-              <td className="px-3 py-2.5 text-gray-600">{displayRealUser.loan_purpose}</td>
-              <td className="px-3 py-2.5 text-gray-600">{displayRealUser.loan_period_months} months</td>
+              <td className="px-3 py-2.5 text-[var(--color-text-secondary)]">{displayRealUser.loan_purpose}</td>
+              <td className="px-3 py-2.5 text-[var(--color-text-secondary)]">{displayRealUser.loan_period_months} months</td>
               <td className="px-3 py-2.5">
                 <span className={`px-3 py-1 rounded-full text-[10px] font-bold inline-block ${getStatusBadgeClass(displayRealUser.status)}`}>
                   {displayStatus(displayRealUser.status)}
@@ -209,13 +209,13 @@ export default function LoanListTableTemplate({
             {displayMockLoans.slice(0, 9).map((loan, index) => (
               <tr 
                 key={loan.document_number} 
-                className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                className={`border-b border-[var(--color-border)] ${index % 2 === 0 ? 'bg-[var(--color-bg-surface)]' : 'bg-[var(--color-bg-main)]'}`}
               >
-                <td className="px-3 py-2.5 font-mono text-gray-700">{loan.document_number}</td>
-                <td className="px-3 py-2.5 text-gray-700">{loan.borrower_name}</td>
+                <td className="px-3 py-2.5 font-mono text-[var(--color-text-primary)]">{loan.document_number}</td>
+                <td className="px-3 py-2.5 text-[var(--color-text-primary)]">{loan.borrower_name}</td>
                 <td className="px-3 py-2.5 font-semibold text-gray-800">₹{formatCurrency(loan.loan_amount)}</td>
-                <td className="px-3 py-2.5 text-gray-600">{loan.loan_purpose}</td>
-                <td className="px-3 py-2.5 text-gray-600">{loan.loan_period_months} months</td>
+                <td className="px-3 py-2.5 text-[var(--color-text-secondary)]">{loan.loan_purpose}</td>
+                <td className="px-3 py-2.5 text-[var(--color-text-secondary)]">{loan.loan_period_months} months</td>
                 <td className="px-3 py-2.5">
 <span className={`px-3 py-1 rounded-full text-[10px] font-bold inline-block ${getStatusBadgeClass(loan.status)}`}>
                   {displayStatus(loan.status)}
@@ -229,13 +229,13 @@ export default function LoanListTableTemplate({
 
       {/* Pagination - Gradient from dark navy to gold */}
       <div className="mt-3 flex items-center justify-between">
-        <button className="px-5 py-1.5 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-lg text-xs font-medium hover:shadow-lg transition-all">
+        <button className="px-5 py-1.5 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-lg text-xs font-medium hover:shadow-lg transition-all">
           ← Previous Page
         </button>
-        <div className="text-xs font-medium text-gray-600">
+        <div className="text-xs font-medium text-[var(--color-text-secondary)]">
           Items per page: 10 (1–10 of 198,565)
         </div>
-        <button className="px-5 py-1.5 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white rounded-lg text-xs font-medium hover:shadow-lg transition-all">
+        <button className="px-5 py-1.5 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] rounded-lg text-xs font-medium hover:shadow-lg transition-all">
           Next Page →
         </button>
       </div>

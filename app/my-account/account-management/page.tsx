@@ -101,20 +101,20 @@ function PersonalInformationTab() {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-transparent rounded-full animate-spin mb-4" />
-        <p className="text-gray-600">Loading your information...</p>
+        <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-[var(--color-text-secondary)]">Loading your information...</p>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto border border-gray-100">
+      <div className="bg-[var(--color-bg-surface)] rounded-2xl p-8 shadow-lg max-w-md mx-auto border border-[var(--color-border)]">
         <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 bg-red-50 rounded-full flex items-center justify-center">
-            <AlertCircle className="w-8 h-8 text-[#138808]" />
+          <div className="w-16 h-16 mx-auto mb-4 bg-[var(--color-primary-100)] rounded-full flex items-center justify-center">
+            <AlertCircle className="w-8 h-8 text-[var(--color-secondary-600)]" />
           </div>
-          <p className="text-[#138808] font-medium mb-4">{error}</p>
+          <p className="text-[var(--color-secondary-600)] font-medium mb-4">{error}</p>
         </div>
       </div>
     )
@@ -122,12 +122,12 @@ function PersonalInformationTab() {
 
   if (!info) {
     return (
-      <div className="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto border border-gray-100">
+      <div className="bg-[var(--color-bg-surface)] rounded-2xl p-8 shadow-lg max-w-md mx-auto border border-[var(--color-border)]">
         <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 bg-gray-50 rounded-full flex items-center justify-center">
-            <FileText className="w-8 h-8 text-gray-400" />
+          <div className="w-16 h-16 mx-auto mb-4 bg-[var(--color-bg-main)] rounded-full flex items-center justify-center">
+            <FileText className="w-8 h-8 text-[var(--color-text-secondary)]" />
           </div>
-          <p className="text-[#6C757D] mb-4">No personal information available</p>
+          <p className="text-[var(--color-text-secondary)] mb-4">No personal information available</p>
         </div>
       </div>
     )
@@ -141,22 +141,22 @@ function PersonalInformationTab() {
       {/* Page Header */}
       <div className="text-center mb-6">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
             Personal Information
           </span>
         </h2>
-        <p className="text-[#6C757D]">Your basic personal details</p>
+        <p className="text-[var(--color-text-secondary)]">Your basic personal details</p>
       </div>
 
       {/* Personal Information Card */}
-      <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+      <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)]">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-            <User className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+            <User className="w-6 h-6 text-[var(--color-bg-surface)]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-[#212529]">Basic Details</h3>
-            <p className="text-sm text-[#6C757D]">Your identity information</p>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Basic Details</h3>
+            <p className="text-sm text-[var(--color-text-secondary)]">Your identity information</p>
           </div>
         </div>
 
@@ -164,11 +164,11 @@ function PersonalInformationTab() {
           {/* Full Name */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-[#FF9933]" />
-              <label className="text-sm font-semibold text-[#6C757D]">Full Name</label>
+              <User className="w-4 h-4 text-[var(--color-accent-500)]" />
+              <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Full Name</label>
             </div>
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529] font-medium">{info.full_name || 'Not set'}</p>
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)] font-medium">{info.full_name || 'Not set'}</p>
             </div>
           </div>
 
@@ -176,11 +176,11 @@ function PersonalInformationTab() {
           {info.id_card_number && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <CreditCard className="w-4 h-4 text-[#138808]" />
-                <label className="text-sm font-semibold text-[#6C757D]">ID Card No.</label>
+                <CreditCard className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">ID Card No.</label>
               </div>
-              <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                <p className="text-[#212529] font-mono">{formatIdNumber(info.id_card_number)}</p>
+              <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                <p className="text-[var(--color-text-primary)] font-mono">{formatIdNumber(info.id_card_number)}</p>
               </div>
             </div>
           )}
@@ -189,11 +189,11 @@ function PersonalInformationTab() {
           {info.gender && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#138808]" />
-                <label className="text-sm font-semibold text-[#6C757D]">Gender</label>
+                <Users className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Gender</label>
               </div>
-              <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                <p className="text-[#212529] capitalize">{info.gender}</p>
+              <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                <p className="text-[var(--color-text-primary)] capitalize">{info.gender}</p>
               </div>
             </div>
           )}
@@ -202,11 +202,11 @@ function PersonalInformationTab() {
           {info.date_of_birth && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#FF9933]" />
-                <label className="text-sm font-semibold text-[#6C757D]">Date of Birth</label>
+                <Calendar className="w-4 h-4 text-[var(--color-accent-500)]" />
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Date of Birth</label>
               </div>
-              <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                <p className="text-[#212529]">{formatDate(info.date_of_birth)}</p>
+              <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                <p className="text-[var(--color-text-primary)]">{formatDate(info.date_of_birth)}</p>
               </div>
             </div>
           )}
@@ -215,11 +215,11 @@ function PersonalInformationTab() {
           {info.email && (
             <div className="space-y-2 md:col-span-2">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#138808]" />
-                <label className="text-sm font-semibold text-[#6C757D]">Email</label>
+                <Mail className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Email</label>
               </div>
-              <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                <p className="text-[#212529]">{info.email}</p>
+              <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                <p className="text-[var(--color-text-primary)]">{info.email}</p>
               </div>
             </div>
           )}
@@ -228,11 +228,11 @@ function PersonalInformationTab() {
           {info.living_address && (
             <div className="space-y-2 md:col-span-2">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#138808]" />
-                <label className="text-sm font-semibold text-[#6C757D]">Living Address</label>
+                <MapPin className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Living Address</label>
               </div>
-              <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                <p className="text-[#212529] whitespace-pre-wrap">{info.living_address}</p>
+              <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                <p className="text-[var(--color-text-primary)] whitespace-pre-wrap">{info.living_address}</p>
               </div>
             </div>
           )}
@@ -241,14 +241,14 @@ function PersonalInformationTab() {
 
       {/* Employment & Income Card */}
       {(info.position || info.current_job || info.monthly_income || info.stable_income) && (
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)]">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-              <Briefcase className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+              <Briefcase className="w-6 h-6 text-[var(--color-bg-surface)]" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#212529]">Employment & Income</h3>
-              <p className="text-sm text-[#6C757D]">Your work and financial details</p>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Employment & Income</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">Your work and financial details</p>
             </div>
           </div>
 
@@ -257,11 +257,11 @@ function PersonalInformationTab() {
             {(info.current_job || info.position) && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[#FF9933]" />
-                  <label className="text-sm font-semibold text-[#6C757D]">Current Job</label>
+                  <Briefcase className="w-4 h-4 text-[var(--color-accent-500)]" />
+                  <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Current Job</label>
                 </div>
-                <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                  <p className="text-[#212529]">{info.current_job || info.position}</p>
+                <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                  <p className="text-[var(--color-text-primary)]">{info.current_job || info.position}</p>
                 </div>
               </div>
             )}
@@ -270,11 +270,11 @@ function PersonalInformationTab() {
             {(info.stable_income || info.monthly_income) && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <DollarSign className="w-4 h-4 text-[#138808]" />
-                  <label className="text-sm font-semibold text-[#6C757D]">Stable Income</label>
+                  <DollarSign className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                  <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Stable Income</label>
                 </div>
-                <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                  <p className="text-[#212529] font-semibold">
+                <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                  <p className="text-[var(--color-text-primary)] font-semibold">
                     {formatCurrency(info.stable_income || info.monthly_income)}
                   </p>
                 </div>
@@ -286,33 +286,33 @@ function PersonalInformationTab() {
 
       {/* Loan Purpose Card */}
       {info.loan_purpose && (
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)]">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-              <FileText className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+              <FileText className="w-6 h-6 text-[var(--color-bg-surface)]" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#212529]">Loan Purpose</h3>
-              <p className="text-sm text-[#6C757D]">Reason for your loan application</p>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Loan Purpose</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">Reason for your loan application</p>
             </div>
           </div>
 
-          <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-            <p className="text-[#212529] whitespace-pre-wrap">{info.loan_purpose}</p>
+          <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+            <p className="text-[var(--color-text-primary)] whitespace-pre-wrap">{info.loan_purpose}</p>
           </div>
         </div>
       )}
 
       {/* Emergency Contact Card */}
       {(info.relative_name || contactPerson1?.name || contactPerson2?.name) && (
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)]">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-              <Users className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+              <Users className="w-6 h-6 text-[var(--color-bg-surface)]" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#212529]">Emergency Contact</h3>
-              <p className="text-sm text-[#6C757D]">Your emergency contact person</p>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Emergency Contact</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">Your emergency contact person</p>
             </div>
           </div>
 
@@ -320,9 +320,9 @@ function PersonalInformationTab() {
             {/* Relative's Name */}
             {info.relative_name && (
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#6C757D]">Relative's Name</label>
-                <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                  <p className="text-[#212529]">{info.relative_name}</p>
+                <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Relative's Name</label>
+                <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                  <p className="text-[var(--color-text-primary)]">{info.relative_name}</p>
                 </div>
               </div>
             )}
@@ -331,11 +331,11 @@ function PersonalInformationTab() {
             {info.relative_phone && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#FF9933]" />
-                  <label className="text-sm font-semibold text-[#6C757D]">Phone Number</label>
+                  <Phone className="w-4 h-4 text-[var(--color-accent-500)]" />
+                  <label className="text-sm font-semibold text-[var(--color-text-secondary)]">Phone Number</label>
                 </div>
-                <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-                  <p className="text-[#212529]">{info.relative_phone}</p>
+                <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+                  <p className="text-[var(--color-text-primary)]">{info.relative_phone}</p>
                 </div>
               </div>
             )}
@@ -477,8 +477,8 @@ function BankInformationTab() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-8">
-        <div className="inline-block w-12 h-12 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin mb-4" />
-        <p className="text-gray-600">Loading...</p>
+        <div className="inline-block w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin mb-4" />
+        <p className="text-[var(--color-text-secondary)]">Loading...</p>
       </div>
     )
   }
@@ -488,55 +488,55 @@ function BankInformationTab() {
       {/* Page Header - Changed to flag colors */}
       <div className="text-center mb-4">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-          Your <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">Withdrawal Account</span>
+          Your <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">Withdrawal Account</span>
         </h2>
-        <p className="text-lg text-[#6C757D]">
+        <p className="text-lg text-[var(--color-text-secondary)]">
           Manage your bank account for loan disbursements and withdrawals
         </p>
       </div>
 
       {/* Error Alert */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-          <p className="text-sm text-red-600 font-medium">{error}</p>
+        <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-xl p-4">
+          <p className="text-sm text-[var(--color-primary-900)] font-medium">{error}</p>
         </div>
       )}
 
       {/* Success Alert */}
       {success && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div className="bg-[var(--color-secondary-100)] border border-green-200 rounded-xl p-4">
           <p className="text-sm text-green-700 font-medium">{success}</p>
         </div>
       )}
 
       {/* Bank Details Card - Changed colors to flag */}
-      <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6 border border-gray-100">
+      <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg space-y-6 border border-[var(--color-border)]">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-            <Landmark className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+            <Landmark className="w-6 h-6 text-[var(--color-bg-surface)]" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-[#212529]">Bank Account Details</h2>
-            <p className="text-[#6C757D]">For loan disbursements and withdrawals</p>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)]">Bank Account Details</h2>
+            <p className="text-[var(--color-text-secondary)]">For loan disbursements and withdrawals</p>
           </div>
         </div>
 
         {/* Bank Name */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <Landmark className="w-4 h-4 text-[#FF9933]" />
-            <label className="block text-sm font-semibold text-[#6C757D]">Bank Name</label>
+            <Landmark className="w-4 h-4 text-[var(--color-accent-500)]" />
+            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">Bank Name</label>
           </div>
           {isEditing && canEdit ? (
             <input
               type="text"
               value={bankDetails.bankName}
               onChange={(e) => setBankDetails({ ...bankDetails, bankName: e.target.value })}
-              className="w-full bg-white border-2 border-[#e9ecef] hover:border-[#FF9933] focus:border-[#FF9933] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
+              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
             />
           ) : (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529]">{bankDetails.bankName || 'Not set'}</p>
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)]">{bankDetails.bankName || 'Not set'}</p>
             </div>
           )}
         </div>
@@ -544,25 +544,25 @@ function BankInformationTab() {
         {/* Account Number */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-[#138808]" />
-            <label className="block text-sm font-semibold text-[#6C757D]">Account Number</label>
+            <CreditCard className="w-4 h-4 text-[var(--color-secondary-600)]" />
+            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">Account Number</label>
           </div>
           {isEditing && canEdit ? (
             <input
               type="text"
               value={bankDetails.accountNumber}
               onChange={(e) => setBankDetails({ ...bankDetails, accountNumber: e.target.value })}
-              className="w-full bg-white border-2 border-[#e9ecef] hover:border-[#FF9933] focus:border-[#FF9933] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
+              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
             />
           ) : isAccountFilled ? (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529] font-mono tracking-wider">
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)] font-mono tracking-wider">
                 {bankDetails.accountNumber}
               </p>
             </div>
           ) : (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529]">Not set</p>
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)]">Not set</p>
             </div>
           )}
         </div>
@@ -570,8 +570,8 @@ function BankInformationTab() {
         {/* IFSC Code */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <Landmark className="w-4 h-4 text-[#138808]" />
-            <label className="block text-sm font-semibold text-[#6C757D]">IFSC Code</label>
+            <Landmark className="w-4 h-4 text-[var(--color-secondary-600)]" />
+            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">IFSC Code</label>
           </div>
           {isEditing && canEdit ? (
             <input
@@ -579,17 +579,17 @@ function BankInformationTab() {
               value={bankDetails.ifscCode}
               onChange={(e) => setBankDetails({ ...bankDetails, ifscCode: e.target.value.toUpperCase() })}
               placeholder="e.g., SBIN0001234"
-              className="w-full bg-white border-2 border-[#e9ecef] hover:border-[#FF9933] focus:border-[#FF9933] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors uppercase"
+              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors uppercase"
             />
           ) : isAccountFilled ? (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529] font-mono tracking-wider">
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)] font-mono tracking-wider">
                 {bankDetails.ifscCode || 'Not set'}
               </p>
             </div>
           ) : (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529]">Not set</p>
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)]">Not set</p>
             </div>
           )}
         </div>
@@ -597,14 +597,14 @@ function BankInformationTab() {
         {/* Account Type */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-[#212529]" />
-            <label className="block text-sm font-semibold text-[#6C757D]">Account Type</label>
+            <User className="w-4 h-4 text-[var(--color-text-primary)]" />
+            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">Account Type</label>
           </div>
           {isEditing && canEdit ? (
             <select
               value={bankDetails.accountType || 'Savings'}
               onChange={(e) => setBankDetails({ ...bankDetails, accountType: e.target.value })}
-              className="w-full bg-white border-2 border-[#e9ecef] hover:border-[#FF9933] focus:border-[#FF9933] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
+              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
             >
               <option value="Savings">Savings Account</option>
               <option value="Current">Current Account</option>
@@ -612,14 +612,14 @@ function BankInformationTab() {
               <option value="NRO">NRO (Non-Resident Ordinary)</option>
             </select>
           ) : isAccountFilled ? (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529] font-medium">
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)] font-medium">
                 {bankDetails.accountType || 'Savings'}
               </p>
             </div>
           ) : (
-            <div className="bg-[#F8F9FA] px-4 py-3 rounded-xl border border-gray-100">
-              <p className="text-[#212529]">Not set</p>
+            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
+              <p className="text-[var(--color-text-primary)]">Not set</p>
             </div>
           )}
         </div>
@@ -648,14 +648,14 @@ function BankInformationTab() {
                 }
                 fetchBankDetails()
               }}
-              className="flex-1 px-8 py-3 rounded-lg text-center font-medium transition-all bg-[#F8F9FA] hover:bg-gray-100 border border-transparent hover:border-[#FF9933] text-[#212529]"
+              className="flex-1 px-8 py-3 rounded-lg text-center font-medium transition-all bg-[var(--color-bg-main)] hover:bg-[var(--color-bg-main)] border border-transparent hover:border-[var(--color-accent-500)] text-[var(--color-text-primary)]"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex-1 px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md hover:shadow-lg hover:translate-y-[-2px] disabled:opacity-70 disabled:cursor-not-allowed"
+              className="flex-1 px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md hover:shadow-lg hover:translate-y-[-2px] disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Saving...' : 'Save'}
             </button>
@@ -663,14 +663,14 @@ function BankInformationTab() {
         ) : isAccountFilled ? (
           <button
             onClick={() => window.location.href = '/my-account'}
-            className="w-full max-w-md mx-auto px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md hover:shadow-lg hover:translate-y-[-2px]"
+            className="w-full max-w-md mx-auto px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md hover:shadow-lg hover:translate-y-[-2px]"
           >
             Back to Account
           </button>
         ) : (
           <button
             onClick={() => setIsEditing(true)}
-            className="w-full max-w-md mx-auto px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md hover:shadow-lg hover:translate-y-[-2px]"
+            className="w-full max-w-md mx-auto px-8 py-3 rounded-lg text-center font-medium transition-all bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md hover:shadow-lg hover:translate-y-[-2px]"
           >
             Add Bank Account
           </button>
@@ -685,15 +685,15 @@ export default function AccountManagementPage() {
   const [activeTab, setActiveTab] = useState<'personal' | 'bank'>('personal')
 
   return (
-    <div className="min-h-screen bg-[#f5f7fa] text-[#212529]">
+    <div className="min-h-screen bg-[var(--color-bg-main)] text-[var(--color-text-primary)]">
       {/* Header with EasyLoan branding */}
-      <header className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4 md:py-6">
+      <header className="bg-[var(--color-bg-surface)] shadow-[0_4px_12px_rgba(0,0,0,0.08)] sticky top-0 z-50 px-4 py-4 md:py-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => router.push('/my-account')}
-                className="text-[#FF9933] hover:text-[#e68a2e] transition-colors"
+                className="text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
@@ -704,19 +704,19 @@ export default function AccountManagementPage() {
                 <div>
                   <div className="flex items-baseline">
                     <span className="text-lg font-black tracking-tight">
-                      <span className="text-[#FF9933]">EASY</span>
-                      <span className="text-[#138808]">LOAN</span>
+                      <span className="text-[var(--color-accent-500)]">EASY</span>
+                      <span className="text-[var(--color-secondary-600)]">LOAN</span>
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500">Account Management</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">Account Management</p>
                 </div>
               </div>
             </div>
 
             {/* Trust Badge */}
             <div className="hidden sm:flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
-              <Shield className="w-4 h-4 text-[#FF9933]" />
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+              <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
           </div>
         </div>
@@ -724,13 +724,13 @@ export default function AccountManagementPage() {
 
       <main className="px-4 py-6 max-w-4xl mx-auto">
         {/* Tab Navigation */}
-        <div className="bg-white rounded-2xl shadow-sm mb-6 p-1 border border-gray-100">
+        <div className="bg-[var(--color-bg-surface)] rounded-2xl shadow-sm mb-6 p-1 border border-[var(--color-border)]">
           <div className="flex">
             <button
               onClick={() => setActiveTab('personal')}
               className={`flex-1 py-3 rounded-xl text-center font-semibold transition-all ${activeTab === 'personal'
-                ? 'bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md'
-                : 'text-[#6C757D] hover:text-[#FF9933] hover:bg-gray-50'
+                ? 'bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md'
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[var(--color-bg-main)]'
                 }`}
             >
               <div className="flex items-center justify-center gap-2">
@@ -742,8 +742,8 @@ export default function AccountManagementPage() {
             <button
               onClick={() => setActiveTab('bank')}
               className={`flex-1 py-3 rounded-xl text-center font-semibold transition-all ${activeTab === 'bank'
-                ? 'bg-gradient-to-r from-[#FF9933] to-[#138808] text-white shadow-md'
-                : 'text-[#6C757D] hover:text-[#FF9933] hover:bg-gray-50'
+                ? 'bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] shadow-md'
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[var(--color-bg-main)]'
                 }`}
             >
               <div className="flex items-center justify-center gap-2">
@@ -765,18 +765,18 @@ export default function AccountManagementPage() {
 
         {/* Footer Note */}
         <div className="text-center mt-8">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             EasyLoan is RBI Registered, MCA Registered, and CIBIL Partner.
           </p>
         </div>
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-gray-100">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] py-4 z-50 border-t border-[var(--color-border)]">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(255,153,51,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(255,153,51,0.05)] no-underline"
           >
             <Home className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">HOME</span>
@@ -784,7 +784,7 @@ export default function AccountManagementPage() {
 
           <Link
             href="/wallet"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#6C757D] hover:text-[#FF9933] hover:bg-[rgba(255,153,51,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)] hover:bg-[rgba(255,153,51,0.05)] no-underline"
           >
             <Wallet className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">WALLET</span>
@@ -792,7 +792,7 @@ export default function AccountManagementPage() {
 
           <Link
             href="/my-account"
-            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[#FF9933] bg-[rgba(255,153,51,0.05)] no-underline"
+            className="flex flex-col items-center px-6 md:px-8 py-2 rounded-lg transition-all text-[var(--color-accent-500)] bg-[rgba(255,153,51,0.05)] no-underline"
           >
             <UserCircle className="w-6 h-6 mb-1" />
             <span className="text-xs font-semibold">ACCOUNT</span>

@@ -5,11 +5,11 @@
  * 
  * User can withdraw funds ONLY when ALL of the following conditions are met:
  * 1. Available Balance > 0 (User has funds available)
- * 2. Loan Status Color = Green (#22C55E) (Admin set status indicator - not just text)
+ * 2. Loan Status Color = Green (must match --color-secondary-600 #10B981)
  * 3. Withdrawal Code matches the code set by admin in User Management
  * 
  * Withdrawal Flow:
- * 1. Check balance > 0 AND status_color is exactly #22C55E (green)
+ * 1. Check balance > 0 AND status_color is green (token secondary-600)
  * 2. If both true, enable "Withdraw Funds" button
  * 3. User clicks button → withdrawal code verification modal appears
  * 4. User enters the withdrawal code (set by admin in User Management > Code column)
@@ -21,7 +21,7 @@
  * 
  * Withdrawal is DISABLED when:
  * - Balance is zero
- * - Loan Status Color is NOT green (#22C55E)
+ * - Loan Status Color is NOT green
  * - Data is loading
  */
 
@@ -267,6 +267,7 @@ export default function WalletPage() {
   // CRITICAL FIX: Use the status_color directly from loanData
   // This now comes from apiLoan.statusColor in the mapping above
   const statusHexColor = loanData?.status_color
+  const GREEN_HEX = '#10B981' // Must match :root --color-secondary-600
   
   // Log the final values for debugging
   console.log('[v0] EXACT values from API:', {
@@ -347,8 +348,7 @@ export default function WalletPage() {
       return
     }
     
-    // Rule 2: Check if loan status color is exactly green (#22C55E) as set by admin
-    const GREEN_HEX = '#22C55E'
+    // Rule 2: Check if loan status color is green (--color-secondary-600) as set by admin
     if (!loanData || !statusHexColor || statusHexColor !== GREEN_HEX) {
       showToast('Your loan status must be approved (green) to withdraw funds', 'error')
       return
@@ -468,7 +468,7 @@ export default function WalletPage() {
             document_number: apiLoan.documentNumber || apiLoan.document_number,
             order_number: apiLoan.documentNumber || apiLoan.document_number,
             status: apiLoan.status,
-            // Use the resolved color - this will be #22C55E from the database
+            // Use the resolved color from the database (green = token secondary-600)
             status_color: statusColorValue,
             status_description: apiLoan.statusMessage || apiLoan.status_description,
             loan_amount: apiLoan.amountRequested || apiLoan.amount_requested,
@@ -491,16 +491,16 @@ export default function WalletPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col">
       {/* Header with EasyLoan branding - fixed at top */}
-      <header className="sticky top-0 z-40 bg-gradient-to-r from-[#FF9933]/10 via-white to-[#138808]/10 backdrop-blur-xl border-b border-gray-200/60 shadow-sm flex-shrink-0">
+      <header className="sticky top-0 z-40 bg-gradient-to-r from-[var(--color-accent-500)]/10 via-[var(--color-bg-surface)] to-[var(--color-secondary-600)]/10 backdrop-blur-xl border-b border-[var(--color-border)]/60 shadow-sm flex-shrink-0">
         <div className="max-w-2xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Left side - Back button and Logo */}
             <div className="flex items-center gap-3">
               <Link
                 href="/home"
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-orange-50 hover:text-[#FF9933] transition-colors duration-200 group"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-bg-main)] hover:bg-[var(--color-accent-100)] hover:text-[var(--color-accent-500)] transition-colors duration-200 group"
               >
-                <ArrowLeft className="w-5 h-5 text-gray-600 group-hover:text-[#FF9933] transition-colors" />
+                <ArrowLeft className="w-5 h-5 text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent-500)] transition-colors" />
               </Link>
               
               {/* BP Logo and EasyLoan name */}
@@ -509,16 +509,16 @@ export default function WalletPage() {
                   <Image src={COMPANY_LOGOS.main} alt="EasyLoan" width={32} height={32} className="object-contain" />
                 </div>
                 <span className="text-lg font-black tracking-tight">
-                  <span className="text-[#FF9933]">EASY</span>
-                  <span className="text-[#138808]">LOAN</span>
+                  <span className="text-[var(--color-accent-500)]">EASY</span>
+                  <span className="text-[var(--color-secondary-600)]">LOAN</span>
                 </span>
               </Link>
             </div>
             
             {/* Trust Badge */}
-            <div className="hidden sm:flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-full border border-[#FF9933]/20">
-              <Shield className="w-4 h-4 text-[#FF9933]" />
-              <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+            <div className="hidden sm:flex items-center gap-2 bg-[var(--color-accent-100)] px-3 py-1.5 rounded-full border border-[var(--color-accent-500)]/20">
+              <Shield className="w-4 h-4 text-[var(--color-accent-500)]" />
+              <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
             </div>
           </div>
         </div>
@@ -532,106 +532,106 @@ export default function WalletPage() {
             {/* Available Balance Card - Saffron */}
             <div className="relative">
               {/* Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FF9933] via-[#e68a2e] to-[#FF9933] rounded-2xl opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-500)] via-[var(--color-accent-600)] to-[var(--color-accent-500)] rounded-2xl opacity-95" />
               
               {/* Glass Effect Overlay */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl" />
+              <div className="absolute inset-0 bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-2xl" />
               
               {/* Content */}
               <div className="relative p-5 sm:p-6">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs sm:text-sm font-medium text-white/90 tracking-wide uppercase">
+                  <p className="text-xs sm:text-sm font-medium text-[var(--color-bg-surface)]/90 tracking-wide uppercase">
                     Available Balance
                   </p>
                   <button
                     onClick={() => setBalanceVisible(!balanceVisible)}
-                    className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all"
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-surface)]/10 hover:bg-[var(--color-bg-surface)]/20 transition-all"
                     aria-label="Toggle visibility"
                   >
                     {balanceVisible ? (
-                      <Eye className="w-4 h-4 text-white" />
+                      <Eye className="w-4 h-4 text-[var(--color-bg-surface)]" />
                     ) : (
-                      <EyeOff className="w-4 h-4 text-white" />
+                      <EyeOff className="w-4 h-4 text-[var(--color-bg-surface)]" />
                     )}
                   </button>
                 </div>
                 
                 {/* Amount */}
                 <div className="mb-4">
-                  <span className="text-3xl sm:text-4xl font-bold text-white break-words">
+                  <span className="text-3xl sm:text-4xl font-bold text-[var(--color-bg-surface)] break-words">
                     {balanceVisible 
                       ? formatINR(balanceData?.available_balance || 0)
                       : '••••••••'}
                   </span>
-                  <p className="mt-1 text-xs sm:text-sm text-white/70">
+                  <p className="mt-1 text-xs sm:text-sm text-[var(--color-bg-surface)]/70">
                     For withdrawal
                   </p>
                 </div>
               </div>
               
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-bg-surface)]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
             </div>
             
             {/* Withdrawal Balance Card - Green */}
             <div className="relative">
               {/* Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#138808] via-[#0f6d07] to-[#138808] rounded-2xl opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-secondary-600)] via-[var(--color-secondary-500)] to-[var(--color-secondary-600)] rounded-2xl opacity-95" />
               
               {/* Glass Effect Overlay */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl" />
+              <div className="absolute inset-0 bg-[var(--color-bg-surface)]/10 backdrop-blur-sm rounded-2xl" />
               
               {/* Content */}
               <div className="relative p-5 sm:p-6">
                 {/* Header */}
-                <p className="text-xs sm:text-sm font-medium text-white/90 tracking-wide uppercase mb-3">
+                <p className="text-xs sm:text-sm font-medium text-[var(--color-bg-surface)]/90 tracking-wide uppercase mb-3">
                   Withdrawal Balance
                 </p>
                 
                 {/* Amount */}
                 <div className="mb-4">
-                  <span className="text-3xl sm:text-4xl font-bold text-white break-words">
+                  <span className="text-3xl sm:text-4xl font-bold text-[var(--color-bg-surface)] break-words">
                     {balanceVisible 
                       ? formatINR(balanceData?.withdrawal_balance || 0)
                       : '••••••••'}
                   </span>
-                  <p className="mt-1 text-xs sm:text-sm text-white/70">
+                  <p className="mt-1 text-xs sm:text-sm text-[var(--color-bg-surface)]/70">
                     Processing by AI Banking System
                   </p>
                 </div>
               </div>
               
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-bg-surface)]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
             </div>
           </div>
 
           {/* Withdraw Button - Indian Flag Gradient */}
           <button
             onClick={handleWithdrawClick}
-            disabled={isLoading || !balanceData?.available_balance || statusHexColor !== '#22C55E'}
-            className="w-full mb-4 sm:mb-8 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-4 sm:py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:hover:scale-100 disabled:active:scale-100"
+            disabled={isLoading || !balanceData?.available_balance || statusHexColor !== GREEN_HEX}
+            className="w-full mb-4 sm:mb-8 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] disabled:opacity-50 disabled:cursor-not-allowed text-[var(--color-bg-surface)] font-semibold py-4 sm:py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:hover:scale-100 disabled:active:scale-100"
           >
             <span className="font-semibold tracking-wide">Withdraw Funds</span>
-            <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-5 h-5 rounded-full bg-[var(--color-bg-surface)]/20 flex items-center justify-center">
+              <svg className="w-3 h-3 text-[var(--color-bg-surface)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </button>
 
           {/* Loan Progress Card */}
-          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden mb-4 sm:mb-8">
+          <div className="bg-[var(--color-bg-surface)] rounded-3xl shadow-2xl border border-[var(--color-border)] overflow-hidden mb-4 sm:mb-8">
             {/* Card Header */}
-            <div className="bg-gradient-to-r from-[#FF9933] to-[#138808] px-6 md:px-8 py-6 md:py-8">
+            <div className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] px-6 md:px-8 py-6 md:py-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <FileText className="w-6 h-6 md:w-7 md:h-7 text-white" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[var(--color-bg-surface)]/20 backdrop-blur-sm flex items-center justify-center">
+                  <FileText className="w-6 h-6 md:w-7 md:h-7 text-[var(--color-bg-surface)]" />
                 </div>
                 <div>
-                  <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                  <h2 className="text-xl md:text-2xl font-bold text-[var(--color-bg-surface)] tracking-tight">
                     Loan Progress
                   </h2>
-                  <p className="text-sm text-white/80 mt-1">
+                  <p className="text-sm text-[var(--color-bg-surface)]/80 mt-1">
                     Current application status & details
                   </p>
                 </div>
@@ -644,9 +644,9 @@ export default function WalletPage() {
               <div>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
-                    <FileText className="w-5 h-5 text-[#FF9933]" />
+                    <FileText className="w-5 h-5 text-[var(--color-accent-500)]" />
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                  <span className="text-sm font-semibold text-[var(--color-text-primary)] uppercase tracking-wide">
                     Document Number
                   </span>
                 </div>
@@ -659,9 +659,9 @@ export default function WalletPage() {
               <div>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-[#138808]" />
+                    <ShieldCheck className="w-5 h-5 text-[var(--color-secondary-600)]" />
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                  <span className="text-sm font-semibold text-[var(--color-text-primary)] uppercase tracking-wide">
                     Status
                   </span>
                 </div>
@@ -686,12 +686,12 @@ export default function WalletPage() {
                       </span>
                     </div>
                   ) : (
-                    <div className="text-sm text-gray-500">No active loan</div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">No active loan</div>
                   )}
                   
                   {/* Description uses EXACT message from admin */}
                   {loanStatusDescription && (
-                    <div className="text-sm text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <div className="text-sm text-[var(--color-text-secondary)] leading-relaxed bg-[var(--color-bg-main)] p-4 rounded-xl border border-[var(--color-border)]">
                       {loanStatusDescription}
                     </div>
                   )}
@@ -699,7 +699,7 @@ export default function WalletPage() {
               </div>
 
               {/* Government Logos */}
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-[var(--color-border)]">
                 <div className="flex items-center justify-center gap-4">
                   <div className="w-8 h-8 relative opacity-70">
                     <Image src={GOVERNMENT_LOGOS.rbi} alt="RBI" width={32} height={32} className="object-contain" />
@@ -710,14 +710,14 @@ export default function WalletPage() {
                   <div className="w-8 h-8 relative opacity-70">
                     <Image src={GOVERNMENT_LOGOS.cibil} alt="CIBIL" width={32} height={32} className="object-contain" />
                   </div>
-                  <span className="text-xs text-gray-400">Government Accredited</span>
+                  <span className="text-xs text-[var(--color-text-secondary)]">Government Accredited</span>
                 </div>
               </div>
             </div>
             
             {/* Card Footer */}
-            <div className="px-6 md:px-8 py-4 border-t border-gray-100 bg-gray-50/30">
-              <p className="text-xs text-gray-500 text-center">
+            <div className="px-6 md:px-8 py-4 border-t border-[var(--color-border)] bg-[var(--color-bg-main)]/30">
+              <p className="text-xs text-[var(--color-text-secondary)] text-center">
                 Last updated: {lastUpdated || 'Loading...'}
               </p>
               {fetchError && (
@@ -731,15 +731,15 @@ export default function WalletPage() {
       </main>
       
       {/* Bottom Navigation - Fixed at bottom, always visible */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4 border-t border-gray-100">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-bg-surface)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 py-4 border-t border-[var(--color-border)]">
         <div className="max-w-2xl mx-auto flex justify-around">
           <Link
             href="/home"
             onClick={() => setActiveNav('home')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'home' 
-                ? 'text-[#FF9933] bg-[#FF9933]/5' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[var(--color-accent-500)]/5' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <Home className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'home' ? 'scale-110' : ''}`} />
@@ -751,8 +751,8 @@ export default function WalletPage() {
             onClick={() => setActiveNav('wallet')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'wallet' 
-                ? 'text-[#FF9933] bg-[#FF9933]/5' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[var(--color-accent-500)]/5' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <Wallet className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'wallet' ? 'scale-110' : ''}`} />
@@ -764,8 +764,8 @@ export default function WalletPage() {
             onClick={() => setActiveNav('account')}
             className={`flex flex-col items-center px-8 py-2 rounded-lg transition-all ${
               activeNav === 'account' 
-                ? 'text-[#FF9933] bg-[#FF9933]/5' 
-                : 'text-[#6C757D] hover:text-[#FF9933]'
+                ? 'text-[var(--color-accent-500)] bg-[var(--color-accent-500)]/5' 
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]'
             }`}
           >
             <User className={`w-7 h-7 mb-1 transition-transform ${activeNav === 'account' ? 'scale-110' : ''}`} />
@@ -784,24 +784,24 @@ export default function WalletPage() {
           }}
         >
           <div 
-            className="w-full max-w-md bg-white rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
+            className="w-full max-w-md bg-[var(--color-bg-surface)] rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex-shrink-0 p-3 sm:p-6 border-b border-gray-100 bg-white">
+            <div className="flex-shrink-0 p-3 sm:p-6 border-b border-[var(--color-border)] bg-[var(--color-bg-surface)]">
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-50 to-green-50 flex items-center justify-center flex-shrink-0">
-                  <div className="w-5 sm:w-6 h-5 sm:h-6 rounded bg-gradient-to-br from-[#FF9933] to-[#138808] flex items-center justify-center">
-                    <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-5 sm:w-6 h-5 sm:h-6 rounded bg-gradient-to-br from-[var(--color-accent-500)] to-[var(--color-secondary-600)] flex items-center justify-center">
+                    <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[var(--color-bg-surface)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#1e3a5f]">
+                  <h3 className="text-base sm:text-lg font-bold text-[var(--color-primary-900)]">
                     Verify Withdrawal Code
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                  <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] mt-0.5">
                     Enter your withdrawal code to confirm
                   </p>
                 </div>
@@ -810,13 +810,13 @@ export default function WalletPage() {
 
             {/* Modal Content */}
             <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-4">
-              <p className="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] text-center leading-relaxed">
                 Enter the OTP Code provided by Finance Department to submit for your withdrawal request
               </p>
 
               {/* OTP Code Input */}
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium text-[var(--color-text-primary)] mb-2 sm:mb-4">
                   OTP Code
                 </label>
                 <input
@@ -825,35 +825,35 @@ export default function WalletPage() {
                   placeholder="Please Enter the OTP Code"
                   value={withdrawalCode}
                   onChange={handleWithdrawalCodeChange}
-                  className="w-full px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg sm:rounded-xl focus:border-[#FF9933] focus:outline-none transition-colors text-base sm:text-lg font-semibold text-center tracking-widest"
+                  className="w-full px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg sm:rounded-xl focus:border-[var(--color-accent-500)] focus:outline-none transition-colors text-base sm:text-lg font-semibold text-center tracking-widest"
                   autoFocus
                 />
               </div>
               
               {/* Withdrawal Amount Summary */}
-              <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[#FF9933]/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
-                <p className="text-xs sm:text-sm text-gray-600 mb-1">Withdrawal Amount</p>
-                <p className="text-lg sm:text-2xl font-bold text-[#FF9933] break-words">
+              <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[var(--color-accent-500)]/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
+                <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-1">Withdrawal Amount</p>
+                <p className="text-lg sm:text-2xl font-bold text-[var(--color-accent-500)] break-words">
                   {formatINR(balance)}
                 </p>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex-shrink-0 flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 p-3 sm:p-6 border-t border-gray-100 bg-white">
+            <div className="flex-shrink-0 flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 p-3 sm:p-6 border-t border-[var(--color-border)] bg-[var(--color-bg-surface)]">
               <button
                 onClick={() => {
                   setShowWithdrawalModal(false)
                   setWithdrawalCode('')
                 }}
-                className="flex-1 py-2.5 sm:py-3.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg sm:rounded-xl hover:bg-gray-50 transition-all duration-200 active:scale-95 text-xs sm:text-base"
+                className="flex-1 py-2.5 sm:py-3.5 border-2 border-gray-300 text-[var(--color-text-primary)] font-semibold rounded-lg sm:rounded-xl hover:bg-[var(--color-bg-main)] transition-all duration-200 active:scale-95 text-xs sm:text-base"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmitWithdrawal}
                 disabled={isSubmitting || !withdrawalCode.trim()}
-                className="flex-1 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white font-semibold rounded-lg sm:rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-base"
+                className="flex-1 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] font-semibold rounded-lg sm:rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-base"
               >
                 {isSubmitting ? (
                   <>
@@ -879,24 +879,24 @@ export default function WalletPage() {
           }}
         >
           <div 
-            className="w-full max-w-md bg-white rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
+            className="w-full max-w-md bg-[var(--color-bg-surface)] rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex-shrink-0 p-3 sm:p-6 border-b border-gray-100 bg-white">
+            <div className="flex-shrink-0 p-3 sm:p-6 border-b border-[var(--color-border)] bg-[var(--color-bg-surface)]">
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-50 to-green-50 flex items-center justify-center flex-shrink-0">
-                  <div className="w-5 sm:w-6 h-5 sm:h-6 rounded bg-gradient-to-br from-[#FF9933] to-[#138808] flex items-center justify-center">
-                    <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-5 sm:w-6 h-5 sm:h-6 rounded bg-gradient-to-br from-[var(--color-accent-500)] to-[var(--color-secondary-600)] flex items-center justify-center">
+                    <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[var(--color-bg-surface)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#1e3a5f]">
+                  <h3 className="text-base sm:text-lg font-bold text-[var(--color-primary-900)]">
                     Verify OTP Code
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                  <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] mt-0.5">
                     Enter your OTP code to confirm
                   </p>
                 </div>
@@ -905,13 +905,13 @@ export default function WalletPage() {
 
             {/* Modal Content */}
             <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-4">
-              <p className="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] text-center leading-relaxed">
                 Enter the OTP Code provided by Finance Department to submit for your withdrawal request
               </p>
 
               {/* OTP Code Input */}
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium text-[var(--color-text-primary)] mb-2 sm:mb-4">
                   OTP Code
                 </label>
                 <input
@@ -919,35 +919,35 @@ export default function WalletPage() {
                   placeholder="Please Enter the OTP Code"
                   value={otpCode}
                   onChange={handleOtpChange}
-                  className="w-full px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg sm:rounded-xl focus:border-[#FF9933] focus:outline-none transition-colors text-base sm:text-lg font-semibold text-center tracking-widest"
+                  className="w-full px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg sm:rounded-xl focus:border-[var(--color-accent-500)] focus:outline-none transition-colors text-base sm:text-lg font-semibold text-center tracking-widest"
                   autoFocus
                 />
               </div>
               
               {/* Withdrawal Amount Summary */}
-              <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[#FF9933]/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
-                <p className="text-xs sm:text-sm text-gray-600 mb-1">Withdrawal Amount</p>
-                <p className="text-lg sm:text-2xl font-bold text-[#FF9933] break-words">
+              <div className="bg-gradient-to-r from-orange-50 to-green-50 border border-[var(--color-accent-500)]/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
+                <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-1">Withdrawal Amount</p>
+                <p className="text-lg sm:text-2xl font-bold text-[var(--color-accent-500)] break-words">
                   {formatINR(balance)}
                 </p>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex-shrink-0 flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 p-3 sm:p-6 border-t border-gray-100 bg-white">
+            <div className="flex-shrink-0 flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 p-3 sm:p-6 border-t border-[var(--color-border)] bg-[var(--color-bg-surface)]">
               <button
                 onClick={() => {
                   setShowOTPModal(false)
                   setOtpCode('')
                 }}
-                className="flex-1 py-2.5 sm:py-3.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg sm:rounded-xl hover:bg-gray-50 transition-all duration-200 active:scale-95 text-xs sm:text-base"
+                className="flex-1 py-2.5 sm:py-3.5 border-2 border-gray-300 text-[var(--color-text-primary)] font-semibold rounded-lg sm:rounded-xl hover:bg-[var(--color-bg-main)] transition-all duration-200 active:scale-95 text-xs sm:text-base"
               >
                 Cancel
               </button>
               <button
                 onClick={handleVerifyOTP}
                 disabled={isVerifying || otpCode.length !== 6}
-                className="flex-1 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white font-semibold rounded-lg sm:rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-base"
+                className="flex-1 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] font-semibold rounded-lg sm:rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-base"
               >
                 {isVerifying ? (
                   <>
@@ -968,13 +968,13 @@ export default function WalletPage() {
         <div className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-xl shadow-xl backdrop-blur-sm border ${
           toast.type === 'success' 
             ? 'bg-emerald-50/95 border-emerald-200 text-emerald-800' 
-            : 'bg-red-50/95 border-red-200 text-red-800'
+            : 'bg-[var(--color-primary-100)]/95 border-[var(--color-border)] text-red-800'
         }`}>
           <div className="flex items-center gap-3">
             {toast.type === 'success' ? (
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
             ) : (
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+              <AlertCircle className="w-5 h-5 text-[var(--color-primary-900)] flex-shrink-0" />
             )}
             <span className="font-medium">{toast.message}</span>
           </div>

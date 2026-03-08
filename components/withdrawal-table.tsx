@@ -56,16 +56,16 @@ export function WithdrawalTable({
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-[#e9ecef] bg-gradient-to-r from-[#FF9933]/10 to-[#138808]/10">
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">No.</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Document Number</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Withdrawal Code</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Name</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Username</th>
-            <th className="px-6 py-3 text-right font-semibold text-[#212529]">Amount</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Status</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Withdrawal Date</th>
-            <th className="px-6 py-3 text-left font-semibold text-[#212529]">Operate</th>
+          <tr className="border-b border-[var(--color-border)] bg-gradient-to-r from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10">
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">No.</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Document Number</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Withdrawal Code</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Name</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Username</th>
+            <th className="px-6 py-3 text-right font-semibold text-[var(--color-text-primary)]">Amount</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Status</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Withdrawal Date</th>
+            <th className="px-6 py-3 text-left font-semibold text-[var(--color-text-primary)]">Operate</th>
           </tr>
         </thead>
         <tbody>
@@ -75,32 +75,32 @@ export function WithdrawalTable({
             const showActions = isPending;
 
             return (
-              <tr key={withdrawal.id} className="border-b border-[#e9ecef] hover:bg-[#FF9933]/5 transition-colors">
-                <td className="px-6 py-4 text-[#212529]">{index + 1}</td>
-                <td className="px-6 py-4 font-mono text-[#212529]">{withdrawal.document_number || withdrawal.withdraw_number}</td>
+              <tr key={withdrawal.id} className="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-500)]/5 transition-colors">
+                <td className="px-6 py-4 text-[var(--color-text-primary)]">{index + 1}</td>
+                <td className="px-6 py-4 font-mono text-[var(--color-text-primary)]">{withdrawal.document_number || withdrawal.withdraw_number}</td>
                 <td className="px-6 py-4">
                   <input
                     type="text"
                     placeholder="Code"
                     value={withdrawal.withdrawal_code || ''}
                     readOnly
-                    className="w-20 px-2 py-1 border border-[#e9ecef] rounded text-xs bg-white text-[#212529] focus:outline-none focus:ring-2 focus:ring-[#FF9933] focus:ring-opacity-20"
+                    className="w-20 px-2 py-1 border border-[var(--color-border)] rounded text-xs bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:ring-opacity-20"
                   />
                 </td>
-                <td className="px-6 py-4 text-[#212529]">{withdrawal.user.full_name}</td>
-                <td className="px-6 py-4 font-mono text-[#212529]">{withdrawal.user.phone_number}</td>
-                <td className="px-6 py-4 text-right font-semibold text-[#212529]">
+                <td className="px-6 py-4 text-[var(--color-text-primary)]">{withdrawal.user.full_name}</td>
+                <td className="px-6 py-4 font-mono text-[var(--color-text-primary)]">{withdrawal.user.phone_number}</td>
+                <td className="px-6 py-4 text-right font-semibold text-[var(--color-text-primary)]">
                   {formatINR(withdrawal.amount)}
                 </td>
                 <td className="px-6 py-4">
                   <span
-                    className="inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white"
+                    className="inline-flex px-3 py-1 text-xs font-semibold rounded-full text-[var(--color-bg-surface)]"
                     style={{ backgroundColor: getStatusColor(withdrawal.status) }}
                   >
                     {withdrawal.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-[#212529]">{formatDate(withdrawal.withdrawal_date)}</td>
+                <td className="px-6 py-4 text-[var(--color-text-primary)]">{formatDate(withdrawal.withdrawal_date)}</td>
                 <td className="px-6 py-4">
                   {showActions ? (
                     // Show full action buttons for pending withdrawals
@@ -108,7 +108,7 @@ export function WithdrawalTable({
                       <Button
                         onClick={() => onCheckingData(withdrawal)}
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07]"
+                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)]"
                         title="Check member details"
                       >
                         Checking Data
@@ -116,7 +116,7 @@ export function WithdrawalTable({
                       <Button
                         onClick={() => onConfirmWithdrawal(withdrawal)}
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07]"
+                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)]"
                         title="Confirm withdrawal"
                       >
                         Confirm
@@ -124,7 +124,7 @@ export function WithdrawalTable({
                       <Button
                         onClick={() => onReject(withdrawal)}
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 border border-[#CE1126] text-[#CE1126] bg-white hover:bg-red-50"
+                        className="text-xs px-2 py-1 h-7 border border-[var(--color-primary-900)] text-[var(--color-primary-900)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-primary-100)]"
                         title="Reject withdrawal"
                       >
                         Reject
@@ -136,7 +136,7 @@ export function WithdrawalTable({
                       <Button
                         onClick={() => onCheckingData(withdrawal)}
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07]"
+                        className="text-xs px-2 py-1 h-7 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)]"
                         title="Check member details"
                       >
                         Checking Data
@@ -144,7 +144,7 @@ export function WithdrawalTable({
                       <Button
                         disabled
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
+                        className="text-xs px-2 py-1 h-7 bg-[var(--color-bg-main)] text-[var(--color-text-secondary)] cursor-not-allowed border border-[var(--color-border)]"
                         title={getButtonTitle(withdrawal.status, 'confirm')}
                       >
                         Confirm
@@ -152,7 +152,7 @@ export function WithdrawalTable({
                       <Button
                         disabled
                         size="sm"
-                        className="text-xs px-2 py-1 h-7 bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
+                        className="text-xs px-2 py-1 h-7 bg-[var(--color-bg-main)] text-[var(--color-text-secondary)] cursor-not-allowed border border-[var(--color-border)]"
                         title={getButtonTitle(withdrawal.status, 'reject')}
                       >
                         Reject

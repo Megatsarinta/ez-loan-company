@@ -36,6 +36,7 @@ export async function GET(req: NextRequest) {
           verification: { 
             personal_info_completed: false, 
             kyc_completed: false, 
+            bank_info_completed: false, 
             signature_completed: false 
           } 
         });

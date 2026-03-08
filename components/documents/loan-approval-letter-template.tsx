@@ -46,9 +46,9 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
   const loanOfficerPhone = loanData.loanOfficerPhone || COMPANY_INFO.contact.phone
   
   // Brand colors (saffron, green, navy)
-  const navy = '#1e3a5f'
-  const saffron = '#FF9933'
-  const green = '#138808'
+  const navy = 'var(--color-primary-900)'
+  const saffron = 'var(--color-accent-500)'
+  const green = 'var(--color-secondary-600)'
   
   // Format effective date
   const effectiveDate = loanData.effectiveDate || new Date().toLocaleDateString('en-US', { 
@@ -87,7 +87,7 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
 
   return (
     <div 
-      className="w-full max-w-4xl mx-auto bg-white text-gray-900 relative print:overflow-hidden" 
+      className="w-full max-w-4xl mx-auto bg-[var(--color-bg-surface)] text-gray-900 relative print:overflow-hidden" 
       style={{ 
         fontSize: '12px',
         width: '210mm',
@@ -111,7 +111,7 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
 
       <div className="relative z-10 space-y-3 print:space-y-2">
         {/* HEADER - Company logo */}
-        <div className="flex justify-center items-center pb-3 border-b-2 border-[#FF9933]/40">
+        <div className="flex justify-center items-center pb-3 border-b-2 border-[var(--color-accent-500)]/40">
   <div className="flex items-center gap-3">
     {/* Company Logo */}
     <div className="w-28 h-28 relative flex-shrink-0">
@@ -141,7 +141,7 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
           <h2 className="text-xl font-bold mb-1 tracking-wide" style={{ color: saffron }}>
             CONDITIONAL APPROVED LETTER
           </h2>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             This letter is effective on : <span className="font-bold text-gray-800">{effectiveDate}</span>
           </p>
         </div>
@@ -152,16 +152,16 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
           <div>
             <div className="text-sm font-bold uppercase mb-2" style={{ color: navy }}>BETWEEN</div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">COMPANY:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">COMPANY:</div>
               <div className="text-gray-800 text-xs font-bold">{companyName}</div>
             </div>
             <div className="text-xs italic mb-2" style={{ color: saffron }}>HEREINAFTER REFERRED: lender</div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">RBI REGISTRATION NO:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">RBI REGISTRATION NO:</div>
               <div className="text-gray-800 text-xs font-bold">{secNumber}</div>
             </div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">DATE REGISTERED SEC:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">DATE REGISTERED SEC:</div>
               <div className="text-gray-800 text-xs font-bold">{dateRegistered}</div>
             </div>
           </div>
@@ -170,20 +170,20 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
           <div>
             <div className="text-sm font-bold uppercase mb-2" style={{ color: navy }}>AND</div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">CUSTOMER NAME:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">CUSTOMER NAME:</div>
               <div className="text-gray-800 text-xs font-bold">{loanData.borrowerName || 'N/A'}</div>
             </div>
             <div className="text-xs italic mb-2" style={{ color: saffron }}>HEREINAFTER REFERRED: Borrower</div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">ID CARD NUMBER:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">ID CARD NUMBER:</div>
               <div className="text-gray-800 text-xs font-bold">{loanData.idCardNumber || 'N/A'}</div>
             </div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">PHONE NUMBER:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">PHONE NUMBER:</div>
               <div className="text-gray-800 text-xs font-bold">{loanData.borrowerPhone || 'N/A'}</div>
             </div>
             <div className="mb-1">
-              <div className="text-gray-600 text-[10px]">DATE APPLY LOAN:</div>
+              <div className="text-[var(--color-text-secondary)] text-[10px]">DATE APPLY LOAN:</div>
               <div className="text-gray-800 text-xs font-bold">{applicationDate}</div>
             </div>
           </div>
@@ -205,31 +205,31 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
             <div className="mb-1">
               <span className="text-[10px] font-bold" style={{ color: navy }}>Loan Approved code: {loanData.documentNumber || loanData.loanApprovalCode || 'PENDING'}</span>
             </div>
-            <div className="text-gray-600 text-[10px] mb-2">Agree between borrower and lender</div>
+            <div className="text-[var(--color-text-secondary)] text-[10px] mb-2">Agree between borrower and lender</div>
             
             <div className="space-y-1">
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Loan amount :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Loan amount :</span>
                 <span className="text-sm font-bold text-gray-800">{loanData.loanAmount || '₹0.00'}</span>
               </div>
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Interest Rate {loanData.interestRate || '0%'} :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Interest Rate {loanData.interestRate || '0%'} :</span>
                 <span className="text-sm font-bold text-gray-800">{loanData.interestAmount || '₹0.00 / Month (EMI)'}</span>
               </div>
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Loan Term :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Loan Term :</span>
                 <span className="text-sm font-bold text-gray-800">{loanData.loanTerm || '0 months'}</span>
               </div>
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Installment Date :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Installment Date :</span>
                 <span className="text-sm font-bold text-gray-800">5th of every month</span>
               </div>
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Monthly Installment :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Monthly Installment :</span>
                 <span className="text-sm font-bold text-gray-800">{loanData.monthlyInstallment || '₹0.00'}</span>
               </div>
               <div className="flex justify-between items-baseline pb-0.5 border-b border-dashed border-gray-300">
-                <span className="text-gray-600 text-xs">Total Repayment :</span>
+                <span className="text-[var(--color-text-secondary)] text-xs">Total Repayment :</span>
                 <span className="text-sm font-bold text-gray-800">{loanData.totalRepayment || '₹0.00'}</span>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
           {/* RIGHT COLUMN: ID Card */}
           <div>
             <h3 className="text-sm font-bold mb-1" style={{ color: navy }}>ID CARD & PASSPORT</h3>
-            <div className="relative w-full h-[160px] flex items-center justify-center bg-orange-50/30 rounded-lg overflow-hidden">
+            <div className="relative w-full h-[160px] flex items-center justify-center bg-[var(--color-accent-100)]/30 rounded-lg overflow-hidden">
               {loanData.idCardImage ? (
                 <div className="relative w-full h-full">
                   <img 
@@ -267,7 +267,7 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
                 <div className="relative w-full h-full flex items-center justify-center">
                   <div className="flex flex-col items-center justify-center gap-1">
                     <div className="text-3xl mb-1">🪪</div>
-                    <p className="text-gray-500 text-xs font-medium">ID Card/Passport Image</p>
+                    <p className="text-[var(--color-text-secondary)] text-xs font-medium">ID Card/Passport Image</p>
                   </div>
                   {/* Loan Approved Stamp */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -306,15 +306,15 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
             <li className="pl-4 relative text-gray-800 text-xs leading-snug">
               <span className="absolute left-0 font-bold" style={{ color: navy }}>3.</span>
               If you have any queries, our loan officers available on {loanOfficerPhone} can explain it better to you. <br />
-              <span className="text-[10px] text-gray-600">
-                (Note: For authentication purpose, please mention your Loan Approval Code: <span className="bg-orange-50 px-1 py-0.5 rounded font-bold" style={{ color: navy }}>{loanData.documentNumber || loanData.loanApprovalCode || 'PENDING'}</span>)
+              <span className="text-[10px] text-[var(--color-text-secondary)]">
+                (Note: For authentication purpose, please mention your Loan Approval Code: <span className="bg-[var(--color-accent-100)] px-1 py-0.5 rounded font-bold" style={{ color: navy }}>{loanData.documentNumber || loanData.loanApprovalCode || 'PENDING'}</span>)
               </span>
             </li>
           </ul>
         </div>
 
         {/* SIGNATURE AND DEPARTMENT LOGOS SECTION */}
-        <div className="flex justify-between items-center pt-3 border-t-2 border-[#1e3a5f]">
+        <div className="flex justify-between items-center pt-3 border-t-2 border-[var(--color-primary-900)]">
           {/* LEFT SIDE: Four Department Logos */}
           <div className="flex gap-3 items-center">
             <div className="w-12 h-12 relative">
@@ -366,11 +366,11 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
             <div className="text-left">
               <div className="flex items-start gap-1">
                 <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: navy }} />
-                <p className="text-gray-600 leading-tight max-w-md">{officeLocation}</p>
+                <p className="text-[var(--color-text-secondary)] leading-tight max-w-md">{officeLocation}</p>
               </div>
               <div className="flex items-center gap-1 mt-1">
                 <Phone className="w-3 h-3 flex-shrink-0" style={{ color: saffron }} />
-                <p className="text-gray-600">{contactPhone}</p>
+                <p className="text-[var(--color-text-secondary)]">{contactPhone}</p>
               </div>
             </div>
             
@@ -378,12 +378,12 @@ export default function LoanApprovalLetterTemplate({ loanData }: LoanApprovalLet
             <div className="text-right">
               <div className="flex items-center justify-end gap-1">
                 <FileText className="w-3 h-3 flex-shrink-0" style={{ color: navy }} />
-                <div className="text-gray-700 font-semibold">Document No.</div>
+                <div className="text-[var(--color-text-primary)] font-semibold">Document No.</div>
               </div>
               <div className="text-gray-800 font-mono mt-0.5 text-[9px]">{loanData.documentNumber || 'N/A'}</div>
               <div className="flex items-center justify-end gap-1 mt-1">
                 <Calendar className="w-3 h-3 flex-shrink-0" style={{ color: saffron }} />
-                <div className="text-gray-500">Generated: {effectiveDate}</div>
+                <div className="text-[var(--color-text-secondary)]">Generated: {effectiveDate}</div>
               </div>
             </div>
           </div>

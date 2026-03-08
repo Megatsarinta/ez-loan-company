@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/20 to-green-50/20">
       {/* Navigation Header - Updated with Digital India logo */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+      <header className="sticky top-0 z-50 bg-[var(--color-bg-surface)]/80 backdrop-blur-md border-b border-[var(--color-border)]/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <div className="flex items-center gap-3">
@@ -37,16 +37,16 @@ export default function AboutPage() {
                 <div>
                   <div className="flex items-baseline">
                     <span className="text-2xl lg:text-3xl font-black tracking-tight">
-                      <span className="text-[#FF9933]">EASY</span>
-                      <span className="text-[#138808]">LOAN</span>
+                      <span className="text-[var(--color-accent-500)]">EASY</span>
+                      <span className="text-[var(--color-secondary-600)]">LOAN</span>
                     </span>
-                    <span className="ml-2 text-[10px] lg:text-xs bg-[#FF9933] text-white px-2 py-0.5 rounded-full font-semibold">
+                    <span className="ml-2 text-[10px] lg:text-xs bg-[var(--color-accent-500)] text-[var(--color-bg-surface)] px-2 py-0.5 rounded-full font-semibold">
                       NRI
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500 flex items-center gap-2">
+                  <p className="text-xs text-[var(--color-text-secondary)] flex items-center gap-2">
                     <span className="flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3 text-[#138808]" />
+                      <CheckCircle className="w-3 h-3 text-[var(--color-secondary-600)]" />
                       RBI Regd. NBFC
                     </span>
                   </p>
@@ -54,18 +54,18 @@ export default function AboutPage() {
               </Link>
             </div>
             <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/" className="text-gray-700 hover:text-[#FF9933] font-medium transition-colors">
+              <Link href="/" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-500)] font-medium transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="text-[#FF9933] font-medium border-b-2 border-[#FF9933] pb-1">
+              <Link href="/about" className="text-[var(--color-accent-500)] font-medium border-b-2 border-[var(--color-accent-500)] pb-1">
                 About Us
               </Link>
-              <Link href="/faq" className="text-gray-700 hover:text-[#FF9933] font-medium transition-colors">
+              <Link href="/faq" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-500)] font-medium transition-colors">
                 FAQ
               </Link>
             </nav>
             <Link href="/register">
-              <Button className="bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white px-4 sm:px-6 shadow-lg hover:shadow-xl transition-all">
+              <Button className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] px-4 sm:px-6 shadow-lg hover:shadow-xl transition-all">
                 Apply Now
               </Button>
             </Link>
@@ -76,19 +76,19 @@ export default function AboutPage() {
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
         {/* Hero Section - Updated with English */}
         <section className="text-center mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 text-gray-700 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-orange-200/50">
-            <Heart className="w-4 h-4 text-[#FF9933]" />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-50 to-green-50 text-[var(--color-text-primary)] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-orange-200/50">
+            <Heart className="w-4 h-4 text-[var(--color-accent-500)]" />
             <span>🇮🇳 Serving NRIs Worldwide Since 2015</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
             For the{' '}
-            <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--color-accent-500)] via-[var(--color-bg-surface)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
               Global Indian
             </span>
           </h1>
           
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 lg:mb-12 max-w-4xl mx-auto">
+          <p className="text-lg sm:text-xl lg:text-2xl text-[var(--color-text-secondary)] mb-8 lg:mb-12 max-w-4xl mx-auto">
             Our mission is to provide fast, accessible, and secure financial solutions 
             for Non-Resident Indians (NRIs), helping them achieve their dreams for their families back home.
           </p>
@@ -96,13 +96,13 @@ export default function AboutPage() {
 
         {/* Government Regulators Badge */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 max-w-4xl mx-auto">
+          <div className="bg-[var(--color-bg-surface)] rounded-2xl shadow-lg p-6 border border-[var(--color-border)] max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-3">
-                <Shield className="w-8 h-8 text-[#FF9933]" />
+                <Shield className="w-8 h-8 text-[var(--color-accent-500)]" />
                 <div>
                   <h3 className="font-bold text-gray-900">RBI Regulated NBFC</h3>
-                  <p className="text-sm text-gray-600">Registered with Government of India</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Registered with Government of India</p>
                 </div>
               </div>
               
@@ -133,10 +133,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 mb-4">
-                <Target className="w-6 h-6 text-[#FF9933]" />
+                <Target className="w-6 h-6 text-[var(--color-accent-500)]" />
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Our Story</h2>
               </div>
-              <div className="space-y-4 text-gray-600">
+              <div className="space-y-4 text-[var(--color-text-secondary)]">
                 <p>
                   Founded in 2015 by former NRIs who themselves experienced the challenges of 
                   accessing financial services while living abroad, EasyLoan was born from a 
@@ -154,12 +154,12 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-[#FF9933]/10 to-[#138808]/10 rounded-3xl p-8 lg:p-12">
+            <div className="bg-gradient-to-br from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 rounded-3xl p-8 lg:p-12">
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6">
-                    <div className="text-3xl font-bold text-[#FF9933] mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div key={index} className="text-center bg-[var(--color-bg-surface)]/80 backdrop-blur-sm rounded-2xl p-6">
+                    <div className="text-3xl font-bold text-[var(--color-accent-500)] mb-2">{stat.value}</div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -170,7 +170,7 @@ export default function AboutPage() {
         {/* Our Mission & Vision - Updated with Indian colors */}
         <section className="mb-16 md:mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#FF9933] to-[#138808] rounded-3xl p-8 text-white">
+            <div className="bg-gradient-to-br from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-3xl p-8 text-[var(--color-bg-surface)]">
               <Target className="w-12 h-12 mb-6" />
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="opacity-90">
@@ -180,7 +180,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-[#138808] to-[#000080] rounded-3xl p-8 text-white">
+            <div className="bg-gradient-to-br from-[var(--color-secondary-600)] to-[var(--color-primary-900)] rounded-3xl p-8 text-[var(--color-bg-surface)]">
               <Globe className="w-12 h-12 mb-6" />
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
               <p className="opacity-90">
@@ -196,19 +196,19 @@ export default function AboutPage() {
         <section className="mb-16 md:mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
               Principles that guide our service to the NRI community
             </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-[#FF9933]">
+              <div key={index} className="bg-[var(--color-bg-surface)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:border-[var(--color-accent-500)]">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-50 to-green-50 flex items-center justify-center mb-4">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-[var(--color-text-secondary)]">{value.description}</p>
               </div>
             ))}
           </div>
@@ -218,7 +218,7 @@ export default function AboutPage() {
         <section className="mb-16 md:mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Leadership Team</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
               Former NRIs and financial experts dedicated to serving our community
             </p>
           </div>
@@ -226,13 +226,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center group">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[#FF9933]/10 to-[#138808]/10 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <Users2 className="w-16 h-16 text-[#FF9933]" />
+                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[var(--color-accent-500)]/10 to-[var(--color-secondary-600)]/10 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <Users2 className="w-16 h-16 text-[var(--color-accent-500)]" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-[#138808] font-medium mb-3">{member.position}</p>
-                <p className="text-gray-600 text-sm mb-2">{member.bio}</p>
-                <p className="text-xs text-gray-500 italic">{member.experience}</p>
+                <p className="text-[var(--color-secondary-600)] font-medium mb-3">{member.position}</p>
+                <p className="text-[var(--color-text-secondary)] text-sm mb-2">{member.bio}</p>
+                <p className="text-xs text-[var(--color-text-secondary)] italic">{member.experience}</p>
               </div>
             ))}
           </div>
@@ -244,24 +244,24 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 mb-4">
-                  <Shield className="w-6 h-6 text-[#FF9933]" />
+                  <Shield className="w-6 h-6 text-[var(--color-accent-500)]" />
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Regulatory Compliance</h2>
                 </div>
-                <p className="text-gray-600 mb-6">
+                <p className="text-[var(--color-text-secondary)] mb-6">
                   We are recognized and registered with Government of India authorities 
                   to ensure the safety and protection of our NRI customers.
                 </p>
                 <ul className="space-y-3">
                   {compliance.map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#138808]" />
-                      <span className="text-gray-700">{item}</span>
+                      <CheckCircle className="w-5 h-5 text-[var(--color-secondary-600)]" />
+                      <span className="text-[var(--color-text-primary)]">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center">
+                <div className="bg-[var(--color-bg-surface)]/80 backdrop-blur-sm rounded-2xl p-6 text-center">
                   <Image
                     src={GOVERNMENT_LOGOS.rbi}
                     alt="RBI Logo"
@@ -270,9 +270,9 @@ export default function AboutPage() {
                     className="mx-auto mb-4 object-contain"
                   />
                   <h3 className="font-bold text-gray-900 mb-2">RBI Registered</h3>
-                  <p className="text-sm text-gray-600">Reserve Bank of India</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Reserve Bank of India</p>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center">
+                <div className="bg-[var(--color-bg-surface)]/80 backdrop-blur-sm rounded-2xl p-6 text-center">
                   <Image
                     src={GOVERNMENT_LOGOS.mca}
                     alt="MCA Logo"
@@ -281,9 +281,9 @@ export default function AboutPage() {
                     className="mx-auto mb-4 object-contain"
                   />
                   <h3 className="font-bold text-gray-900 mb-2">MCA Registered</h3>
-                  <p className="text-sm text-gray-600">Ministry of Corporate Affairs</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Ministry of Corporate Affairs</p>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center">
+                <div className="bg-[var(--color-bg-surface)]/80 backdrop-blur-sm rounded-2xl p-6 text-center">
                   <Image
                     src={GOVERNMENT_LOGOS.cibil}
                     alt="CIBIL Logo"
@@ -292,9 +292,9 @@ export default function AboutPage() {
                     className="mx-auto mb-4 object-contain"
                   />
                   <h3 className="font-bold text-gray-900 mb-2">CIBIL Partner</h3>
-                  <p className="text-sm text-gray-600">Credit Bureau Partner</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Credit Bureau Partner</p>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center">
+                <div className="bg-[var(--color-bg-surface)]/80 backdrop-blur-sm rounded-2xl p-6 text-center">
                   <Image
                     src={GOVERNMENT_LOGOS.digilocker}
                     alt="DigiLocker Logo"
@@ -303,7 +303,7 @@ export default function AboutPage() {
                     className="mx-auto mb-4 object-contain"
                   />
                   <h3 className="font-bold text-gray-900 mb-2">DigiLocker</h3>
-                  <p className="text-sm text-gray-600">Digital Document Verification</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Digital Document Verification</p>
                 </div>
               </div>
             </div>
@@ -312,40 +312,40 @@ export default function AboutPage() {
 
         {/* Contact Info - Updated with Indian info */}
         <section className="mb-12">
-          <div className="bg-white rounded-3xl shadow-lg p-8">
+          <div className="bg-[var(--color-bg-surface)] rounded-3xl shadow-lg p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
                 Always ready to help with your financial needs
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-100 hover:border-[#FF9933] transition-colors">
-                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
-                  <Phone className="w-6 h-6 text-[#FF9933]" />
+              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-500)] transition-colors">
+                <div className="w-12 h-12 bg-[var(--color-accent-100)] rounded-xl flex items-center justify-center mb-4">
+                  <Phone className="w-6 h-6 text-[var(--color-accent-500)]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">24/7 Helpline</h3>
-                <p className="text-gray-600 mb-2">{COMPANY_INFO.contact.tollFree}</p>
-                <p className="text-sm text-gray-500">Always available</p>
+                <p className="text-[var(--color-text-secondary)] mb-2">{COMPANY_INFO.contact.tollFree}</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">Always available</p>
               </div>
               
-              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-100 hover:border-[#FF9933] transition-colors">
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
-                  <Mail className="w-6 h-6 text-[#138808]" />
+              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-500)] transition-colors">
+                <div className="w-12 h-12 bg-[var(--color-secondary-100)] rounded-xl flex items-center justify-center mb-4">
+                  <Mail className="w-6 h-6 text-[var(--color-secondary-600)]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Email Support</h3>
-                <p className="text-gray-600 mb-2">{COMPANY_INFO.contact.email}</p>
-                <p className="text-sm text-gray-500">Response within 2 hours</p>
+                <p className="text-[var(--color-text-secondary)] mb-2">{COMPANY_INFO.contact.email}</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">Response within 2 hours</p>
               </div>
               
-              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-100 hover:border-[#FF9933] transition-colors">
+              <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-500)] transition-colors">
                 <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-[#000080]" />
+                  <MapPin className="w-6 h-6 text-[var(--color-primary-900)]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Headquarters</h3>
-                <p className="text-gray-600 mb-2">Mumbai, India</p>
-                <p className="text-sm text-gray-500">Serving NRIs worldwide</p>
+                <p className="text-[var(--color-text-secondary)] mb-2">Mumbai, India</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">Serving NRIs worldwide</p>
               </div>
             </div>
           </div>
@@ -353,11 +353,11 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-3xl p-8 md:p-12 text-white">
+          <div className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-3xl p-8 md:p-12 text-[var(--color-bg-surface)]">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Apply?</h2>
             <p className="text-lg mb-8 opacity-90">Join 500,000+ NRIs who have trusted us</p>
             <Link href="/register">
-              <Button className="bg-white text-[#FF9933] hover:bg-gray-100 text-lg py-6 px-12 rounded-2xl shadow-lg">
+              <Button className="bg-[var(--color-bg-surface)] text-[var(--color-accent-500)] hover:bg-[var(--color-bg-main)] text-lg py-6 px-12 rounded-2xl shadow-lg">
                 Apply Now
                 <ChevronRight className="w-5 h-5 ml-2" />
               </Button>
@@ -367,7 +367,7 @@ export default function AboutPage() {
       </main>
 
       {/* Footer - Updated with Digital India logo */}
-      <footer className="border-t border-gray-200 bg-white mt-16">
+      <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg-surface)] mt-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Brand */}
@@ -377,11 +377,11 @@ export default function AboutPage() {
                   <Image src={COMPANY_LOGOS.main} alt="Digital India" width={40} height={40} className="object-contain" />
                 </div>
                 <span className="text-lg font-black tracking-tight">
-                  <span className="text-[#FF9933]">EASY</span>
-                  <span className="text-[#138808]">LOAN</span>
+                  <span className="text-[var(--color-accent-500)]">EASY</span>
+                  <span className="text-[var(--color-secondary-600)]">LOAN</span>
                 </span>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-[var(--color-text-secondary)]">
                 For NRIs, For India. Fast, secure, and accessible loans for our global Indian community.
               </p>
             </div>
@@ -390,9 +390,9 @@ export default function AboutPage() {
             <div>
               <h4 className="font-bold text-gray-900 mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                <li><Link href="/" className="text-sm text-gray-600 hover:text-[#FF9933]">Home</Link></li>
-                <li><Link href="/about" className="text-sm text-gray-600 hover:text-[#FF9933]">About Us</Link></li>
-                <li><Link href="/faq" className="text-sm text-gray-600 hover:text-[#FF9933]">FAQ</Link></li>
+                <li><Link href="/" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]">Home</Link></li>
+                <li><Link href="/about" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]">About Us</Link></li>
+                <li><Link href="/faq" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]">FAQ</Link></li>
               </ul>
             </div>
 
@@ -400,8 +400,8 @@ export default function AboutPage() {
             <div>
               <h4 className="font-bold text-gray-900 mb-4">Legal</h4>
               <ul className="space-y-2">
-                <li><Link href="/terms" className="text-sm text-gray-600 hover:text-[#FF9933]">Terms of Service</Link></li>
-                <li><Link href="/privacy" className="text-sm text-gray-600 hover:text-[#FF9933]">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-500)]">Privacy Policy</Link></li>
               </ul>
             </div>
 
@@ -409,15 +409,15 @@ export default function AboutPage() {
             <div>
               <h4 className="font-bold text-gray-900 mb-4">Regulatory</h4>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs bg-orange-50 text-[#FF9933] px-2 py-1 rounded-full">RBI</span>
-                <span className="text-xs bg-green-50 text-[#138808] px-2 py-1 rounded-full">MCA</span>
-                <span className="text-xs bg-blue-50 text-[#000080] px-2 py-1 rounded-full">CIBIL</span>
+                <span className="text-xs bg-[var(--color-accent-100)] text-[var(--color-accent-500)] px-2 py-1 rounded-full">RBI</span>
+                <span className="text-xs bg-[var(--color-secondary-100)] text-[var(--color-secondary-600)] px-2 py-1 rounded-full">MCA</span>
+                <span className="text-xs bg-blue-50 text-[var(--color-primary-900)] px-2 py-1 rounded-full">CIBIL</span>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-200 pt-6 text-center">
-            <p className="text-sm text-gray-500">
+          <div className="border-t border-[var(--color-border)] pt-6 text-center">
+            <p className="text-sm text-[var(--color-text-secondary)]">
               © 2024 {COMPANY_INFO.name}. All rights reserved. {COMPANY_INFO.tagline.nri}
             </p>
           </div>
@@ -436,22 +436,22 @@ const stats = [
 
 const values = [
   {
-    icon: <Heart className="w-6 h-6 text-[#FF9933]" />,
+    icon: <Heart className="w-6 h-6 text-[var(--color-accent-500)]" />,
     title: 'Compassion',
     description: 'We understand the NRI journey and treat every client with respect and empathy.'
   },
   {
-    icon: <Shield className="w-6 h-6 text-[#FF9933]" />,
+    icon: <Shield className="w-6 h-6 text-[var(--color-accent-500)]" />,
     title: 'Integrity',
     description: 'Transparent and honest service at all times.'
   },
   {
-    icon: <Sparkles className="w-6 h-6 text-[#138808]" />,
+    icon: <Sparkles className="w-6 h-6 text-[var(--color-secondary-600)]" />,
     title: 'Innovation',
     description: 'Continuously improving our service for NRIs worldwide.'
   },
   {
-    icon: <Users className="w-6 h-6 text-[#138808]" />,
+    icon: <Users className="w-6 h-6 text-[var(--color-secondary-600)]" />,
     title: 'Community',
     description: 'Building a support system for our global Indian family.'
   }

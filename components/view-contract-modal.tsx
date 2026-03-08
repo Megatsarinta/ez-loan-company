@@ -21,8 +21,8 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
   const [bankName, setBankName] = useState<string>('Local Payment Method');
 
   // Brand colors
-  const saffron = '#FF9933';
-  const green = '#138808';
+  const saffron = 'var(--color-accent-500)';
+  const green = 'var(--color-secondary-600)';
 
   useEffect(() => {
     fetchContract();
@@ -107,10 +107,26 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
     <head>
       <title>Loan Contract - ${displayDocumentNumber}</title>
       <style>
+        :root {
+          --color-primary-900: #1E3A8A;
+          --color-primary-700: #1E40AF;
+          --color-primary-100: #DBEAFE;
+          --color-secondary-600: #10B981;
+          --color-secondary-500: #34D399;
+          --color-secondary-100: #D1FAE5;
+          --color-accent-500: #F97316;
+          --color-accent-600: #EA580C;
+          --color-accent-100: #FFEDD5;
+          --color-bg-main: #F9FAFB;
+          --color-bg-surface: #FFFFFF;
+          --color-text-primary: #111827;
+          --color-text-secondary: #374151;
+          --color-border: #E5E7EB;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
           font-family: 'Times New Roman', serif; 
-          color: #212529; 
+          color: var(--color-text-primary); 
           background: white;
           padding: 40px;
           max-width: 900px;
@@ -122,7 +138,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           align-items: center;
           margin-bottom: 30px;
           padding-bottom: 20px;
-          border-bottom: 2px solid #FF9933;
+          border-bottom: 2px solid var(--color-accent-500);
         }
         .logo-section {
           display: flex;
@@ -144,24 +160,24 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           letter-spacing: -0.5px;
         }
         .company-name span:first-child {
-          color: #FF9933;
+          color: var(--color-accent-500);
         }
         .company-name span:last-child {
-          color: #138808;
+          color: var(--color-secondary-600);
         }
         .company-tagline {
           font-size: 11px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
         }
         .trust-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #f0f7ff;
+          background: var(--color-primary-100);
           padding: 6px 12px;
           border-radius: 999px;
           font-size: 12px;
-          color: #FF9933;
+          color: var(--color-accent-500);
           font-weight: 500;
         }
         .document-info {
@@ -170,10 +186,10 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         .document-number {
           font-size: 14px;
           font-weight: bold;
-          background: linear-gradient(135deg, #FF993310, #13880810);
+          background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent-500) 10%, transparent), color-mix(in srgb, var(--color-secondary-600) 10%, transparent));
           padding: 8px 16px;
           border-radius: 999px;
-          border: 1px solid #FF993320;
+          border: 1px solid color-mix(in srgb, var(--color-accent-500) 12%, transparent);
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -181,7 +197,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         .document-number span {
           font-family: monospace;
           font-weight: bold;
-          color: #FF9933;
+          color: var(--color-accent-500);
         }
         .page-header {
           text-align: center;
@@ -191,18 +207,18 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           font-size: 28px;
           font-weight: bold;
           margin-bottom: 8px;
-          background: linear-gradient(135deg, #FF9933, #138808);
+          background: linear-gradient(135deg, var(--color-accent-500), var(--color-secondary-600));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
         .page-header p {
-          color: #6C757D;
+          color: var(--color-text-secondary);
           font-size: 14px;
         }
         .parties-section {
-          background: linear-gradient(135deg, #f0f7ff, #fff0f0);
-          border: 1px solid #FF993320;
+          background: linear-gradient(135deg, var(--color-primary-100), var(--color-accent-100));
+          border: 1px solid color-mix(in srgb, var(--color-accent-500) 12%, transparent);
           border-radius: 16px;
           padding: 24px;
           margin-bottom: 32px;
@@ -215,7 +231,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         .party-title {
           font-size: 12px;
           font-weight: 600;
-          color: #6C757D;
+          color: var(--color-text-secondary);
           text-transform: uppercase;
           margin-bottom: 8px;
         }
@@ -225,21 +241,21 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           margin-bottom: 8px;
         }
         .party-name.lender {
-          color: #FF9933;
+          color: var(--color-accent-500);
         }
         .party-name.borrower {
-          color: #138808;
+          color: var(--color-secondary-600);
         }
         .party-details {
           font-size: 14px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
           line-height: 1.5;
         }
         .contract-card {
           background: white;
           border-radius: 16px;
           padding: 24px;
-          border: 1px solid #e9ecef;
+          border: 1px solid var(--color-border);
           margin-bottom: 32px;
         }
         .card-header {
@@ -251,7 +267,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         .card-icon {
           width: 48px;
           height: 48px;
-          background: linear-gradient(135deg, #FF9933, #138808);
+          background: linear-gradient(135deg, var(--color-accent-500), var(--color-secondary-600));
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -265,11 +281,11 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         .card-title {
           font-size: 20px;
           font-weight: bold;
-          color: #212529;
+          color: var(--color-text-primary);
         }
         .card-subtitle {
           font-size: 14px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
         }
         .info-grid {
           display: grid;
@@ -278,7 +294,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           margin-bottom: 32px;
         }
         .info-card {
-          background: linear-gradient(135deg, #f8f9fa, white);
+          background: linear-gradient(135deg, var(--color-bg-main), white);
           border-radius: 12px;
           padding: 16px;
           border: 1px solid;
@@ -287,13 +303,13 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           flex-direction: column;
         }
         .info-card.blue {
-          border-color: #FF993320;
+          border-color: color-mix(in srgb, var(--color-accent-500) 12%, transparent);
         }
         .info-card.red {
-          border-color: #13880820;
+          border-color: color-mix(in srgb, var(--color-secondary-600) 12%, transparent);
         }
         .info-card.green {
-          border-color: #13880820;
+          border-color: color-mix(in srgb, var(--color-secondary-600) 12%, transparent);
         }
         .info-header {
           display: flex;
@@ -305,22 +321,22 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           width: 16px;
           height: 16px;
         }
-        .info-icon.blue { color: #FF9933; }
-        .info-icon.red { color: #138808; }
-        .info-icon.green { color: #138808; }
+        .info-icon.blue { color: var(--color-accent-500); }
+        .info-icon.red { color: var(--color-secondary-600); }
+        .info-icon.green { color: var(--color-secondary-600); }
         .info-label {
           font-size: 12px;
           font-weight: 600;
         }
-        .info-label.blue { color: #FF9933; }
-        .info-label.red { color: #138808; }
-        .info-label.green { color: #138808; }
+        .info-label.blue { color: var(--color-accent-500); }
+        .info-label.red { color: var(--color-secondary-600); }
+        .info-label.green { color: var(--color-secondary-600); }
         .info-value {
           flex: 1;
           display: flex;
           align-items: center;
           font-size: 16px;
-          color: #212529;
+          color: var(--color-text-primary);
         }
         .info-value.mono {
           font-family: monospace;
@@ -334,19 +350,19 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           border-left-width: 4px;
           border-left-style: solid;
         }
-        .article.blue { border-left-color: #FF9933; }
-        .article.red { border-left-color: #138808; }
-        .article.green { border-left-color: #138808; }
+        .article.blue { border-left-color: var(--color-accent-500); }
+        .article.red { border-left-color: var(--color-secondary-600); }
+        .article.green { border-left-color: var(--color-secondary-600); }
         .article-title {
           font-size: 18px;
           font-weight: bold;
           margin-bottom: 12px;
         }
-        .article-title.blue { color: #FF9933; }
-        .article-title.red { color: #138808; }
-        .article-title.green { color: #138808; }
+        .article-title.blue { color: var(--color-accent-500); }
+        .article-title.red { color: var(--color-secondary-600); }
+        .article-title.green { color: var(--color-secondary-600); }
         .article-content {
-          color: #6C757D;
+          color: var(--color-text-secondary);
           font-size: 14px;
           line-height: 1.6;
         }
@@ -354,20 +370,20 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           list-style-type: disc;
           margin-left: 24px;
           margin-top: 8px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
         }
         .penalty-box {
-          background: #fff9e6;
-          border-left: 4px solid #ffc107;
+          background: var(--color-accent-100);
+          border-left: 4px solid var(--color-accent-500);
           padding: 12px;
           margin-top: 12px;
           font-weight: bold;
-          color: #856404;
+          color: var(--color-primary-900);
         }
         .signatures-section {
           margin-top: 48px;
           padding-top: 32px;
-          border-top: 2px solid #e9ecef;
+          border-top: 2px solid var(--color-border);
         }
         .signatures-grid {
           display: grid;
@@ -378,7 +394,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           text-align: center;
         }
         .signature-label {
-          color: #6C757D;
+          color: var(--color-text-secondary);
           font-size: 14px;
           font-weight: 600;
           margin-bottom: 16px;
@@ -400,7 +416,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           align-items: center;
           justify-content: center;
           height: 100px;
-          color: #adb5bd;
+          color: var(--color-text-secondary);
           font-style: italic;
           font-size: 14px;
         }
@@ -423,11 +439,11 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         }
         .stamp-text .name {
           font-weight: 600;
-          color: #212529;
+          color: var(--color-text-primary);
         }
         .stamp-text .title {
           font-size: 14px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
         }
         .stamp-overlay {
           position: absolute;
@@ -446,17 +462,17 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         }
         .printed-name {
           font-weight: 600;
-          color: #212529;
+          color: var(--color-text-primary);
         }
         .printed-title {
           font-size: 14px;
-          color: #6C757D;
+          color: var(--color-text-secondary);
         }
         .trust-badges {
-          background: linear-gradient(135deg, #f0f7ff, #fff0f0);
+          background: linear-gradient(135deg, var(--color-primary-100), var(--color-accent-100));
           border-radius: 16px;
           padding: 16px;
-          border: 1px solid #FF993320;
+          border: 1px solid color-mix(in srgb, var(--color-accent-500) 12%, transparent);
           display: flex;
           flex-wrap: wrap;
           align-items: center;
@@ -482,12 +498,12 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           font-size: 12px;
           font-weight: 500;
         }
-        .trust-text.blue { color: #FF9933; }
-        .trust-text.green { color: #138808; }
-        .trust-text.red { color: #138808; }
+        .trust-text.blue { color: var(--color-accent-500); }
+        .trust-text.green { color: var(--color-secondary-600); }
+        .trust-text.red { color: var(--color-secondary-600); }
         .footer-note {
           text-align: center;
-          color: #adb5bd;
+          color: var(--color-text-secondary);
           font-size: 12px;
           margin-top: 24px;
         }
@@ -508,7 +524,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           </div>
         </div>
         <div class="trust-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9933" stroke-width="2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-500)" stroke-width="2">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
           <span>RBI Registered</span>
@@ -518,7 +534,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
       <!-- Document Number Badge -->
       <div style="text-align: center; margin-bottom: 24px;">
         <div class="document-number">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9933" stroke-width="2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-500)" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
             <polyline points="14 2 14 8 20 8"/>
           </svg>
@@ -576,7 +592,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 1 - Borrower Name -->
           <div class="info-card blue">
             <div class="info-header">
-              <svg class="info-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9933" stroke-width="2">
+              <svg class="info-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-500)" stroke-width="2">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
@@ -588,7 +604,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 2 - ID Number -->
           <div class="info-card red">
             <div class="info-header">
-              <svg class="info-icon red" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2">
+              <svg class="info-icon red" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-600)" stroke-width="2">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <line x1="3" y1="9" x2="21" y2="9"/>
               </svg>
@@ -600,7 +616,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 3 - Bank Name -->
           <div class="info-card green">
             <div class="info-header">
-              <svg class="info-icon green" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2">
+              <svg class="info-icon green" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-600)" stroke-width="2">
                 <rect x="4" y="8" width="16" height="12" rx="2"/>
                 <path d="M2 14h20"/>
                 <path d="M8 21v-4"/>
@@ -614,7 +630,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 4 - Loan Amount -->
           <div class="info-card blue">
             <div class="info-header">
-              <svg class="info-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9933" stroke-width="2">
+              <svg class="info-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-500)" stroke-width="2">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <line x1="3" y1="9" x2="21" y2="9"/>
               </svg>
@@ -626,7 +642,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 5 - Interest Rate -->
           <div class="info-card red">
             <div class="info-header">
-              <svg class="info-icon red" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2">
+              <svg class="info-icon red" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-600)" stroke-width="2">
                 <path d="M19 5L5 19"/>
                 <circle cx="6.5" cy="6.5" r="2.5"/>
                 <circle cx="17.5" cy="17.5" r="2.5"/>
@@ -639,7 +655,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Card 6 - Loan Period -->
           <div class="info-card green">
             <div class="info-header">
-              <svg class="info-icon green" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2">
+              <svg class="info-icon green" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-600)" stroke-width="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                 <line x1="16" y1="2" x2="16" y2="6"/>
                 <line x1="8" y1="2" x2="8" y2="6"/>
@@ -653,14 +669,14 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
 
         <!-- Active Contract Status -->
         ${contract?.is_signed ? `
-        <div class="active-contract" style="background: linear-gradient(135deg, #f0f9f0, #e8f5e8); border: 1px solid #13880840; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2">
+        <div class="active-contract" style="background: linear-gradient(135deg, var(--color-secondary-100), color-mix(in srgb, var(--color-secondary-600) 15%, white)); border: 1px solid color-mix(in srgb, var(--color-secondary-600) 25%, transparent); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-600)" stroke-width="2">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
           <div>
-            <div style="font-weight: 500; color: #212529;">✓ Active Contract</div>
-            <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px; font-size: 14px; color: #6C757D;">
+            <div style="font-weight: 500; color: var(--color-text-primary);">✓ Active Contract</div>
+            <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px; font-size: 14px; color: var(--color-text-secondary);">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>
@@ -674,9 +690,9 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
 
       <!-- Loan Agreement Section -->
       <div class="contract-card">
-        <div style="text-align: center; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #e9ecef;">
-          <h2 style="font-size: 24px; font-weight: bold; color: #FF9933; margin-bottom: 8px;">LOAN AGREEMENT</h2>
-          <p style="font-size: 14px; color: #6C757D;">Between ${COMPANY_INFO.name} and ${displayBorrowerName}</p>
+        <div style="text-align: center; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);">
+          <h2 style="font-size: 24px; font-weight: bold; color: var(--color-accent-500); margin-bottom: 8px;">LOAN AGREEMENT</h2>
+          <p style="font-size: 14px; color: var(--color-text-secondary);">Between ${COMPANY_INFO.name} and ${displayBorrowerName}</p>
         </div>
 
         <!-- Articles 1-10 -->
@@ -847,19 +863,19 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
       <Card className="max-w-4xl w-full p-6 max-h-[90vh] overflow-y-auto border-0 shadow-xl">
         {/* Header with EasyLoan branding */}
-        <div className="sticky top-0 bg-white z-10 pb-4 border-b border-gray-200 mb-6">
+        <div className="sticky top-0 bg-[var(--color-bg-surface)] z-10 pb-4 border-b border-[var(--color-border)] mb-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-xl flex items-center justify-center shadow-md">
-                <FileText className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] rounded-xl flex items-center justify-center shadow-md">
+                <FileText className="w-5 h-5 text-[var(--color-bg-surface)]" />
               </div>
               <div>
                 <h3 className="text-xl font-bold">
-                  <span className="bg-gradient-to-r from-[#FF9933] to-[#138808] bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] bg-clip-text text-transparent">
                     Loan Contract
                   </span>
                 </h3>
-                <p className="text-sm text-[#6C757D]">Document: {loan.order_number}</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">Document: {loan.order_number}</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -867,7 +883,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                 <Button
                   onClick={handlePrint}
                   size="sm"
-                  className="gap-2 bg-gradient-to-r from-[#FF9933] to-[#138808] text-white hover:from-[#e68a2e] hover:to-[#0f6d07]"
+                  className="gap-2 bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] text-[var(--color-bg-surface)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)]"
                 >
                   <Printer className="w-4 h-4" />
                   Print
@@ -875,9 +891,9 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
               )}
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 hover:bg-[var(--color-bg-main)] rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-[#212529]" />
+                <X className="w-5 h-5 text-[var(--color-text-primary)]" />
               </button>
             </div>
           </div>
@@ -886,34 +902,34 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
         {loading ? (
           <div className="flex items-center justify-center py-12">
             <div className="text-center space-y-4">
-              <div className="w-12 h-12 border-4 border-[#FF9933] border-t-[#138808] rounded-full animate-spin mx-auto" />
-              <p className="text-[#6C757D]">Loading contract...</p>
+              <div className="w-12 h-12 border-4 border-[var(--color-accent-500)] border-t-[var(--color-secondary-600)] rounded-full animate-spin mx-auto" />
+              <p className="text-[var(--color-text-secondary)]">Loading contract...</p>
             </div>
           </div>
         ) : error ? (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-            <p className="text-red-700">{error}</p>
+          <div className="bg-[var(--color-primary-100)] border border-[var(--color-border)] rounded-xl p-6 text-center">
+            <p className="text-[var(--color-primary-900)]">{error}</p>
           </div>
         ) : contract ? (
           <div className="space-y-8">
             {/* Parties Section - Lender is the company name */}
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 border border-[#FF9933]/20 rounded-xl p-6">
-              <h4 className="text-lg font-bold text-[#FF9933] mb-4 pb-2 border-b border-[#FF9933]/20">
+            <div className="bg-gradient-to-br from-blue-50 to-red-50 border border-[var(--color-accent-500)]/20 rounded-xl p-6">
+              <h4 className="text-lg font-bold text-[var(--color-accent-500)] mb-4 pb-2 border-b border-[var(--color-accent-500)]/20">
                 PARTIES TO THIS AGREEMENT
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase mb-2">LENDER</p>
-                  <p className="font-bold text-[#FF9933] text-lg">{COMPANY_INFO.name}</p>
-                  <p className="text-sm text-gray-600">15th Floor, One Corporate Centre</p>
-                  <p className="text-sm text-gray-600">Julia Vargas Ave, Ortigas Center</p>
-                  <p className="text-sm text-gray-600">Mumbai, Maharashtra</p>
+                  <p className="text-xs font-semibold text-[var(--color-text-secondary)] uppercase mb-2">LENDER</p>
+                  <p className="font-bold text-[var(--color-accent-500)] text-lg">{COMPANY_INFO.name}</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">15th Floor, One Corporate Centre</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Julia Vargas Ave, Ortigas Center</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Mumbai, Maharashtra</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase mb-2">BORROWER</p>
-                  <p className="font-bold text-[#138808] text-lg">{contract.header.borrower_name}</p>
-                  <p className="text-sm text-gray-600">ID: {contract.header.id_number}</p>
-                  <p className="text-sm text-gray-600">Phone: {contract.header.phone_number}</p>
+                  <p className="text-xs font-semibold text-[var(--color-text-secondary)] uppercase mb-2">BORROWER</p>
+                  <p className="font-bold text-[var(--color-secondary-600)] text-lg">{contract.header.borrower_name}</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">ID: {contract.header.id_number}</p>
+                  <p className="text-sm text-[var(--color-text-secondary)]">Phone: {contract.header.phone_number}</p>
                 </div>
               </div>
             </div>
@@ -921,80 +937,80 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
             {/* 2x3 Grid of Cards with consistent text size */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Borrower Name */}
-              <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[#FF9933]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-accent-500)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <User className="w-4 h-4 text-[#FF9933]" />
-                  <span className="text-sm font-semibold text-[#FF9933]">Borrower Name</span>
+                  <User className="w-4 h-4 text-[var(--color-accent-500)]" />
+                  <span className="text-sm font-semibold text-[var(--color-accent-500)]">Borrower Name</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] text-base">{contract.header.borrower_name}</p>
+                  <p className="text-[var(--color-text-primary)] text-base">{contract.header.borrower_name}</p>
                 </div>
               </div>
 
               {/* ID Number */}
-              <div className="bg-gradient-to-br from-red-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <CreditCard className="w-4 h-4 text-[#138808]" />
-                  <span className="text-sm font-semibold text-[#138808]">ID Number</span>
+                  <CreditCard className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                  <span className="text-sm font-semibold text-[var(--color-secondary-600)]">ID Number</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] font-mono text-base">{contract.header.id_number}</p>
+                  <p className="text-[var(--color-text-primary)] font-mono text-base">{contract.header.id_number}</p>
                 </div>
               </div>
 
               {/* Bank Name - from user's bank_details */}
-              <div className="bg-gradient-to-br from-green-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-secondary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <Building className="w-4 h-4 text-[#138808]" />
-                  <span className="text-sm font-semibold text-[#138808]">Bank Name</span>
+                  <Building className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                  <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Bank Name</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] text-base">{bankName}</p>
+                  <p className="text-[var(--color-text-primary)] text-base">{bankName}</p>
                 </div>
               </div>
 
               {/* Loan Amount */}
-              <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-[#FF9933]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-accent-500)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <CreditCard className="w-4 h-4 text-[#FF9933]" />
-                  <span className="text-sm font-semibold text-[#FF9933]">Loan Amount</span>
+                  <CreditCard className="w-4 h-4 text-[var(--color-accent-500)]" />
+                  <span className="text-sm font-semibold text-[var(--color-accent-500)]">Loan Amount</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] text-base">{contract.header.loan_amount}</p>
+                  <p className="text-[var(--color-text-primary)] text-base">{contract.header.loan_amount}</p>
                 </div>
               </div>
 
               {/* Interest Rate */}
-              <div className="bg-gradient-to-br from-red-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <Percent className="w-4 h-4 text-[#138808]" />
-                  <span className="text-sm font-semibold text-[#138808]">Interest Rate</span>
+                  <Percent className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                  <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Interest Rate</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] text-base">{contract.header.interest_rate}</p>
+                  <p className="text-[var(--color-text-primary)] text-base">{contract.header.interest_rate}</p>
                 </div>
               </div>
 
               {/* Loan Period */}
-              <div className="bg-gradient-to-br from-green-50 to-white rounded-xl border border-[#138808]/20 p-4 h-[120px] flex flex-col">
+              <div className="bg-gradient-to-br from-[var(--color-secondary-100)] to-[var(--color-bg-surface)] rounded-xl border border-[var(--color-secondary-600)]/20 p-4 h-[120px] flex flex-col">
                 <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-4 h-4 text-[#138808]" />
-                  <span className="text-sm font-semibold text-[#138808]">Loan Period</span>
+                  <Calendar className="w-4 h-4 text-[var(--color-secondary-600)]" />
+                  <span className="text-sm font-semibold text-[var(--color-secondary-600)]">Loan Period</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <p className="text-[#212529] text-base">{contract.header.loan_period}</p>
+                  <p className="text-[var(--color-text-primary)] text-base">{contract.header.loan_period}</p>
                 </div>
               </div>
             </div>
 
             {/* Active Contract Status */}
             {contract.is_signed && (
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4">
+              <div className="bg-gradient-to-r from-[var(--color-secondary-100)] to-[var(--color-secondary-100)] border border-[var(--color-border)] rounded-xl p-4">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#138808]" />
+                  <CheckCircle className="w-5 h-5 text-[var(--color-secondary-600)]" />
                   <div>
                     <p className="text-gray-900 font-medium">✓ Active Contract</p>
-                    <p className="text-gray-600 text-sm mt-1 flex items-center gap-1">
+                    <p className="text-[var(--color-text-secondary)] text-sm mt-1 flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       Signed on: {contract.signed_at ? new Date(contract.signed_at).toLocaleDateString('en-IN', {
                         year: 'numeric',
@@ -1008,30 +1024,30 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
             )}
 
             {/* Loan Agreement Articles */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
-              <div className="text-center mb-8 pb-4 border-b border-gray-200">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#FF9933] mb-2">LOAN AGREEMENT</h2>
-                <p className="text-sm text-gray-500">Between {COMPANY_INFO.name} and {contract.header.borrower_name}</p>
+            <div className="bg-[var(--color-bg-surface)] rounded-2xl p-6 md:p-8 shadow-lg border border-[var(--color-border)]">
+              <div className="text-center mb-8 pb-4 border-b border-[var(--color-border)]">
+                <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-accent-500)] mb-2">LOAN AGREEMENT</h2>
+                <p className="text-sm text-[var(--color-text-secondary)]">Between {COMPANY_INFO.name} and {contract.header.borrower_name}</p>
               </div>
 
               {/* Articles 1-10 */}
               <div className="space-y-8">
                 {/* Article 1 */}
-                <div className="pl-4 border-l-4 border-[#FF9933]">
-                  <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 1: Loan Form</h3>
-                  <p className="text-[#6C757D]">Loan Form: Use an unsecured ID card to request a loan.</p>
+                <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+                  <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 1: Loan Form</h3>
+                  <p className="text-[var(--color-text-secondary)]">Loan Form: Use an unsecured ID card to request a loan.</p>
                 </div>
 
                 {/* Article 2 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 2: Premium Interest Rate</h3>
-                  <p className="text-[#6C757D]">Interest rates, fines, service charges or any fees. Total not more than 25% per year.</p>
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 2: Premium Interest Rate</h3>
+                  <p className="text-[var(--color-text-secondary)]">Interest rates, fines, service charges or any fees. Total not more than 25% per year.</p>
                 </div>
 
                 {/* Article 3 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 3: Borrower's Obligations</h3>
-                  <div className="text-[#6C757D]">
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 3: Borrower's Obligations</h3>
+                  <div className="text-[var(--color-text-secondary)]">
                     <p>During the loan tenure, the borrower has to:</p>
                     <ul className="list-disc ml-6 mt-2 space-y-1">
                       <li>Pay interest at the same time.</li>
@@ -1043,24 +1059,24 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                 </div>
 
                 {/* Article 4 */}
-                <div className="pl-4 border-l-4 border-[#FF9933]">
-                  <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 4: Loan Terms and Conditions</h3>
-                  <div className="text-[#6C757D] space-y-3">
+                <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+                  <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 4: Loan Terms and Conditions</h3>
+                  <div className="text-[var(--color-text-secondary)] space-y-3">
                     <p>(1) In case the borrower borrows online without using collateral, the lender is at risk of lending. The borrower must have a loan guarantee to check the liquidity of the borrower's personal loan minimum repayment. Must be verified for financial liquidity.</p>
                     <p>(2) In the case of online borrowers without collateral, The lenders run the risk of lending. Borrowers must show their financial status to the company to confirm their ability to repay their debts. The borrower will withdraw the full amount of the loan account.</p>
                     <p>(3) After signing this contract, both the borrower and the lender must comply with all requirements of the contract. If either party breaches the contract, the other party has the right to sue in court. The party not complying with this will have to pay a fine of 50 percent of the installment amount if it does not object.</p>
                     <p>(4) In the event that the credit transfer cannot be resolved due to the problems of the borrower, the lender has the right to request the borrower to assist in handling it. After completing this operation, the lender has to transfer the funds.</p>
                     <p>(5) The borrower shall repay the loan principal and interest within the period specified in the contract. If the borrower wants to apply for loan extension, he/she has to disburse it 5 days before the contract period.</p>
-                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 mt-2">
-                      <p className="text-yellow-800"><strong>(6) If the borrower does not repay on time on the stipulated repayment date, penalty interest will be calculated after three days at 0.5% per day.</strong></p>
+                    <div className="bg-[var(--color-accent-100)] border-l-4 border-[var(--color-accent-500)] p-3 mt-2">
+                      <p className="text-[var(--color-primary-900)]"><strong>(6) If the borrower does not repay on time on the stipulated repayment date, penalty interest will be calculated after three days at 0.5% per day.</strong></p>
                     </div>
                   </div>
                 </div>
 
                 {/* Article 5 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 5: Lending Considerations</h3>
-                  <div className="text-[#6C757D]">
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 5: Lending Considerations</h3>
+                  <div className="text-[var(--color-text-secondary)]">
                     <p>Before granting a loan, the lender has the right to consider the following matters:</p>
                     <ul className="list-disc ml-6 mt-2 space-y-1">
                       <li>The Borrower has entered into this Agreement Completion of legal formalities (if any) relating to the loan under the Act.</li>
@@ -1073,48 +1089,48 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                 </div>
 
                 {/* Article 6 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 6: Use of Loan and Repayment</h3>
-                  <div className="text-[#6C757D] space-y-3">
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 6: Use of Loan and Repayment</h3>
+                  <div className="text-[var(--color-text-secondary)] space-y-3">
                     <p>(1) The borrower cannot use the loan for illegal activities. Otherwise, the Lender reserves the right to require the Borrower to repay the principal and interest promptly and the legal consequences shall be borne by the Borrower.</p>
                     <p>(2) The borrower shall repay the principal and interest within the period specified in the contract. For the overdue portion, the lender is entitled to recover the loan and collect 5% of the total amount due.</p>
                   </div>
                 </div>
 
                 {/* Article 7 */}
-                <div className="pl-4 border-l-4 border-[#FF9933]">
-                  <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 7: Modification or Termination of Contract</h3>
-                  <p className="text-[#6C757D]">In all of the above provisions, neither party is permitted to modify or terminate the contract without permission. When either party wishes to bring to the fore such facts in accordance with the provisions of the law, he must notify the other party in writing in time for the settlement. After this Agreement is modified or terminated, the Borrower shall repay 30% to the principal and interest in accordance with the terms of this Agreement.</p>
+                <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+                  <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 7: Modification or Termination of Contract</h3>
+                  <p className="text-[var(--color-text-secondary)]">In all of the above provisions, neither party is permitted to modify or terminate the contract without permission. When either party wishes to bring to the fore such facts in accordance with the provisions of the law, he must notify the other party in writing in time for the settlement. After this Agreement is modified or terminated, the Borrower shall repay 30% to the principal and interest in accordance with the terms of this Agreement.</p>
                 </div>
 
                 {/* Article 8 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 8: Dispute Resolution</h3>
-                  <p className="text-[#6C757D]">Both parties agree to amend the terms of this Agreement through negotiation. If the negotiations do not agree, you can ask the local arbitration committee to mediate or bring the matter to a local court.</p>
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 8: Dispute Resolution</h3>
+                  <p className="text-[var(--color-text-secondary)]">Both parties agree to amend the terms of this Agreement through negotiation. If the negotiations do not agree, you can ask the local arbitration committee to mediate or bring the matter to a local court.</p>
                 </div>
 
                 {/* Article 9 */}
-                <div className="pl-4 border-l-4 border-[#138808]">
-                  <h3 className="font-bold text-[#138808] mb-3 text-lg">Article 9: Insurance and Force Majeure</h3>
-                  <div className="text-[#6C757D] space-y-3">
+                <div className="pl-4 border-l-4 border-[var(--color-secondary-600)]">
+                  <h3 className="font-bold text-[var(--color-secondary-600)] mb-3 text-lg">Article 9: Insurance and Force Majeure</h3>
+                  <div className="text-[var(--color-text-secondary)] space-y-3">
                     <p>The lender assumes the credit risk of the borrower. Due to the "new corona pandemic", the central office requires borrowers to purchase personal accident insurance. If the borrower is unable to repay the loan on time due to force majeure, the lender may ask the insurance company to assist in the payment of the borrower's loan and the loan should be transferred to the borrower's account.</p>
                     <p>Half an hour after the purchase, if the borrower signs the contract but does not comply with the terms, the company considers it a serious fraud and will take the credit dispute to the people's court. After purchase, if the lender does not lend on time, the borrower has the right to sue directly in the local court.</p>
                   </div>
                 </div>
 
                 {/* Article 10 */}
-                <div className="pl-4 border-l-4 border-[#FF9933]">
-                  <h3 className="font-bold text-[#FF9933] mb-3 text-lg">Article 10: Effectiveness of the Agreement</h3>
-                  <p className="text-[#6C757D]">This short loan agreement takes effect from the date of its signing by both parties (including the electronic agreement). The text of the contract has the same legal effect. The lender and borrower keep a copy of the contract.</p>
+                <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
+                  <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 10: Effectiveness of the Agreement</h3>
+                  <p className="text-[var(--color-text-secondary)]">This short loan agreement takes effect from the date of its signing by both parties (including the electronic agreement). The text of the contract has the same legal effect. The lender and borrower keep a copy of the contract.</p>
                 </div>
               </div>
 
               {/* Signatures Section */}
-              <div className="mt-12 pt-8 border-t-2 border-gray-200">
+              <div className="mt-12 pt-8 border-t-2 border-[var(--color-border)]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Borrower Signature */}
                   <div className="text-center">
-                    <p className="text-[#6C757D] text-sm mb-4 font-semibold">BORROWER'S SIGNATURE</p>
+                    <p className="text-[var(--color-text-secondary)] text-sm mb-4 font-semibold">BORROWER'S SIGNATURE</p>
 
                     <div className="mb-4 min-h-[100px] flex items-center justify-center">
                       {contract.signature_url ? (
@@ -1130,22 +1146,22 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                         </div>
                       ) : (
                         <div className="flex items-center justify-center h-[100px]">
-                          <p className="text-gray-400 text-sm italic">Not signed</p>
+                          <p className="text-[var(--color-text-secondary)] text-sm italic">Not signed</p>
                         </div>
                       )}
                     </div>
                     <p className="font-semibold text-gray-900">{contract.header.borrower_name}</p>
-                    <p className="text-sm text-gray-600">Borrower</p>
+                    <p className="text-sm text-[var(--color-text-secondary)]">Borrower</p>
                   </div>
 
                   {/* Lender Signature - With Stamp */}
                   <div className="text-center relative">
-                    <p className="text-[#6C757D] text-sm mb-4 font-semibold">LENDER'S SIGNATURE</p>
+                    <p className="text-[var(--color-text-secondary)] text-sm mb-4 font-semibold">LENDER'S SIGNATURE</p>
 
                     <div className="relative mb-4 min-h-[100px] flex items-center justify-center">
                       <div className="absolute inset-0 flex flex-col items-center justify-center z-0">
                         <p className="font-semibold text-gray-900">{COMPANY_INFO.name}</p>
-                        <p className="text-sm text-gray-600">Authorized Signatory</p>
+                        <p className="text-sm text-[var(--color-text-secondary)]">Authorized Signatory</p>
                       </div>
 
                       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
@@ -1164,25 +1180,25 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
             </div>
 
             {/* Government Trust Badges */}
-            <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 border border-[#FF9933]/20">
+            <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-4 border border-[var(--color-accent-500)]/20">
               <div className="flex flex-wrap items-center justify-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 relative">
                     <Image src="/logos/rbi.png" alt="RBI" width={24} height={24} className="object-contain" />
                   </div>
-                  <span className="text-xs font-medium text-[#FF9933]">RBI Registered</span>
+                  <span className="text-xs font-medium text-[var(--color-accent-500)]">RBI Registered</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 relative">
                     <Image src="/logos/mca.png" alt="MCA" width={24} height={24} className="object-contain" />
                   </div>
-                  <span className="text-xs font-medium text-[#138808]">MCA Registered</span>
+                  <span className="text-xs font-medium text-[var(--color-secondary-600)]">MCA Registered</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 relative">
                     <Image src="/logos/cibil.png" alt="CIBIL" width={24} height={24} className="object-contain" />
                   </div>
-                  <span className="text-xs font-medium text-[#138808]">CIBIL Partner</span>
+                  <span className="text-xs font-medium text-[var(--color-secondary-600)]">CIBIL Partner</span>
                 </div>
               </div>
             </div>
@@ -1191,7 +1207,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
             <div className="flex justify-center pt-4">
               <Button
                 onClick={onClose}
-                className="w-full max-w-md bg-gradient-to-r from-[#FF9933] to-[#138808] hover:from-[#e68a2e] hover:to-[#0f6d07] text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+                className="w-full max-w-md bg-gradient-to-r from-[var(--color-accent-500)] to-[var(--color-secondary-600)] hover:from-[var(--color-accent-600)] hover:to-[var(--color-secondary-500)] text-[var(--color-bg-surface)] py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
               >
                 Close Contract
               </Button>
@@ -1199,7 +1215,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
 
             {/* Footer Note */}
             <div className="text-center">
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--color-text-secondary)]">
                 EasyLoan is RBI Registered, MCA Registered, and CIBIL Partner.
                 All rights reserved. For NRI, for Family.
               </p>
