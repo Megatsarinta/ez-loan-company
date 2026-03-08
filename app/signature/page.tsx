@@ -720,17 +720,17 @@ const compressSignature = (canvas: HTMLCanvasElement): string => {
                     <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
                       {/* Article 1 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 1: LOAN FORM</h4>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 1: LOAN APPLICATION FORM</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
-                          The Borrower agrees to obtain an unsecured loan from the Lender by submitting valid KYC documents (Aadhaar/PAN) and completing the online application process. The loan shall be disbursed directly to the Borrower's designated NRE/NRO bank account or UPI ID upon approval.
+                          Loan Application: Use your KYC-validated identification (such as Aadhaar, PAN, Voter ID, or Driver's License) to apply for a loan.
                         </p>
                       </div>
 
                       {/* Article 2 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 2: INTEREST RATE AND CHARGES</h4>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 2: INTEREST RATES AND CHARGES</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
-                          The loan shall bear interest at the rate specified in the Loan Terms Summary above. All interest rates, late payment fees, service charges, or any other fees combined shall not exceed the maximum rate as prescribed by RBI guidelines. No processing fee is charged.
+                          The aggregate of interest rate, late payment penalties, processing fees, and all other charges shall not exceed the limits prescribed by the Reserve Bank of India (RBI) for your specific loan category. Interest will be charged as a simple interest rate on the outstanding principal amount and will be fully disclosed in the loan agreement.
                         </p>
                       </div>
 
@@ -738,14 +738,14 @@ const compressSignature = (canvas: HTMLCanvasElement): string => {
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
                         <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 3: BORROWER'S OBLIGATIONS</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed mb-1 sm:mb-2">
-                          During the loan term, the Borrower agrees to:
+                          During the loan tenure, the borrower must:
                         </p>
                         <ul className="list-disc ml-4 sm:ml-5 md:ml-6 lg:ml-8 text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] space-y-0.5 sm:space-y-1">
-                          <li>Pay all interest and principal amounts when due as specified in the repayment schedule.</li>
-                          <li>Make timely payments of the monthly EMI without fail through NACH/UPI AutoPay.</li>
-                          <li>Notify the Lender immediately of any circumstances that may affect the ability to repay.</li>
-                          <li>Cooperate with the Lender to restructure the loan if necessary due to financial hardship as per RBI guidelines.</li>
-                          <li>Comply with all terms and conditions set forth in this Agreement.</li>
+                          <li>Pay interest as per the agreed schedule.</li>
+                          <li>Repay the principal amount on the due date.</li>
+                          <li>Cooperate with the lender to resolve any payment issues if a scheduled debit from the borrower's bank account fails due to insufficient funds or other bank-related issues.</li>
+                          <li>Adhere to all terms and conditions of the contract.</li>
+                          <li>Utilize the loan amount strictly for lawful purposes as declared.</li>
                         </ul>
                       </div>
 
@@ -753,44 +753,45 @@ const compressSignature = (canvas: HTMLCanvasElement): string => {
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
                         <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 4: LOAN TERMS AND CONDITIONS</h4>
                         <div className="space-y-2 sm:space-y-2.5 md:space-y-3 text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)]">
-                          <p>(1) The Borrower acknowledges that this is an unsecured loan and the Lender assumes credit risk. The Borrower must demonstrate financial capacity to repay through verification of income and CIBIL score.</p>
-                          <p>(2) The Borrower must provide accurate and complete financial information to enable the Lender to assess creditworthiness. Any misrepresentation may result in immediate loan recall.</p>
-                          <p>(3) Upon execution of this Agreement, both parties are bound by all terms herein. Breach by either party may result in legal action under the Indian Contract Act, 1872.</p>
-                          <p>(4) The Lender shall disburse funds promptly upon satisfaction of all conditions precedent as per RBI guidelines.</p>
-                          <p>(5) Early repayment of the loan is permitted without penalty as per RBI Fair Practices Code.</p>
-                          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-2 sm:p-2.5 md:p-3 lg:p-4 mt-2 sm:mt-2.5 md:mt-3">
-                            <p className="text-yellow-800 font-semibold text-[11px] sm:text-xs md:text-sm">(6) Late payments shall incur a penalty interest as per RBI guidelines on overdue amounts, calculated after a three-day grace period from the due date.</p>
+                          <p>(1) In the event that a borrower applies for a loan online without providing collateral, the lender assumes a higher risk. To mitigate this, the borrower must provide a form of loan guarantee or credit enhancement (such as a third-party guarantee or security deposit) to allow the lender to assess the borrower's liquidity and ensure their ability to make the minimum repayment. The borrower's financial liquidity must be thoroughly verified.</p>
+                          <p>(2) In the case of online borrowers without collateral, the lenders assume a higher risk. To address this, borrowers must provide a clear view of their financial status to the company to confirm their ability to repay the debt. As part of this assessment, the borrower may be required to maintain a minimum balance or security deposit equivalent to 10% of the loan amount (or demonstrate they have 10% liquidity readily available). Upon successful verification, the borrower will receive the full loan amount credited to their account.</p>
+                          <p>(3) Upon signing this contract (digitally or physically), both the borrower and the lender are bound by its terms. In the event of a breach of contract by either party, the aggrieved party has the right to seek recourse in a court of law in India. The defaulting party may be liable for penal charges as specified in the contract, subject to RBI guidelines.</p>
+                          <p>(4) If a credit transfer fails due to an issue on the borrower's side (e.g., incorrect account details or technical issues), the lender may request the borrower's assistance to resolve the issue. Upon successful resolution, the lender will process the fund transfer.</p>
+                          <p>(5) The borrower shall repay the loan principal and interest by the due date specified. If the borrower wishes to request an extension or restructuring, they must apply to the lender at least 5 days before the original due date.</p>
+                          <div className="bg-[var(--color-accent-100)] border-l-4 border-[var(--color-accent-500)] p-2 sm:p-2.5 md:p-3 lg:p-4 mt-2 sm:mt-2.5 md:mt-3">
+                            <p className="text-[var(--color-primary-900)] font-semibold text-[11px] sm:text-xs md:text-sm">(6) If the borrower fails to repay on the stipulated date, a penal interest (default interest) will be charged on the overdue amount as per the terms disclosed in the loan contract, subject to RBI regulations on fair practices.</p>
                           </div>
                         </div>
                       </div>
 
                       {/* Article 5 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 5: LENDER'S RIGHTS</h4>
-                        <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed mb-1 sm:mb-2">The Lender reserves the right to evaluate and verify:</p>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 5: LENDER'S CONSIDERATIONS</h4>
+                        <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed mb-1 sm:mb-2">Loan Disbursement: Before granting the loan, the lender reserves the right to review the following to make a final lending decision:</p>
                         <ul className="list-disc ml-4 sm:ml-5 md:ml-6 lg:ml-8 text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] space-y-0.5 sm:space-y-1">
-                          <li>The Borrower's legal capacity to enter into this Agreement.</li>
-                          <li>Payment of any applicable fees or charges related to the loan.</li>
-                          <li>Compliance with all loan conditions precedent to disbursement.</li>
-                          <li>Material adverse changes in the Borrower's financial condition.</li>
-                          <li>CIBIL score and credit history.</li>
+                          <li>Completion of all legal formalities and Know Your Customer (KYC) verification as per RBI guidelines.</li>
+                          <li>Verification of the borrower's identity and address through officially valid documents.</li>
+                          <li>Confirmation that the borrower has paid any applicable processing fees associated with this application.</li>
+                          <li>Confirmation that the borrower meets the eligibility criteria and credit policy specified by the lender.</li>
+                          <li>Assessment of the borrower's current business and financial position to ensure no material adverse change has occurred.</li>
+                          <li>Ensuring the borrower has not breached any terms specified in this application or prior agreements.</li>
                         </ul>
                       </div>
 
                       {/* Article 6 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 6: USE OF PROCEEDS AND REPAYMENT</h4>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 6: USAGE AND REPAYMENT OF LOAN</h4>
                         <div className="space-y-2 sm:space-y-2.5 md:space-y-3 text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)]">
-                          <p>(1) The Borrower shall not use loan proceeds for illegal activities. Violation of this provision shall entitle the Lender to demand immediate full repayment and pursue legal remedies.</p>
-                          <p>(2) The Borrower must repay principal and interest according to the schedule. For amounts past due, the Lender may assess a late payment fee as per RBI guidelines.</p>
+                          <p>(1) The borrower is strictly prohibited from using the loan proceeds for illegal activities, speculation, or purposes not disclosed in the application. Violation of this clause gives the lender the right to demand immediate repayment of the principal and accrued interest, and the borrower will be solely responsible for all legal consequences.</p>
+                          <p>(2) The borrower must repay the principal and interest by the due date. For any overdue amount, the lender is entitled to recover the loan and collect reasonable late payment charges as explicitly disclosed in the loan agreement and compliant with Indian law and RBI guidelines.</p>
                         </div>
                       </div>
 
                       {/* Article 7 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 7: AMENDMENT OR TERMINATION</h4>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 7: MODIFICATION OR TERMINATION OF CONTRACT</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
-                          No modification or termination of this Agreement shall be effective without the written consent of both parties. Should either party seek to amend or terminate, written notice must be provided at least thirty (30) days in advance.
+                          Neither party is permitted to unilaterally modify or terminate this contract. If either party wishes to propose a modification in accordance with the law, they must notify the other party in writing to allow for negotiation. Upon termination of this Agreement for any reason, the Borrower shall immediately repay all outstanding principal, accrued interest, and any other charges due as per the terms of this Agreement.
                         </p>
                       </div>
 
@@ -798,24 +799,23 @@ const compressSignature = (canvas: HTMLCanvasElement): string => {
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
                         <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 8: DISPUTE RESOLUTION</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
-                          The parties agree to first attempt resolution of any dispute through good faith negotiations. If negotiations fail, the dispute shall be brought before the proper courts of Mumbai, to the exclusion of other venues, as per the Indian Arbitration and Conciliation Act.
+                          In the event of a dispute, both parties agree to first attempt to resolve the matter through mutual negotiation. If negotiations fail, the dispute may be subject to the jurisdiction of the courts in the city where the lender's office is located, or as otherwise specified in the loan agreement. This Agreement is governed by the laws of India.
                         </p>
                       </div>
 
                       {/* Article 9 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 9: FORCE MAJEURE</h4>
-                        <div className="space-y-2 sm:space-y-2.5 md:space-y-3 text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)]">
-                          <p>Neither party shall be liable for failure to perform obligations due to events beyond reasonable control, including but not limited to natural disasters, pandemics, government actions, or telecommunications failures. However, the Borrower remains obligated to repay the loan. In case of genuine hardship due to force majeure, the Lender may consider restructuring options as per RBI guidelines.</p>
-                          <p>The Borrower acknowledges that providing false information or fraudulent documents constitutes fraud and may result in criminal prosecution and civil liability under Indian law.</p>
-                        </div>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 9: KEY FACT STATEMENT (KFS) - DISCLOSURE</h4>
+                        <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
+                          In compliance with RBI guidelines on Fair Practices Code and Digital Lending, a Key Fact Statement (KFS) will be provided to the borrower before loan execution. The KFS will include the Annual Percentage Rate (APR), the amount financed, the total amount payable, the repayment schedule, and an itemized breakdown of all fees and charges. The borrower acknowledges receipt and understanding of this disclosure.
+                        </p>
                       </div>
 
                       {/* Article 10 */}
                       <div className="pl-2 sm:pl-3 md:pl-4 border-l-2 sm:border-l-3 md:border-l-4 border-[var(--color-accent-500)]">
-                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 10: EFFECTIVITY</h4>
+                        <h4 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2">ARTICLE 10: ELECTRONIC AGREEMENT AND DATA PRIVACY</h4>
                         <p className="text-[11px] sm:text-xs md:text-sm text-[var(--color-text-primary)] leading-relaxed">
-                          This Agreement shall take effect on the date of electronic or manual signing by both parties. This Agreement may be executed in counterparts, each of which shall be deemed an original. Electronic signatures shall have the same legal force and effect as handwritten signatures under the Indian IT Act, 2000. The parties acknowledge receipt of a copy of this Agreement.
+                          This Agreement may be executed through an electronic method (Aadhaar-based OTP, E-Sign, etc.), which shall have the same legal effect as a physical document. The lender shall comply with the provisions of the Information Technology Act, 2000, and the data protection principles for processing borrower data. This loan agreement is effective from the date of its execution by both parties. Both the lender and borrower shall retain a copy of this contract for their records.
                         </p>
                       </div>
                     </div>
