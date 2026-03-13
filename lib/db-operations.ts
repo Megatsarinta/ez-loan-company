@@ -1035,11 +1035,7 @@ export async function saveBankDetails(
   }
 ) {
   try {
-    // Validate IFSC code (11 characters: 4 letters + 0 + 6 digits)
-    if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(bankDetails.ifsc_code)) {
-      throw new Error('Invalid IFSC code format');
-    }
-
+    // Accept any IFSC or IBAN string (no format validation)
     const dbUrl = getDbUrl();
     if (dbUrl) {
       try {

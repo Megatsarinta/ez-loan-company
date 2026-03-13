@@ -18,8 +18,8 @@ export default function BankInformationPage() {
   const [formData, setFormData] = useState({
     bankName: '',
     accountNumber: '',
-    ifscCode: '',
-    accountType: 'Savings' as string,
+    identifierType: 'IFSC' as 'IFSC' | 'IBAN',
+    ifscOrIban: '',
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -43,8 +43,8 @@ export default function BankInformationPage() {
             setFormData({
               bankName: data.bankDetails.bankName || '',
               accountNumber: data.bankDetails.accountNumber || '',
-              ifscCode: data.bankDetails.ifscCode || '',
-              accountType: data.bankDetails.accountType || 'Savings',
+              identifierType: 'IFSC',
+              ifscOrIban: data.bankDetails.ifscCode || '',
             })
             setIsCompleted(true)
           }
@@ -70,15 +70,14 @@ export default function BankInformationPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    const next = name === 'ifscCode' ? value.toUpperCase().trim() : value
-    setFormData((prev) => ({ ...prev, [name]: next }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
     setError('')
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formData.bankName?.trim() || !formData.accountNumber?.trim() || !formData.ifscCode?.trim()) {
-      setError('Bank Name, Account Number, and IFSC Code are required.')
+    if (!formData.bankName?.trim() || !formData.accountNumber?.trim() || !formData.ifscOrIban?.trim()) {
+      setError('Bank Name, Account Number, and IFSC Code or IBAN are required.')
       return
     }
 
@@ -92,8 +91,7 @@ export default function BankInformationPage() {
         body: JSON.stringify({
           bankName: formData.bankName.trim(),
           accountNumber: formData.accountNumber.trim(),
-          ifscCode: formData.ifscCode.trim(),
-          accountType: formData.accountType || 'Savings',
+          ifscCode: formData.ifscOrIban.trim(),
         }),
       })
 
@@ -224,7 +222,7 @@ export default function BankInformationPage() {
                 name="bankName"
                 value={formData.bankName}
                 onChange={handleChange}
-                placeholder="e.g. State Bank of India"
+                placeholder="Please fill your information"
                 className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
               />
             </div>
@@ -239,7 +237,7 @@ export default function BankInformationPage() {
                 name="accountNumber"
                 value={formData.accountNumber}
                 onChange={handleChange}
-                placeholder="Enter account number"
+                placeholder="Please fill your information"
                 className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
               />
             </div>
@@ -247,33 +245,39 @@ export default function BankInformationPage() {
             <div>
               <Label className="block text-sm font-semibold text-[var(--color-text-secondary)] mb-2 flex items-center gap-2">
                 <Landmark className="w-4 h-4 text-[var(--color-secondary-600)]" />
-                IFSC Code
+                IFSC Code or IBAN
               </Label>
+              <div className="flex gap-3 mb-2">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="identifierType"
+                    checked={formData.identifierType === 'IFSC'}
+                    onChange={() => setFormData((prev) => ({ ...prev, identifierType: 'IFSC' }))}
+                    className="rounded-full border-2 border-[var(--color-border)]"
+                  />
+                  <span className="text-sm text-[var(--color-text-primary)]">IFSC Code</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="identifierType"
+                    checked={formData.identifierType === 'IBAN'}
+                    onChange={() => setFormData((prev) => ({ ...prev, identifierType: 'IBAN' }))}
+                    className="rounded-full border-2 border-[var(--color-border)]"
+                  />
+                  <span className="text-sm text-[var(--color-text-primary)]">IBAN</span>
+                </label>
+              </div>
               <input
                 type="text"
-                name="ifscCode"
-                value={formData.ifscCode}
+                name="ifscOrIban"
+                value={formData.ifscOrIban}
                 onChange={handleChange}
-                placeholder="e.g. SBIN0001234"
-                maxLength={11}
-                className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors uppercase"
-              />
-              <p className="text-xs text-[var(--color-text-secondary)] mt-1">11 characters: 4 letters + 0 + 6 alphanumeric</p>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-[var(--color-text-secondary)] mb-2">Account Type</label>
-              <select
-                name="accountType"
-                value={formData.accountType}
-                onChange={handleChange}
+                placeholder="Please fill your information"
                 className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
-              >
-                <option value="Savings">Savings Account</option>
-                <option value="Current">Current Account</option>
-                <option value="NRE">NRE (Non-Resident External)</option>
-                <option value="NRO">NRO (Non-Resident Ordinary)</option>
-              </select>
+              />
+              <p className="text-xs text-[var(--color-text-secondary)] mt-1">Enter any letters or numbers as per your {formData.identifierType === 'IBAN' ? 'IBAN' : 'IFSC code'}</p>
             </div>
 
             <div className="flex gap-3 pt-4">

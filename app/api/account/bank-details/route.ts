@@ -83,9 +83,9 @@ export async function PUT(req: NextRequest) {
     const body = await req.json();
     const { bankName, accountNumber, ifscCode, accountType } = body;
 
-    if (!bankName || !accountNumber || !ifscCode || !accountType) {
+    if (!bankName?.trim() || !accountNumber?.trim() || !ifscCode?.trim()) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'Bank Name, Account Number, and IFSC/IBAN are required' },
         { status: 400 }
       );
     }
@@ -121,23 +121,17 @@ export async function PUT(req: NextRequest) {
       if (v === 'NRE') return 'NRE';
       if (v === 'NRO') return 'NRO';
       if (v === 'current' || v === 'Current') return 'current';
-      return 'savings'; // 'Savings', 'savings', or anything else
+      return 'savings';
     };
-    const ifscUpper = (ifscCode || '').toUpperCase().trim();
-
-    if (!ifscUpper || !/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifscUpper)) {
-      return NextResponse.json(
-        { error: 'Invalid IFSC code. Must be 11 characters (e.g. SBIN0001234).' },
-        { status: 400 }
-      );
-    }
+    // Accept any IFSC or IBAN string (no format validation)
+    const ifscOrIbanValue = (ifscCode || '').toString().trim();
 
     const payload = {
-      account_type: accountTypeMap(accountType),
-      bank_name: bankName || '',
+      account_type: accountType ? accountTypeMap(accountType) : 'savings',
+      bank_name: (bankName || '').trim(),
       branch: '',
-      account_number: accountNumber || '',
-      ifsc_code: ifscUpper,
+      account_number: (accountNumber || '').trim(),
+      ifsc_code: ifscOrIbanValue,
       account_holder_name: 'Account Holder',
     };
 
@@ -147,15 +141,15 @@ export async function PUT(req: NextRequest) {
     if (saveResult.success || pgResult.success) {
       return NextResponse.json({
         success: true,
-        bankDetails: { bankName, accountNumber, ifscCode: ifscUpper, accountType },
+        bankDetails: { bankName: payload.bank_name, accountNumber: payload.account_number, ifscCode: ifscOrIbanValue, accountType: payload.account_type },
       });
     }
 
     const bankDetails = {
-      bankName,
-      accountNumber,
-      ifscCode: ifscUpper,
-      accountType,
+      bankName: payload.bank_name,
+      accountNumber: payload.account_number,
+      ifscCode: ifscOrIbanValue,
+      accountType: payload.account_type,
       updatedAt: new Date().toISOString(),
     };
     try {

@@ -351,8 +351,8 @@ function BankInformationTab() {
   const [bankDetails, setBankDetails] = useState({
     bankName: '',
     accountNumber: '',
+    identifierType: 'IFSC' as 'IFSC' | 'IBAN',
     ifscCode: '',
-    accountType: 'Savings',
     isAdminSet: false,
   })
   const [isLoading, setIsLoading] = useState(true)
@@ -372,13 +372,20 @@ function BankInformationTab() {
           const data = await response.json()
           console.log('[v0] Bank details fetched:', data)
           if (data.bankDetails) {
-            setBankDetails(data.bankDetails)
+            const d = data.bankDetails
+            setBankDetails({
+              bankName: d.bankName || '',
+              accountNumber: d.accountNumber || '',
+              identifierType: 'IFSC',
+              ifscCode: d.ifscCode || '',
+              isAdminSet: d.isAdminSet || false,
+            })
           } else {
             setBankDetails({
               bankName: '',
               accountNumber: '',
+              identifierType: 'IFSC',
               ifscCode: '',
-              accountType: 'Savings',
               isAdminSet: false,
             })
           }
@@ -415,9 +422,16 @@ function BankInformationTab() {
               const newDetails = data.bankDetails
               const currentDetails = bankDetails
 
-              if (JSON.stringify(newDetails) !== JSON.stringify(currentDetails)) {
+              const newState = {
+                bankName: newDetails.bankName || '',
+                accountNumber: newDetails.accountNumber || '',
+                identifierType: 'IFSC' as const,
+                ifscCode: newDetails.ifscCode || '',
+                isAdminSet: newDetails.isAdminSet || false,
+              }
+              if (JSON.stringify(newState) !== JSON.stringify(currentDetails)) {
                 console.log('[v0] Bank details updated by admin, refreshing UI')
-                setBankDetails(newDetails)
+                setBankDetails(newState)
                 // Optional: Show a subtle success message
                 setSuccess('Your bank details have been updated')
                 setTimeout(() => setSuccess(''), 3000)
@@ -435,7 +449,7 @@ function BankInformationTab() {
 
   const handleSave = async () => {
     if (!bankDetails.bankName || !bankDetails.accountNumber || !bankDetails.ifscCode) {
-      setError('Bank Name, Account Number, and IFSC Code are required')
+      setError('Bank Name, Account Number, and IFSC Code or IBAN are required')
       return
     }
 
@@ -450,8 +464,7 @@ function BankInformationTab() {
         body: JSON.stringify({
           bankName: bankDetails.bankName,
           accountNumber: bankDetails.accountNumber,
-          ifscCode: bankDetails.ifscCode,
-          accountType: bankDetails.accountType,
+          ifscCode: bankDetails.ifscCode.trim(),
         }),
       })
 
@@ -532,6 +545,7 @@ function BankInformationTab() {
               type="text"
               value={bankDetails.bankName}
               onChange={(e) => setBankDetails({ ...bankDetails, bankName: e.target.value })}
+              placeholder="Please fill your information"
               className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
             />
           ) : (
@@ -552,6 +566,7 @@ function BankInformationTab() {
               type="text"
               value={bankDetails.accountNumber}
               onChange={(e) => setBankDetails({ ...bankDetails, accountNumber: e.target.value })}
+              placeholder="Please fill your information"
               className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
             />
           ) : isAccountFilled ? (
@@ -567,54 +582,46 @@ function BankInformationTab() {
           )}
         </div>
 
-        {/* IFSC Code */}
+        {/* IFSC Code or IBAN */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Landmark className="w-4 h-4 text-[var(--color-secondary-600)]" />
-            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">IFSC Code</label>
+            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">IFSC Code or IBAN</label>
           </div>
           {isEditing && canEdit ? (
-            <input
-              type="text"
-              value={bankDetails.ifscCode}
-              onChange={(e) => setBankDetails({ ...bankDetails, ifscCode: e.target.value.toUpperCase() })}
-              placeholder="e.g., SBIN0001234"
-              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors uppercase"
-            />
+            <>
+              <div className="flex gap-3 mb-2">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={bankDetails.identifierType === 'IFSC'}
+                    onChange={() => setBankDetails({ ...bankDetails, identifierType: 'IFSC' })}
+                    className="rounded-full border-2 border-[var(--color-border)]"
+                  />
+                  <span className="text-sm text-[var(--color-text-primary)]">IFSC Code</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={bankDetails.identifierType === 'IBAN'}
+                    onChange={() => setBankDetails({ ...bankDetails, identifierType: 'IBAN' })}
+                    className="rounded-full border-2 border-[var(--color-border)]"
+                  />
+                  <span className="text-sm text-[var(--color-text-primary)]">IBAN</span>
+                </label>
+              </div>
+              <input
+                type="text"
+                value={bankDetails.ifscCode}
+                onChange={(e) => setBankDetails({ ...bankDetails, ifscCode: e.target.value })}
+                placeholder="Please fill your information"
+                className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
+              />
+            </>
           ) : isAccountFilled ? (
             <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
               <p className="text-[var(--color-text-primary)] font-mono tracking-wider">
                 {bankDetails.ifscCode || 'Not set'}
-              </p>
-            </div>
-          ) : (
-            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
-              <p className="text-[var(--color-text-primary)]">Not set</p>
-            </div>
-          )}
-        </div>
-
-        {/* Account Type */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-[var(--color-text-primary)]" />
-            <label className="block text-sm font-semibold text-[var(--color-text-secondary)]">Account Type</label>
-          </div>
-          {isEditing && canEdit ? (
-            <select
-              value={bankDetails.accountType || 'Savings'}
-              onChange={(e) => setBankDetails({ ...bankDetails, accountType: e.target.value })}
-              className="w-full bg-[var(--color-bg-surface)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent-500)] focus:border-[var(--color-accent-500)] rounded-xl px-4 py-3 text-base focus:outline-none transition-colors"
-            >
-              <option value="Savings">Savings Account</option>
-              <option value="Current">Current Account</option>
-              <option value="NRE">NRE (Non-Resident External)</option>
-              <option value="NRO">NRO (Non-Resident Ordinary)</option>
-            </select>
-          ) : isAccountFilled ? (
-            <div className="bg-[var(--color-bg-main)] px-4 py-3 rounded-xl border border-[var(--color-border)]">
-              <p className="text-[var(--color-text-primary)] font-medium">
-                {bankDetails.accountType || 'Savings'}
               </p>
             </div>
           ) : (
