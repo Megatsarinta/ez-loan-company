@@ -177,7 +177,7 @@ export default function ApplicationCompletePage() {
               </div>
               <div>
                 <p className="font-medium text-[var(--color-text-primary)]">Document Verification</p>
-                <p className="text-sm text-[var(--color-text-secondary)]">We'll verify your Aadhaar/PAN and KYC documents within 24 hours</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">We'll verify your ID and KYC documents within 24 hours</p>
               </div>
             </div>
             <div className="flex items-start gap-3">

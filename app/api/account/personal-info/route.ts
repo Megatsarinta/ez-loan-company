@@ -196,10 +196,11 @@ export async function PUT(req: NextRequest) {
     }
 
     // Also save to personal_info table so GET and account-management show full info
-    const idType = (body.id_type as any) || 'aadhaar';
-    const idNumber = (body.id_card_number || '').trim() || (idType === 'aadhaar' ? '000000000000' : '');
+    const idType = (body.id_type as string) || 'national_id';
+    const idNumber = (body.id_card_number || '').trim();
     const emergencyName = (body.emergency_contact_name || body.relative_name || '').trim();
     const emergencyPhone = String(body.emergency_contact_phone || body.relative_phone || '').trim();
+    const monthlyIncomeNum = typeof body.monthly_income === 'number' ? body.monthly_income : (typeof body.stable_income === 'number' ? body.stable_income : parseFloat(String(body.monthly_income || body.stable_income || 0).replace(/[^0-9.-]+/g, '')) || 0);
     const saveResult = await savePersonalInfo(parseInt(userId), {
       full_name: body.full_name || '',
       id_type: idType,
@@ -207,14 +208,14 @@ export async function PUT(req: NextRequest) {
       gender: body.gender || '',
       date_of_birth: body.date_of_birth || '',
       current_job: body.current_job || '',
-      monthly_income: typeof body.monthly_income === 'number' ? body.monthly_income : (typeof body.stable_income === 'number' ? body.stable_income : parseFloat(String(body.monthly_income || body.stable_income || 0).replace(/[^0-9.-]+/g, '')) || 0),
+      monthly_income: monthlyIncomeNum,
       loan_purpose: body.loan_purpose || '',
       living_address: body.living_address || '',
       city: body.city || '',
       state: body.state || '',
       pincode: body.pincode || '',
       emergency_contact_name: emergencyName || 'N/A',
-      emergency_contact_phone: /^[6-9]\d{9}$/.test(emergencyPhone) ? emergencyPhone : '0000000000',
+      emergency_contact_phone: emergencyPhone || 'N/A',
     });
     if (!saveResult.success) {
       console.error('[v0] savePersonalInfo error (non-blocking):', saveResult.error);

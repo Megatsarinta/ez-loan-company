@@ -58,7 +58,7 @@ async function generateExcel(documentNumber: string, loanData: any) {
     ['BETWEEN', '', 'AND', '', '', '', '', ''],
     ['COMPANY:', companyName, '', 'CUSTOMER NAME:', loanData.borrowerName || 'N/A', '', '', ''],
     ['HEREINAFTER REFERRED:', 'lender', '', 'HEREINAFTER REFERRED:', 'Borrower', '', '', ''],
-    ['RBI REGISTRATION NO:', rbiRegistrationNo, '', 'AADHAAR/PAN:', loanData.idCardNumber || 'N/A', '', '', ''],
+    ['RBI REGISTRATION NO:', rbiRegistrationNo, '', 'ID NUMBER:', loanData.idCardNumber || 'N/A', '', '', ''],
     ['DATE REGISTERED (RBI):', dateRegistered, '', 'PHONE NUMBER:', loanData.borrowerPhone || 'N/A', '', '', ''],
     ['', '', '', 'DATE APPLY LOAN:', loanData.applicationDate || effectiveDate, '', '', ''],
     ['', '', '', '', '', '', '', ''],
@@ -708,7 +708,7 @@ function generateHTML(documentNumber: string, loanData: any, format: string) {
           </div>
           <div class="referred-text">HEREINAFTER REFERRED: Borrower</div>
           <div class="info-row">
-            <div class="info-label">AADHAAR/PAN:</div>
+            <div class="info-label">ID NUMBER:</div>
             <div class="info-value">${loanData.idCardNumber || 'N/A'}</div>
           </div>
           <div class="info-row">

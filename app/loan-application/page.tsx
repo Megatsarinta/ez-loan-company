@@ -84,7 +84,7 @@ export default function LoanApplicationPage() {
   if (!isLoading && existingApplication) {
     const progress = getApplicationProgress(existingApplication, userVerification)
     const stepsStatusMap: Record<string, string> = {
-      'kyc-upload': 'Your loan is confirmed. Please complete KYC verification with Aadhaar/PAN.',
+      'kyc-upload': 'Your loan is confirmed. Please complete KYC verification with your ID document.',
       'personal-information': 'Please complete your personal information.',
       'bank-information': 'Please fill in your bank account details for loan disbursement.',
       signature: 'Please sign the loan agreement with digital signature.',
@@ -126,7 +126,7 @@ export default function LoanApplicationPage() {
                   <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${progress.isKYCComplete ? 'bg-[var(--color-secondary-600)] text-[var(--color-bg-surface)]' : 'bg-[var(--color-text-secondary)] text-[var(--color-bg-surface)]'}`}>
                     {progress.isKYCComplete ? '✓' : '1'}
                   </span>
-                  <span className="text-sm text-[var(--color-text-primary)]">KYC Verification (Aadhaar/PAN)</span>
+                  <span className="text-sm text-[var(--color-text-primary)]">KYC Verification (ID Document)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${progress.isPersonalInfoComplete ? 'bg-[var(--color-secondary-600)] text-[var(--color-bg-surface)]' : 'bg-[var(--color-text-secondary)] text-[var(--color-bg-surface)]'}`}>
@@ -632,7 +632,7 @@ export default function LoanApplicationPage() {
             
             {/* Note */}
             <p className="text-xs text-[var(--color-text-secondary)] text-center mt-4">
-              You'll proceed to Aadhaar/PAN verification after confirmation
+              You'll proceed to ID verification after confirmation
             </p>
           </div>
         </div>

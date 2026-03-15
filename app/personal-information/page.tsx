@@ -41,7 +41,7 @@ export default function PersonalInformationPage() {
   const [formData, setFormData] = useState<PersonalInfo>({
     full_name: '',
     id_card_number: '',
-    id_type: 'aadhaar',
+    id_type: 'national_id',
     gender: '',
     date_of_birth: '',
     current_job: '',
@@ -78,7 +78,7 @@ export default function PersonalInformationPage() {
             setFormData({
               full_name: data.info.full_name || '',
               id_card_number: data.info.id_card_number || '',
-              id_type: data.info.id_type || 'aadhaar',
+              id_type: data.info.id_type || 'national_id',
               gender: data.info.gender || '',
               date_of_birth: data.info.date_of_birth || '',
               current_job: data.info.current_job || '',
@@ -139,15 +139,6 @@ export default function PersonalInformationPage() {
     
     if (!formData.id_card_number?.trim()) {
       newErrors.id_card_number = 'ID number is required'
-    } else {
-      const idNumber = formData.id_card_number.trim()
-      if (formData.id_type === 'aadhaar' && !/^\d{12}$/.test(idNumber)) {
-        newErrors.id_card_number = 'Aadhaar number must be 12 digits'
-      } else if (formData.id_type === 'pan' && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(idNumber)) {
-        newErrors.id_card_number = 'PAN must be in format: ABCDE1234F'
-      } else if (formData.id_type === 'passport' && !/^[A-Z][0-9]{7}$/.test(idNumber)) {
-        newErrors.id_card_number = 'Passport number must be 8 characters (1 letter + 7 digits)'
-      }
     }
     
     if (!formData.gender) {
@@ -175,11 +166,6 @@ export default function PersonalInformationPage() {
     
     if (!formData.monthly_income?.trim()) {
       newErrors.monthly_income = 'Monthly income is required'
-    } else {
-      const income = parseFloat(formData.monthly_income.replace(/[^0-9.-]+/g, ''))
-      if (isNaN(income) || income < 0) {
-        newErrors.monthly_income = 'Please enter a valid income amount'
-      }
     }
     
     if (!formData.loan_purpose?.trim()) {
@@ -196,8 +182,6 @@ export default function PersonalInformationPage() {
     
     if (!formData.emergency_contact_phone?.trim()) {
       newErrors.emergency_contact_phone = 'Emergency contact number is required'
-    } else if (!/^[6-9]\d{9}$/.test(formData.emergency_contact_phone.trim())) {
-      newErrors.emergency_contact_phone = 'Please enter a valid 10-digit Indian mobile number'
     }
     
     setErrors(newErrors)
@@ -231,7 +215,7 @@ export default function PersonalInformationPage() {
         },
         body: JSON.stringify({
           ...formData,
-          monthly_income: parseFloat(formData.monthly_income.replace(/[^0-9.-]+/g, '')).toString()
+          monthly_income: formData.monthly_income.trim()
         }),
       })
 
@@ -348,7 +332,7 @@ export default function PersonalInformationPage() {
                   name="full_name"
                   value={formData.full_name}
                   onChange={handleChange}
-                  placeholder="As per Aadhaar/PAN card"
+                  placeholder="As per your ID document"
                   className={`bg-[var(--color-bg-surface)] border-2 ${
                     errors.full_name ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
@@ -373,11 +357,13 @@ export default function PersonalInformationPage() {
                   } rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--color-accent-500)] transition-colors`}
                   disabled={isSubmitting}
                 >
+                  <option value="national_id">National ID</option>
+                  <option value="passport">Passport</option>
+                  <option value="driving_license">Driving License</option>
+                  <option value="voter_id">Voter ID</option>
+                  <option value="other">Other</option>
                   <option value="aadhaar">Aadhaar Card</option>
                   <option value="pan">PAN Card</option>
-                  <option value="passport">Passport</option>
-                  <option value="voter">Voter ID</option>
-                  <option value="driving">Driving License</option>
                 </select>
                 {errors.id_type && (
                   <p className="text-red-500 text-sm mt-1">{errors.id_type}</p>
@@ -393,11 +379,7 @@ export default function PersonalInformationPage() {
                   name="id_card_number"
                   value={formData.id_card_number}
                   onChange={handleChange}
-                  placeholder={
-                    formData.id_type === 'aadhaar' ? '12-digit Aadhaar number' :
-                    formData.id_type === 'pan' ? '10-digit PAN (e.g., ABCDE1234F)' :
-                    'Enter ID number'
-                  }
+                  placeholder="Enter your ID number"
                   className={`bg-[var(--color-bg-surface)] border-2 ${
                     errors.id_card_number ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
@@ -475,17 +457,16 @@ export default function PersonalInformationPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="monthly_income" className="text-[var(--color-text-primary)] font-medium">
-                  Monthly Income (₹) <span className="text-red-500">*</span>
+                  Monthly Income <span className="text-red-500">*</span>
                 </Label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]">₹</span>
                   <Input
                     id="monthly_income"
                     name="monthly_income"
                     value={formData.monthly_income}
                     onChange={handleChange}
-                    placeholder="e.g., 50000"
-                    className={`bg-[var(--color-bg-surface)] border-2 pl-8 ${
+                    placeholder="e.g. 50000 or 5,000.00"
+                    className={`bg-[var(--color-bg-surface)] border-2 ${
                       errors.monthly_income ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                     } rounded-xl px-4 py-3 transition-colors`}
                     disabled={isSubmitting}
@@ -529,7 +510,7 @@ export default function PersonalInformationPage() {
                   name="living_address"
                   value={formData.living_address}
                   onChange={handleChange}
-                  placeholder="Flat/House No., Area, City, PIN Code"
+                  placeholder="Street, City, Postal code, Country"
                   className={`bg-[var(--color-bg-surface)] border-2 ${
                     errors.living_address ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}
@@ -569,8 +550,7 @@ export default function PersonalInformationPage() {
                   name="emergency_contact_phone"
                   value={formData.emergency_contact_phone}
                   onChange={handleChange}
-                  placeholder="10-digit mobile number"
-                  maxLength={10}
+                  placeholder="e.g. +1 234 567 8900"
                   className={`bg-[var(--color-bg-surface)] border-2 ${
                     errors.emergency_contact_phone ? 'border-red-300 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent-500)]'
                   } rounded-xl px-4 py-3 transition-colors`}

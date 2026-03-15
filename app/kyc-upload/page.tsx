@@ -100,7 +100,7 @@ export default function KYCUploadPage() {
     // Create file input
     const input = document.createElement('input')
     input.type = 'file'
-    input.accept = 'image/jpeg,image/jpg,image/png'
+    input.accept = 'image/*'
     
     input.onchange = async (e) => {
       const target = e.target as HTMLInputElement
@@ -411,7 +411,7 @@ const UploadBox = ({
               Identity Verification
             </span>
           </h1>
-          <p className="text-[var(--color-text-secondary)]">Take clear photos of your KYC identification (Aadhaar/PAN)</p>
+          <p className="text-[var(--color-text-secondary)]">Take clear photos of your ID document (e.g. passport, national ID)</p>
         </div>
 
         {/* Progress Indicator - Updated colors */}
@@ -422,16 +422,16 @@ const UploadBox = ({
           <div className="w-2 h-2 bg-[var(--color-border)] rounded-full"></div>
         </div>
 
-        {/* Requirements - Updated for Indian KYC */}
+        {/* Requirements - Universal ID document */}
         <div className="bg-[var(--color-bg-main)] rounded-xl p-4 mb-8">
           <div className="flex items-center gap-2 text-[var(--color-text-primary)] font-semibold mb-3">
             <Info className="w-5 h-5 text-[var(--color-accent-500)]" />
-            Aadhaar/PAN Upload Requirements
+            ID Document Upload Requirements
           </div>
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
               <span className="text-[var(--color-secondary-600)]">✓</span>
-              Clear, well-lit photos of your Aadhaar/PAN card
+              Clear, well-lit photos of your ID document
             </div>
             <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
               <span className="text-[var(--color-secondary-600)]">✓</span>
@@ -448,16 +448,16 @@ const UploadBox = ({
           </div>
         </div>
 
-        {/* DigiLocker Integration Note */}
+        {/* Note for users */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
           <div className="flex items-start gap-2">
-            <Image src={GOVERNMENT_LOGOS.digilocker} alt="DigiLocker" width={24} height={24} className="mt-0.5" />
+            <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
             <div>
               <p className="text-sm text-blue-900 font-medium">
-                📱 DigiLocker Integration Available
+                Use a government-issued ID from your country
               </p>
               <p className="text-xs text-blue-700 mt-1">
-                You can also fetch your Aadhaar/PAN directly from DigiLocker after uploading.
+                Passport, national ID, or driver's license are accepted. Ensure all text is clearly visible.
               </p>
             </div>
           </div>
@@ -487,9 +487,9 @@ const UploadBox = ({
 
         {/* Upload Sections */}
         <div className="space-y-6">
-          <UploadBox type="front" label="Aadhaar/PAN Front" />
-          <UploadBox type="back" label="Aadhaar Back" />
-          <UploadBox type="selfie" label="Selfie with ID Card" />
+          <UploadBox type="front" label="ID Document (Front)" />
+          <UploadBox type="back" label="ID Document (Back)" />
+          <UploadBox type="selfie" label="Selfie with ID" />
         </div>
 
         {/* Next Button */}
@@ -526,7 +526,7 @@ const UploadBox = ({
         {/* Footer Trust Note */}
         <div className="text-center mt-6">
           <p className="text-xs text-[var(--color-text-secondary)]">
-            Your documents are secure and encrypted. {COMPANY_INFO.name} is an RBI Registered NBFC and DigiLocker Partner.
+            Your documents are secure and encrypted. {COMPANY_INFO.name} is an RBI Registered NBFC.
           </p>
         </div>
       </main>

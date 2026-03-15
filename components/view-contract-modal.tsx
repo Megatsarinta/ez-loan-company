@@ -700,7 +700,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Article 1 -->
           <div class="article blue">
             <div class="article-title blue">Article 1: Loan Application Form</div>
-            <div class="article-content">Loan Application: Use your KYC-validated identification (such as Aadhaar, PAN, Voter ID, or Driver's License) to apply for a loan.</div>
+            <div class="article-content">Loan Application: Use your KYC-validated identification (e.g. government-issued ID such as passport, national ID, or driver's license) to apply for a loan.</div>
           </div>
 
           <!-- Article 2 -->
@@ -785,7 +785,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
           <!-- Article 10 -->
           <div class="article blue">
             <div class="article-title blue">Article 10: Electronic Agreement and Data Privacy</div>
-            <div class="article-content">This Agreement may be executed through an electronic method (Aadhaar-based OTP, E-Sign, etc.), which shall have the same legal effect as a physical document. The lender shall comply with the provisions of the Information Technology Act, 2000, and the data protection principles for processing borrower data. This loan agreement is effective from the date of its execution by both parties. Both the lender and borrower shall retain a copy of this contract for their records.</div>
+            <div class="article-content">This Agreement may be executed through an electronic method (OTP, e-signature, etc.), which shall have the same legal effect as a physical document. The lender shall comply with the provisions of the Information Technology Act, 2000, and the data protection principles for processing borrower data. This loan agreement is effective from the date of its execution by both parties. Both the lender and borrower shall retain a copy of this contract for their records.</div>
           </div>
         </div>
 
@@ -1034,7 +1034,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                 {/* Article 1 */}
                 <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
                   <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 1: Loan Application Form</h3>
-                  <p className="text-[var(--color-text-secondary)]">Loan Application: Use your KYC-validated identification (such as Aadhaar, PAN, Voter ID, or Driver's License) to apply for a loan.</p>
+                  <p className="text-[var(--color-text-secondary)]">Loan Application: Use your KYC-validated identification (e.g. government-issued ID such as passport, national ID, or driver's license) to apply for a loan.</p>
                 </div>
 
                 {/* Article 2 */}
@@ -1119,7 +1119,7 @@ export function ViewContractModal({ loan, onClose }: ViewContractModalProps) {
                 {/* Article 10 */}
                 <div className="pl-4 border-l-4 border-[var(--color-accent-500)]">
                   <h3 className="font-bold text-[var(--color-accent-500)] mb-3 text-lg">Article 10: Electronic Agreement and Data Privacy</h3>
-                  <p className="text-[var(--color-text-secondary)]">This Agreement may be executed through an electronic method (Aadhaar-based OTP, E-Sign, etc.), which shall have the same legal effect as a physical document. The lender shall comply with the provisions of the Information Technology Act, 2000, and the data protection principles for processing borrower data. This loan agreement is effective from the date of its execution by both parties. Both the lender and borrower shall retain a copy of this contract for their records.</p>
+                  <p className="text-[var(--color-text-secondary)]">This Agreement may be executed through an electronic method (OTP, e-signature, etc.), which shall have the same legal effect as a physical document. The lender shall comply with the provisions of the Information Technology Act, 2000, and the data protection principles for processing borrower data. This loan agreement is effective from the date of its execution by both parties. Both the lender and borrower shall retain a copy of this contract for their records.</p>
                 </div>
               </div>
 

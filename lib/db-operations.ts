@@ -540,7 +540,7 @@ export async function savePersonalInfo(
   userId: number,
   data: {
     full_name: string;
-    id_type: 'aadhaar' | 'pan' | 'passport' | 'voter' | 'driving';
+    id_type: string;
     id_number: string;
     gender: string;
     date_of_birth: string;
@@ -574,7 +574,7 @@ export async function savePersonalInfo(
                pincode = EXCLUDED.pincode, emergency_contact_name = EXCLUDED.emergency_contact_name,
                emergency_contact_phone = EXCLUDED.emergency_contact_phone, updated_at = NOW()`,
             [
-              userId, data.full_name || '', data.id_type || 'aadhaar', data.id_number || '',
+              userId, data.full_name || '', data.id_type || 'national_id', data.id_number || '',
               data.gender || '', dateVal || '2000-01-01', data.current_job || '', monthlyIncome,
               data.loan_purpose || '', data.living_address || '', data.city || '', data.state || '', data.pincode || '',
               data.emergency_contact_name || '', data.emergency_contact_phone || '',
@@ -597,7 +597,7 @@ export async function savePersonalInfo(
                  pincode = EXCLUDED.pincode, emergency_contact_name = EXCLUDED.emergency_contact_name,
                  emergency_contact_phone = EXCLUDED.emergency_contact_phone, updated_at = NOW()`,
               [
-                userId, data.full_name || '', data.id_type || 'aadhaar', data.id_number || '',
+                userId, data.full_name || '', data.id_type || 'national_id', data.id_number || '',
                 data.gender || '', dateVal || '2000-01-01', data.current_job || '', monthlyIncome,
                 data.loan_purpose || '', data.living_address || '', data.city || '', data.state || '', data.pincode || '',
                 data.emergency_contact_name || '', data.emergency_contact_phone || '',
@@ -635,7 +635,7 @@ export async function savePersonalInfo(
                pincode = EXCLUDED.pincode, emergency_contact_name = EXCLUDED.emergency_contact_name,
                emergency_contact_phone = EXCLUDED.emergency_contact_phone, updated_at = NOW()`,
             [
-              userId, data.full_name || '', data.id_type || 'aadhaar', data.id_number || '',
+              userId, data.full_name || '', data.id_type || 'national_id', data.id_number || '',
               data.gender || '', dateVal || '2000-01-01', data.current_job || '', monthlyIncome,
               data.loan_purpose || '', data.living_address || '', data.city || '', data.state || '', data.pincode || '',
               data.emergency_contact_name || '', data.emergency_contact_phone || '',
